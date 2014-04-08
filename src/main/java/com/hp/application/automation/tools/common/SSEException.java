@@ -13,9 +13,4 @@ public class SSEException extends RuntimeException {
         
         super(message);
     }
-    
-    public SSEException(String message, Throwable cause) {
-        
-        super(message, cause);
-    }
 }

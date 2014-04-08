@@ -5,6 +5,7 @@
 
 package com.hp.application.automation.tools.results;
 
+import be.isabel.uftplugin.tweaker.FailedTests;
 import hudson.AbortException;
 import hudson.Extension;
 import hudson.FilePath;
@@ -30,11 +31,7 @@ import hudson.tasks.junit.TestResultAction;
 import hudson.tasks.test.TestResultAggregator;
 import hudson.tasks.test.TestResultProjectAction;
 
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.File;
-import java.io.IOException;
-import java.io.Serializable;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -56,7 +53,6 @@ import com.hp.application.automation.tools.model.ResultsPublisherModel;
 import com.hp.application.automation.tools.run.RunFromAlmBuilder;
 import com.hp.application.automation.tools.run.RunFromFileBuilder;
 import com.hp.application.automation.tools.run.SseBuilder;
-import com.hp.application.automation.tools.run.PcBuilder;
 
 /**
  * This class is adapted from {@link JunitResultArchiver}; Only the {@code perform()} method
@@ -93,7 +89,6 @@ public class RunResultRecorder extends Recorder implements Serializable, MatrixA
         final List<String> fileSystemResultNames = new ArrayList<String>();
         final List<String> mergedResultNames = new ArrayList<String>();
         final List<String> almSSEResultNames = new ArrayList<String>();
-        final List<String> pcResultNames = new ArrayList<String>();
         
         // Get the TestSet report files names of the current build
         for (Builder builder : builders) {
@@ -102,33 +97,36 @@ public class RunResultRecorder extends Recorder implements Serializable, MatrixA
             } else if (builder instanceof RunFromFileBuilder) {
                 fileSystemResultNames.add(((RunFromFileBuilder) builder).getRunResultsFileName());
             } else if (builder instanceof SseBuilder) {
-                String resultsFileName = ((SseBuilder) builder).getRunResultsFileName();
-                if (resultsFileName != null)
-                    almSSEResultNames.add(resultsFileName);
-            } else if (builder instanceof PcBuilder) {
-            	String resultsFileName = ((PcBuilder) builder).getRunResultsFileName();
-            	if (resultsFileName != null)
-            		pcResultNames.add(resultsFileName);
+                almSSEResultNames.add(((SseBuilder) builder).getRunResultsFileName());
             }
         }
-        
+
         mergedResultNames.addAll(almResultNames);
         mergedResultNames.addAll(fileSystemResultNames);
         mergedResultNames.addAll(almSSEResultNames);
-        mergedResultNames.addAll(pcResultNames);
+
+        //TWEAK begin
+        //when no tests to run, report results of previous build & set this build to SUCCESS
+        if(FailedTests.isPreviousBuildSuccess(build) && FailedTests.isSamePackageAsPrevious(build,listener)){
+            final List<String> previousFileSystemResultNames = new ArrayList<String>();
+            previousFileSystemResultNames.add(FailedTests.getResultFileNameFromPreviousBuild(build));
+            mergedResultNames.addAll(previousFileSystemResultNames);
+            build.setResult(Result.SUCCESS);
+        }
+        //TWEAK end
         
         // Has any QualityCenter builder been set up?
         if (mergedResultNames.isEmpty()) {
             listener.getLogger().println("RunResultRecorder: no results xml File provided");
             return true;
         }
-        
+
         try {
             final long buildTime = build.getTimestamp().getTimeInMillis();
             final long nowMaster = System.currentTimeMillis();
             
             TestResult result = build.getWorkspace().act(new FileCallable<TestResult>() {
-                
+            int i = 0;
                 private static final long serialVersionUID = 1L;
                 
                 @Override
@@ -165,7 +163,7 @@ public class RunResultRecorder extends Recorder implements Serializable, MatrixA
                     return new TestResult(buildTime + (nowSlave - nowMaster), ds, true);
                 }
             });
-            
+
             action = new TestResultAction(build, result, listener);
             if (result.getPassCount() == 0 && result.getFailCount() == 0) {
                 throw new AbortException("Result is empty");
@@ -179,7 +177,12 @@ public class RunResultRecorder extends Recorder implements Serializable, MatrixA
             }
             
             listener.getLogger().println(e.getMessage());
-            build.setResult(Result.FAILURE);
+
+            //TWEAK: added if condition (build.setResult(statement 'build.setResult(Result.FAILURE)' is not a tweak)
+            if(!FailedTests.isPreviousBuildSuccess(build) || !FailedTests.isSamePackageAsPrevious(build,listener)){
+                build.setResult(Result.FAILURE);
+            }
+            //TWEAK end
             return true;
         } catch (IOException e) {
             e.printStackTrace(listener.error("Failed to archive testing tool reports"));

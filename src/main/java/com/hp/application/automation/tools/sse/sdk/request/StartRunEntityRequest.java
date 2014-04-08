@@ -64,5 +64,4 @@ public class StartRunEntityRequest extends PostRequest {
         
         return _suffix;
     }
-    
 }

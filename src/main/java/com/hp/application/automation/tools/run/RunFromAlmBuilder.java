@@ -5,6 +5,7 @@
 
 package com.hp.application.automation.tools.run;
 
+import be.isabel.uftplugin.tweaker.FailedTests;
 import hudson.EnvVars;
 import hudson.Extension;
 import hudson.FilePath;
@@ -180,7 +181,7 @@ public class RunFromAlmBuilder extends Builder {
         
         try {
             // Run the HpToolsLauncher.exe
-            AlmToolsUtils.runOnBuildEnv(build, launcher, listener, CmdLineExe, ParamFileName);
+            AlmToolsUtils.runOnBuildEnv(build, launcher, listener, CmdLineExe, ParamFileName,0, false);//TWEAK: added last 2 arguments -> no impact
         } catch (IOException ioe) {
             Util.displayIOException(ioe, listener);
             build.setResult(Result.FAILURE);
@@ -221,6 +222,29 @@ public class RunFromAlmBuilder extends Builder {
             out.println("Operation was aborted by user.");
             //build.setResult(Result.FAILURE);
         }
+        //TWEAK: added start;
+        /**FailedTests failedTests = new FailedTests(result);
+        if(failedTests.getFailedCount() > 0){
+            String time = formatter.format(now);
+            // get a unique filename for the params file
+            String ParamFileName = "props" + time + ".txt";
+            FilePath propsFileName = projectWS.child(ParamFileName);
+
+            //String failedTestName = ((List)result.getFailedTests()).get(0).getName();
+            final String HpToolsLauncher_SCRIPT_NAME = "HpToolsLauncher.exe";
+            PrintStream out = listener.getLogger();
+            FilePath projectWS = build.getWorkspace();
+            FilePath CmdLineExe = projectWS.child(HpToolsLauncher_SCRIPT_NAME);
+            String paramFileName = "ApiRun.txt";
+            // Use script to run the cmdLine and get the console output
+            hudson.util.ArgumentListBuilder args = new hudson.util.ArgumentListBuilder();
+            args.add(CmdLineExe);
+            args.add("-paramfile");
+            args.add(paramFileName);
+            failedTests.reRun(launcher, args, out, CmdLineExe, listener);//, failedTestName);
+        }
+        //TWEAK: added end;
+        */
         return true;
         
     }

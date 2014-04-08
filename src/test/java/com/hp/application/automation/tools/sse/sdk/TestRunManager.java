@@ -5,10 +5,8 @@ import org.junit.Test;
 
 import com.hp.application.automation.tools.model.CdaDetails;
 import com.hp.application.automation.tools.model.SseModel;
-import com.hp.application.automation.tools.rest.RestClient;
 import com.hp.application.automation.tools.sse.ArgsFactory;
 import com.hp.application.automation.tools.sse.common.TestCase;
-import com.hp.application.automation.tools.sse.result.model.junit.JUnitTestCaseStatus;
 import com.hp.application.automation.tools.sse.result.model.junit.Testcase;
 import com.hp.application.automation.tools.sse.result.model.junit.Testsuites;
 
@@ -21,12 +19,16 @@ public class TestRunManager implements TestCase {
         model.setAlmServerUrl(URL);
         Args args = new ArgsFactory().create(model);
         RestClient connection =
-                new MockRestClientFunctional(
-                        args.getUrl(),
-                        args.getDomain(),
-                        args.getProject(),
-                        args.getUsername());
-        Testsuites testsuites = new RunManager().execute(connection, args, new ConsoleLogger());
+                new MockRestClientFunctional(args.getUrl(), args.getDomain(), args.getProject());
+        Testsuites testsuites = new RunManager().execute(connection, args, new Logger() {
+            
+            @Override
+            public void log(String message) {
+                
+                System.out.println(message);
+                
+            }
+        });
         
         Assert.assertNotNull(testsuites);
         Assert.assertTrue(verifyTestsuitesFunctional(testsuites, "bvs"));
@@ -39,12 +41,16 @@ public class TestRunManager implements TestCase {
         model.setAlmServerUrl(URL);
         Args args = new ArgsFactory().create(model);
         RestClient connection =
-                new MockRestClientFunctional(
-                        args.getUrl(),
-                        args.getDomain(),
-                        args.getProject(),
-                        args.getUsername());
-        Testsuites testsuites = new RunManager().execute(connection, args, new ConsoleLogger());
+                new MockRestClientFunctional(args.getUrl(), args.getDomain(), args.getProject());
+        Testsuites testsuites = new RunManager().execute(connection, args, new Logger() {
+            
+            @Override
+            public void log(String message) {
+                
+                System.out.println(message);
+                
+            }
+        });
         Assert.assertNotNull(testsuites);
         Assert.assertTrue(verifyTestsuitesFunctional(testsuites, "bvs"));
     }
@@ -56,12 +62,16 @@ public class TestRunManager implements TestCase {
         model.setAlmServerUrl(URL);
         Args args = new ArgsFactory().create(model);
         RestClient connection =
-                new MockRestClientFunctional(
-                        args.getUrl(),
-                        args.getDomain(),
-                        args.getProject(),
-                        args.getUsername());
-        Testsuites testsuites = new RunManager().execute(connection, args, new ConsoleLogger());
+                new MockRestClientFunctional(args.getUrl(), args.getDomain(), args.getProject());
+        Testsuites testsuites = new RunManager().execute(connection, args, new Logger() {
+            
+            @Override
+            public void log(String message) {
+                
+                System.out.println(message);
+                
+            }
+        });
         Assert.assertNotNull(testsuites);
         Assert.assertTrue(verifyTestsuitesFunctional(testsuites, "bvs"));
     }
@@ -73,12 +83,16 @@ public class TestRunManager implements TestCase {
         model.setAlmServerUrl(URL);
         Args args = new ArgsFactory().create(model);
         RestClient connection =
-                new MockRestClientFunctional(
-                        args.getUrl(),
-                        args.getDomain(),
-                        args.getProject(),
-                        args.getUsername());
-        Testsuites testsuites = new RunManager().execute(connection, args, new ConsoleLogger());
+                new MockRestClientFunctional(args.getUrl(), args.getDomain(), args.getProject());
+        Testsuites testsuites = new RunManager().execute(connection, args, new Logger() {
+            
+            @Override
+            public void log(String message) {
+                
+                System.out.println(message);
+                
+            }
+        });
         
         Assert.assertNotNull(testsuites);
         Assert.assertTrue(verifyTestsuitesFunctional(testsuites, "testset"));
@@ -91,12 +105,16 @@ public class TestRunManager implements TestCase {
         model.setAlmServerUrl(URL);
         Args args = new ArgsFactory().create(model);
         RestClient connection =
-                new MockRestClientPC(
-                        args.getUrl(),
-                        args.getDomain(),
-                        args.getProject(),
-                        args.getUsername());
-        Testsuites testsuites = new RunManager().execute(connection, args, new ConsoleLogger());
+                new MockRestClientPC(args.getUrl(), args.getDomain(), args.getProject());
+        Testsuites testsuites = new RunManager().execute(connection, args, new Logger() {
+            
+            @Override
+            public void log(String message) {
+                
+                System.out.println(message);
+                
+            }
+        });
         
         Assert.assertNotNull(testsuites);
         Assert.assertTrue(verifyTestsuitesPC(testsuites, "testset"));
@@ -109,13 +127,17 @@ public class TestRunManager implements TestCase {
         model.setAlmServerUrl(URL);
         Args args = new ArgsFactory().create(model);
         RestClient connection =
-                new MockRestClientBadRunEntity(
-                        args.getUrl(),
-                        args.getDomain(),
-                        args.getProject(),
-                        args.getUsername());
+                new MockRestClientBadRunEntity(args.getUrl(), args.getDomain(), args.getProject());
         RunManager runManager = new RunManager();
-        Testsuites testsuites = runManager.execute(connection, args, new ConsoleLogger());
+        Testsuites testsuites = runManager.execute(connection, args, new Logger() {
+            
+            @Override
+            public void log(String message) {
+                
+                System.out.println(message);
+                
+            }
+        });
         
         Assert.assertNull(testsuites);
         
@@ -128,12 +150,16 @@ public class TestRunManager implements TestCase {
         model.setAlmServerUrl(URL);
         Args args = new ArgsFactory().create(model);
         RestClient connection =
-                new MockRestClientFailedLogin(
-                        args.getUrl(),
-                        args.getDomain(),
-                        args.getProject(),
-                        args.getUsername());
-        Testsuites testsuites = new RunManager().execute(connection, args, new ConsoleLogger());
+                new MockRestClientFailedLogin(args.getUrl(), args.getDomain(), args.getProject());
+        Testsuites testsuites = new RunManager().execute(connection, args, new Logger() {
+            
+            @Override
+            public void log(String message) {
+                
+                System.out.println(message);
+                
+            }
+        });
         
         Assert.assertNull(testsuites);
     }
@@ -145,12 +171,16 @@ public class TestRunManager implements TestCase {
         model.setAlmServerUrl(URL);
         Args args = new ArgsFactory().create(model);
         RestClient connection =
-                new MockRestClientFailedLogin(
-                        args.getUrl(),
-                        args.getDomain(),
-                        args.getProject(),
-                        args.getUsername());
-        Testsuites testsuites = new RunManager().execute(connection, args, new ConsoleLogger());
+                new MockRestClientFailedLogin(args.getUrl(), args.getDomain(), args.getProject());
+        Testsuites testsuites = new RunManager().execute(connection, args, new Logger() {
+            
+            @Override
+            public void log(String message) {
+                
+                System.out.println(message);
+                
+            }
+        });
         
         Assert.assertNull(testsuites);
     }
@@ -162,14 +192,18 @@ public class TestRunManager implements TestCase {
         model.setAlmServerUrl(URL);
         Args args = new ArgsFactory().create(model);
         RestClient connection =
-                new MockRestClientBadRunResponse(
-                        args.getUrl(),
-                        args.getDomain(),
-                        args.getProject(),
-                        args.getUsername());
+                new MockRestClientBadRunResponse(args.getUrl(), args.getDomain(), args.getProject());
         boolean thrown = false;
         try {
-            new RunManager().execute(connection, args, new ConsoleLogger());
+            new RunManager().execute(connection, args, new Logger() {
+                
+                @Override
+                public void log(String message) {
+                    
+                    System.out.println(message);
+                    
+                }
+            });
         } catch (Throwable cause) {
             thrown = true;
         }
@@ -267,7 +301,7 @@ public class TestRunManager implements TestCase {
         boolean ret = true;
         Testcase testcase = testsuites.getTestsuite().get(0).getTestcase().get(0);
         ret =
-                (testcase.getStatus().equals(JUnitTestCaseStatus.PASS))
+                (testcase.getStatus().equals("pass"))
                         && (testcase.getName().equals("vapi1 (Test instance run ID: 7)"))
                         && (testcase.getClassname().equals(String.format(
                                 "%s1 (RunId:1005).testset1",

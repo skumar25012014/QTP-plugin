@@ -7,7 +7,6 @@ import java.util.Map;
 import com.hp.application.automation.tools.common.Pair;
 import com.hp.application.automation.tools.sse.common.RestXmlUtils;
 import com.hp.application.automation.tools.sse.sdk.Client;
-import com.hp.application.automation.tools.sse.sdk.ResourceAccessLevel;
 import com.hp.application.automation.tools.sse.sdk.Response;
 
 /***
@@ -30,13 +29,16 @@ public abstract class PostRequest extends Request {
     }
     
     @Override
-    public Response perform() {
+    public Response execute() {
         
-        return _client.httpPost(
-                getUrl(),
-                getDataBytes(),
-                getHeaders(),
-                ResourceAccessLevel.PROTECTED);
+        Response ret = new Response();
+        try {
+            ret = _client.httpPost(getUrl(), getDataBytes(), getHeaders());
+        } catch (Throwable cause) {
+            ret.setFailure(cause);
+        }
+        
+        return ret;
     }
     
     private byte[] getDataBytes() {
@@ -53,5 +55,4 @@ public abstract class PostRequest extends Request {
         
         return new ArrayList<Pair<String, String>>(0);
     }
-    
 }

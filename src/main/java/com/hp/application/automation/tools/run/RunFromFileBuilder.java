@@ -5,6 +5,7 @@
 
 package com.hp.application.automation.tools.run;
 
+import be.isabel.uftplugin.tweaker.FailedTests;
 import hudson.EnvVars;
 import hudson.Extension;
 import hudson.FilePath;
@@ -17,17 +18,16 @@ import hudson.model.AbstractProject;
 import hudson.model.Hudson;
 import hudson.tasks.BuildStepDescriptor;
 import hudson.tasks.Builder;
+import hudson.util.ArgumentListBuilder;
 import hudson.util.FormValidation;
 import hudson.util.IOUtils;
 import hudson.util.VariableResolver;
 
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.PrintStream;
+import java.io.*;
 import java.net.URL;
 import java.text.Format;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.Properties;
 
@@ -39,6 +39,9 @@ import com.hp.application.automation.tools.AlmToolsUtils;
 import com.hp.application.automation.tools.model.RunFromFileSystemModel;
 import com.hp.application.automation.tools.run.AlmRunTypes.RunType;
 
+//TWEAK:info
+//all reRunCount variable is a tweak
+
 public class RunFromFileBuilder extends Builder {
 
 	private final RunFromFileSystemModel runFromFileModel;
@@ -48,11 +51,19 @@ public class RunFromFileBuilder extends Builder {
 	//private String KillFileName = "";
 	private String ParamFileName = "ApiRun.txt";
 
-	@DataBoundConstructor
-	public RunFromFileBuilder(String fsTests, String fsTimeout,  String controllerPollingInterval,String perScenarioTimeOut, String ignoreErrorStrings) {
+    //TWEAK: added reRunCount && onlyRunFailedTestsIfSameBuild variable
+    int reRunCount;
+    boolean onlyRunFailedTestsIfSameBuild = false;
 
-		runFromFileModel = new RunFromFileSystemModel(fsTests, fsTimeout,  controllerPollingInterval,perScenarioTimeOut, ignoreErrorStrings);
-	}
+	@DataBoundConstructor
+	public RunFromFileBuilder(String fsTests, String fsTimeout,  String controllerPollingInterval,String perScenarioTimeOut, String ignoreErrorStrings, String reRunCount, String onlyRunFailedTestsIfSameBuild) {
+
+		runFromFileModel = new RunFromFileSystemModel(fsTests, fsTimeout,  controllerPollingInterval,perScenarioTimeOut, ignoreErrorStrings, reRunCount, onlyRunFailedTestsIfSameBuild);
+	    this.reRunCount = Integer.parseInt(reRunCount);
+        if(onlyRunFailedTestsIfSameBuild.equals("Yes")) {
+            this.onlyRunFailedTestsIfSameBuild = true;
+        }
+    }
 
 	@Override
 	public DescriptorImpl getDescriptor() {
@@ -129,13 +140,13 @@ public class RunFromFileBuilder extends Builder {
 			// create a file for the properties file, and save the properties
 			propsFileName.copyFrom(propsStream);
 
-			
+
 			// Copy the script to the project workspace
 			CmdLineExe.copyFrom(cmdExeUrl);
-			
+
 			CmdLineExe2.copyFrom(cmdExe2Url);
-			
-			
+
+
 		} catch (IOException e1) {
 			build.setResult(Result.FAILURE);
 			// TODO Auto-generated catch block
@@ -148,27 +159,27 @@ public class RunFromFileBuilder extends Builder {
 
 		try {
 			// Run the HpToolsLauncher.exe
-            AlmToolsUtils.runOnBuildEnv(build, launcher, listener, CmdLineExe, ParamFileName);
+            AlmToolsUtils.runOnBuildEnv(build, launcher, listener, CmdLineExe, ParamFileName, reRunCount, onlyRunFailedTestsIfSameBuild);
 			// Has the report been successfuly generated?
 		} catch (IOException ioe) {
 			Util.displayIOException(ioe, listener);
 			build.setResult(Result.FAILURE);
-			return false;
+            return false;
 		} catch (InterruptedException e) {
 			build.setResult(Result.ABORTED);
 			PrintStream out = listener.getLogger();
-			
+
 			try {
 				AlmToolsUtils.runHpToolsAborterOnBuildEnv(build, launcher, listener, ParamFileName);
 			} catch (IOException e1) {
 				Util.displayIOException(e1, listener);
 				build.setResult(Result.FAILURE);
-				return false;
+                return false;
 		} catch (InterruptedException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
-			
+
 			// kill processes
 			/*FilePath killFile = projectWS.child(KillFileName);
 			try {
@@ -186,9 +197,7 @@ public class RunFromFileBuilder extends Builder {
 
 			out.println("Operation Was aborted by user.");
 		}
-
 		return true;
-
 	}
 
 	public RunFromFileSystemModel getRunFromFileModel() {
@@ -215,60 +224,60 @@ public class RunFromFileBuilder extends Builder {
 			return "Execute HP tests from file system";
 		}
 
-		public FormValidation doCheckFsTests(@QueryParameter String value) 
+		public FormValidation doCheckFsTests(@QueryParameter String value)
 		{
 			return FormValidation.ok();
 		}
-		
+
 		public FormValidation doCheckIgnoreErrorStrings(@QueryParameter String value)
 		{
-			
-			
+
+
 			return FormValidation.ok();
 		}
-		
-						
-		public FormValidation doCheckFsTimeout(@QueryParameter String value) 
+
+
+		public FormValidation doCheckFsTimeout(@QueryParameter String value)
 		{
 			if (StringUtils.isEmpty(value)){
 				return FormValidation.ok();
 			}
-			
-			String val1 = value.trim();  
+
+			String val1 = value.trim();
 			if (val1.length()>0 && val1.charAt(0) == '-')
 				val1=val1.substring(1);
-						
-			if (!StringUtils.isNumeric(val1) && val1 !="") 
+
+			if (!StringUtils.isNumeric(val1) && val1 !="")
 			{
 				return FormValidation.error("Timeout name must be a number");
 			}
 			return FormValidation.ok();
 		}
-		
+
 		public FormValidation doCheckControllerPollingInterval(@QueryParameter String value){
 			if (StringUtils.isEmpty(value)){
 				return FormValidation.ok();
 			}
-			
+
 			if (!StringUtils.isNumeric(value)){
 				return FormValidation.error("Controller Polling Interval must be a number");
 			}
-			
+
 			return FormValidation.ok();
 		}
-		
+
 		public FormValidation doCheckPerScenarioTimeOut(@QueryParameter String value){
 			if (StringUtils.isEmpty(value)){
 				return FormValidation.ok();
 			}
-			
+
 			if (!StringUtils.isNumeric(value)){
 				return FormValidation.error("Per Scenario Timeout must be a number");
 			}
-			
+
 			return FormValidation.ok();
 		}
-		
+
 	}
 
 	public String getRunResultsFileName() {

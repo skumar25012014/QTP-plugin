@@ -7,9 +7,10 @@ package com.hp.application.automation.tools.model;
 
 import hudson.EnvVars;
 import hudson.util.VariableResolver;
-import java.util.Properties;
 import org.apache.commons.lang.StringUtils;
 import org.kohsuke.stapler.DataBoundConstructor;
+
+import java.util.Properties;
 
 public class RunFromFileSystemModel {
 
@@ -18,12 +19,25 @@ public class RunFromFileSystemModel {
 	private String controllerPollingInterval = "30";
 	private String perScenarioTimeOut = "10";
 	private String ignoreErrorStrings;
-	
-	
-	
 
-	@DataBoundConstructor
-	public RunFromFileSystemModel(String fsTests, String fsTimeout, String controllerPollingInterval,String perScenarioTimeOut, String ignoreErrorStrings) {
+    //TWEAK: added reRunCount && onlyRunFailedTestsIfSameBuild variable
+    private String reRunCount = "0";
+    public String getReRunCount() {
+        return reRunCount;
+    }
+    public void setReRunCount(String reRunCount) {
+        this.reRunCount = reRunCount;
+    }
+    private String onlyRunFailedTestsIfSameBuild = "No";
+    public String getOnlyRunFailedTestsIfSameBuild() {return onlyRunFailedTestsIfSameBuild;}
+    public void setOnlyRunFailedTestsIfSameBuild(String onlyRunFailedTestsIfSameBuild) {
+        this.onlyRunFailedTestsIfSameBuild = onlyRunFailedTestsIfSameBuild;
+    }
+
+
+
+    @DataBoundConstructor
+	public RunFromFileSystemModel(String fsTests, String fsTimeout, String controllerPollingInterval,String perScenarioTimeOut, String ignoreErrorStrings, String reRunCount, String onlyRunFailedTestsIfSameBuild) {
 
 		this.fsTests = fsTests;
 
@@ -37,9 +51,12 @@ public class RunFromFileSystemModel {
 		this.perScenarioTimeOut = perScenarioTimeOut;
 		this.controllerPollingInterval = controllerPollingInterval;
 		this.ignoreErrorStrings = ignoreErrorStrings;
+
+        this.reRunCount = reRunCount;
+        this.onlyRunFailedTestsIfSameBuild = onlyRunFailedTestsIfSameBuild;
 		
 	}
-	
+
 
 	public String getFsTests() {
 		return fsTests;
@@ -118,10 +135,10 @@ public class RunFromFileSystemModel {
 
 			for (String test : testsArr) {
 				props.put("Test" + i, test);
-				i++;
+                i++;
 			}
 		} else {
-			props.put("fsTests", "");
+			props.put(";", "");
 		}
 
 		
@@ -151,6 +168,8 @@ public class RunFromFileSystemModel {
 			props.put("ignoreErrorStrings", ""+ignoreErrorStrings.replaceAll("\r", ""));
 		}
 
+        props.put("reRunCount", ""+reRunCount);
+        props.put("onlyRunFailedTestsIfSameBuild", ""+onlyRunFailedTestsIfSameBuild);
 
 		return props;
 	}

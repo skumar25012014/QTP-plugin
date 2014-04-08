@@ -23,6 +23,24 @@
     <f:entry title="Timeout" field="fsTimeout">
         <f:textbox name="runfromfs.fsTimeout" value="${instance.runFromFileModel.fsTimeout}"/>
     </f:entry>
+
+                <f:entry title="Rerun count" field="reRunCount">
+                    <select name="runfromfs.reRunCount" >
+                        <f:option selected="${instance.runFromFileModel.reRunCount == '0'}" value="0">0</f:option>
+                        <f:option selected="${instance.runFromFileModel.reRunCount == '1'}" value="1">1</f:option>
+                        <f:option selected="${instance.runFromFileModel.reRunCount == '2'}" value="2">2</f:option>
+                        <f:option selected="${instance.runFromFileModel.reRunCount == '3'}" value="3">3</f:option>
+                        <f:option selected="${instance.runFromFileModel.reRunCount == '4'}" value="4">4</f:option>
+                        <f:option selected="${instance.runFromFileModel.reRunCount == '5'}" value="5">5</f:option>
+                    </select>
+                </f:entry>
+                <f:entry title="Run only failed tests if previous build was on same package" field="onlyRunFailedTestsIfSameBuild">
+                    <select name="runfromfs.onlyRunFailedTestsIfSameBuild" >
+                        <f:option selected="${instance.runFromFileModel.onlyRunFailedTestsIfSameBuild == 'No'}" value="No">No</f:option>
+                        <f:option selected="${instance.runFromFileModel.onlyRunFailedTestsIfSameBuild == 'Yes'}" value="Yes">Yes</f:option>
+                    </select>
+                </f:entry>
+
     <f:advanced title="LoadRunner-Specific Settings">
     	<f:section title="LoadRunner Settings">
 			<f:entry title="Controller Polling Interval" field="controllerPollingInterval">

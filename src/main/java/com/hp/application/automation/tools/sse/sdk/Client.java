@@ -11,9 +11,9 @@ import java.util.Map;
 
 public interface Client {
     
-    Response httpGet(String url, String queryString, Map<String, String> headers, ResourceAccessLevel resourceAccessLevel);
+    Response httpGet(String url, String queryString, Map<String, String> headers);
     
-    Response httpPost(String url, byte[] data, Map<String, String> headers, ResourceAccessLevel resourceAccessLevel);
+    Response httpPost(String url, byte[] data, Map<String, String> headers);
     
     String build(String suffix);
     
@@ -22,6 +22,4 @@ public interface Client {
     String buildWebUIRequest(String suffix);
     
     String getServerUrl();
-    
-    String getUsername();
 }

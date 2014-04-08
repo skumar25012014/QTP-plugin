@@ -3,20 +3,19 @@ package com.hp.application.automation.tools.sse.sdk;
 import java.net.HttpURLConnection;
 import java.util.Map;
 
-import com.hp.application.automation.tools.rest.RestClient;
 import com.hp.application.automation.tools.sse.common.TestCase;
 
 public class MockRestClientStop extends RestClient implements TestCase {
     
     private Object _lock;
     
-    public MockRestClientStop(String url, String domain, String project, String username) {
+    public MockRestClientStop(String url, String domain, String project) {
         
-        super(url, domain, project, username);
+        super(url, domain, project);
     }
     
     @Override
-    public Response httpGet(String url, String queryString, Map<String, String> headers, ResourceAccessLevel resourceAccessLevel) {
+    public Response httpGet(String url, String queryString, Map<String, String> headers) {
         
         Response ret = new Response();
         if (url.contains("rest/is-authenticated")) {
@@ -40,7 +39,7 @@ public class MockRestClientStop extends RestClient implements TestCase {
     }
     
     @Override
-    public Response httpPost(String url, byte[] data, Map<String, String> headers, ResourceAccessLevel resourceAccessLevel) {
+    public Response httpPost(String url, byte[] data, Map<String, String> headers) {
         
         Response ret = new Response();
         if (url.contains("startrun")) {

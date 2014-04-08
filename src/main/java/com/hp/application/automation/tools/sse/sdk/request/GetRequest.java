@@ -1,7 +1,6 @@
 package com.hp.application.automation.tools.sse.sdk.request;
 
 import com.hp.application.automation.tools.sse.sdk.Client;
-import com.hp.application.automation.tools.sse.sdk.ResourceAccessLevel;
 import com.hp.application.automation.tools.sse.sdk.Response;
 
 /***
@@ -24,13 +23,15 @@ public abstract class GetRequest extends Request {
     }
     
     @Override
-    public Response perform() {
+    public Response execute() {
         
-        return _client.httpGet(
-                getUrl(),
-                getQueryString(),
-                getHeaders(),
-                ResourceAccessLevel.PROTECTED);
+        Response ret = new Response();
+        try {
+            ret = _client.httpGet(getUrl(), getQueryString(), getHeaders());
+        } catch (Throwable cause) {
+            ret.setFailure(cause);
+        }
+        
+        return ret;
     }
-    
 }

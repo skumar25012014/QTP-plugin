@@ -6,7 +6,6 @@ import junit.framework.Assert;
 
 import org.junit.Test;
 
-import com.hp.application.automation.tools.rest.RestClient;
 import com.hp.application.automation.tools.sse.common.StringUtils;
 import com.hp.application.automation.tools.sse.common.TestCase;
 import com.hp.application.automation.tools.sse.sdk.request.PostRequest;
@@ -17,32 +16,22 @@ public class TestPostRequest implements TestCase {
     public void testPostRequestException() {
         
         Response response =
-                new MockPostRequest(new MockRestClientPostRequestException(
-                        URL,
-                        DOMAIN,
-                        PROJECT,
-                        USER), RUN_ID).execute();
+                new MockPostRequest(
+                        new MockRestClientPostRequestException(URL, DOMAIN, PROJECT),
+                        RUN_ID).execute();
         Assert.assertTrue(PostRequestException.class == response.getFailure().getClass());
         
     }
     
     private class MockRestClientPostRequestException extends RestClient {
         
-        public MockRestClientPostRequestException(
-                String url,
-                String domain,
-                String project,
-                String username) {
+        public MockRestClientPostRequestException(String url, String domain, String project) {
             
-            super(url, domain, project, username);
+            super(url, domain, project);
         }
         
         @Override
-        public Response httpPost(
-                String url,
-                byte[] data,
-                Map<String, String> headers,
-                ResourceAccessLevel resourceAccessLevel) {
+        public Response httpPost(String url, byte[] data, Map<String, String> headers) {
             
             throw new PostRequestException();
             

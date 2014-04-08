@@ -1,10 +1,10 @@
 package com.hp.application.automation.tools.sse;
 
 import com.hp.application.automation.tools.model.SseModel;
-import com.hp.application.automation.tools.rest.RestClient;
 import com.hp.application.automation.tools.sse.result.model.junit.Testsuites;
 import com.hp.application.automation.tools.sse.sdk.Args;
 import com.hp.application.automation.tools.sse.sdk.Logger;
+import com.hp.application.automation.tools.sse.sdk.RestClient;
 import com.hp.application.automation.tools.sse.sdk.RunManager;
 
 /***
@@ -23,11 +23,7 @@ public class SSEBuilderPerformer {
         try {
             Args args = new ArgsFactory().create(model);
             RestClient restClient =
-                    new RestClient(
-                            args.getUrl(),
-                            args.getDomain(),
-                            args.getProject(),
-                            args.getUsername());
+                    new RestClient(args.getUrl(), args.getDomain(), args.getProject());
             ret = _runManager.execute(restClient, args, logger);
         } catch (InterruptedException ex) {
             throw ex;
