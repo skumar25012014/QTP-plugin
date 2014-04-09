@@ -108,9 +108,9 @@ public class RunResultRecorder extends Recorder implements Serializable, MatrixA
         //TWEAK begin
         //when no tests to run, report results of previous build & set this build to SUCCESS
         if(FailedTests.isPreviousBuildSuccess(build) && FailedTests.isSamePackageAsPrevious(build,listener)){
-            final List<String> previousFileSystemResultNames = new ArrayList<String>();
-            previousFileSystemResultNames.add(FailedTests.getResultFileNameFromPreviousBuild(build));
-            mergedResultNames.addAll(previousFileSystemResultNames);
+            //final List<String> previousFileSystemResultNames = new ArrayList<String>();
+            //previousFileSystemResultNames.add(FailedTests.getResultFileNameFromPreviousBuild(build));
+            //mergedResultNames.addAll(previousFileSystemResultNames);
             build.setResult(Result.SUCCESS);
         }
         //TWEAK end

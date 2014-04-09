@@ -72,54 +72,6 @@ public class AlmToolsUtils {
         }
 
         //TWEAK begin
-        // get parameters of first run for re-use in reruns
-        /**
-        String ResultFilename = null;
-        String timeFirstRun = null;
-        FilePath CmdLineExe = null;
-
-        if(reRunCount > 0){
-
-            // begin logging for error
-            BufferedReader propsReader = null;
-            FileReader propsFileReader = null;
-            String propsFilePath = "test";
-            listener.getLogger().println("[Plugin-error] reRunCount > 0 - paramFileName = " + paramFileName);
-            try{
-                propsFilePath = build.getWorkspace().absolutize().toURI().getPath() + paramFileName;
-            } catch (NullPointerException e){
-                listener.getLogger().println("[Plugin-error] reRunCount > 0 - NullPointerException on executing String propsFilePath = build.getWorkspace().absolutize().toURI().getPath() + paramFileName;");
-            } catch (Exception e){
-                listener.getLogger().println("[Plugin-error] reRunCount > 0 - Exception on executing String propsFilePath = build.getWorkspace().absolutize().toURI().getPath() + paramFileName;");
-            }
-            listener.getLogger().println("[Plugin-error] reRunCount > 0 - Before going into FailedTests.getResultFilename, propsFilePath = " + propsFilePath);
-            try{
-                java.io.File propsFile = new java.io.File(propsFilePath);
-                propsFileReader = new FileReader(propsFile);
-                propsReader = new BufferedReader(propsFileReader);
-            } catch (FileNotFoundException e){
-                e.printStackTrace();
-            }
-
-            //get resultFileName from props file
-            String line = "";
-            String fileContent = "";
-            try {
-                while((line = propsReader.readLine()) != null){
-                    fileContent += " \n" + line;
-                }
-            }
-            catch (IOException e){
-                e.printStackTrace();
-            }
-            listener.getLogger().println("[Plugin-error] reRunCount > 0 - Content of propsFile = " + fileContent);
-            // end logging for error
-
-            ResultFilename = FailedTests.getResultFilename(build, paramFileName);
-            timeFirstRun = FailedTests.getTimeStampFromFileName(paramFileName);
-            CmdLineExe = file;
-        }
-        */
         int counter = 0;
         //rerun failed testcases
         while (counter < reRunCount && returnCode == 1){
