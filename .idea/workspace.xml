@@ -96,10 +96,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="FailedTests.java" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="FailedTests.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/be/isabel/uftplugin/tweaker/FailedTests.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="80" column="0" selection-start="3008" selection-end="3008" vertical-scroll-proportion="0.0" vertical-offset="1239" max-vertical-offset="2958">
+            <state line="80" column="0" selection-start="3008" selection-end="3008" vertical-scroll-proportion="-1.8501483" vertical-offset="2284" max-vertical-offset="2958">
               <folding />
             </state>
           </provider>
@@ -152,16 +152,16 @@
       <file leaf-file-name="RunFromAlmModel.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/hp/application/automation/tools/model/RunFromAlmModel.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="107" column="21" selection-start="3672" selection-end="3682" vertical-scroll-proportion="0.0" vertical-offset="1819" max-vertical-offset="2856">
+            <state line="107" column="21" selection-start="3672" selection-end="3682" vertical-scroll-proportion="0.0" vertical-offset="1710" max-vertical-offset="2397">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AlmToolsUtils.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="AlmToolsUtils.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/hp/application/automation/tools/AlmToolsUtils.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="73" column="21" selection-start="4146" selection-end="4146" vertical-scroll-proportion="1.8058608" vertical-offset="0" max-vertical-offset="2244">
+            <state line="69" column="95" selection-start="4017" selection-end="4017" vertical-scroll-proportion="0.0" vertical-offset="1553" max-vertical-offset="2227">
               <folding />
             </state>
           </provider>
@@ -339,6 +339,16 @@
             <PATH_ELEMENT>
               <option name="myItemId" value="hp-application-automation-tools-plugin" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="hp-application-automation-tools-plugin" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="QTP_Jenkins_plugin_isabel" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
@@ -684,12 +694,12 @@
       <workItem from="1396513694077" duration="8000" />
       <workItem from="1396513702832" duration="51853000" />
       <workItem from="1396956989723" duration="958000" />
-      <workItem from="1397042728289" duration="2194000" />
+      <workItem from="1397042728289" duration="3329000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="58680000" />
+    <option name="totallyTimeSpent" value="59815000" />
   </component>
   <component name="TodoView" selected-index="0">
     <todo-panel id="selected-file">
@@ -728,13 +738,13 @@
       <window_info id="CDI" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32998884" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.20573871" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.18140069" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.20573871" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.18140069" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TunnelliJ" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3283582" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3283582" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3283582" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25947186" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -785,7 +795,9 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/hp/application/automation/tools/model/SseModel.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="13" selection-start="233" selection-end="233" vertical-scroll-proportion="0.2" vertical-offset="0" max-vertical-offset="2397" />
+        <state line="13" column="13" selection-start="233" selection-end="233" vertical-scroll-proportion="0.2" vertical-offset="0" max-vertical-offset="2397">
+          <folding />
+        </state>
       </provider>
     </entry>
     <entry file="jar://C:/Program Files/Java/jdk1.7.0_45/src.zip!/java/io/File.java">
@@ -1011,20 +1023,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/hp/application/automation/tools/model/RunFromAlmModel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="107" column="21" selection-start="3672" selection-end="3682" vertical-scroll-proportion="0.0" vertical-offset="1583" max-vertical-offset="2397">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/be/isabel/uftplugin/tweaker/FailedTests.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="80" column="0" selection-start="3008" selection-end="3008" vertical-scroll-proportion="0.0" vertical-offset="1239" max-vertical-offset="2958">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/hp/application/automation/tools/results/RunResultRecorder.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="112" column="14" selection-start="5429" selection-end="5429" vertical-scroll-proportion="0.0" vertical-offset="851" max-vertical-offset="6120">
@@ -1049,9 +1047,23 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hp/application/automation/tools/model/RunFromAlmModel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="107" column="21" selection-start="3672" selection-end="3682" vertical-scroll-proportion="0.0" vertical-offset="1710" max-vertical-offset="2397">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/hp/application/automation/tools/AlmToolsUtils.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="73" column="21" selection-start="4146" selection-end="4146" vertical-scroll-proportion="1.8058608" vertical-offset="0" max-vertical-offset="2244">
+        <state line="69" column="95" selection-start="4017" selection-end="4017" vertical-scroll-proportion="0.0" vertical-offset="1553" max-vertical-offset="2227">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/be/isabel/uftplugin/tweaker/FailedTests.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="80" column="0" selection-start="3008" selection-end="3008" vertical-scroll-proportion="-1.8501483" vertical-offset="2284" max-vertical-offset="2958">
           <folding />
         </state>
       </provider>

@@ -68,7 +68,6 @@ public class AlmToolsUtils {
         int returnCode = 0;
         if(!samePackageAlreadyPassed){//TWEAK:if condition added
             returnCode = launcher.launch().cmds(args).stdout(out).pwd(file.getParent()).join();
-            listener.getLogger().println("[Plugin-error] Logging immediately after first run");
         }
 
         //TWEAK begin
