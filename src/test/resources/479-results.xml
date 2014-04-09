@@ -1,0 +1,1142 @@
+﻿<?xml version="1.0"?>
+<!DOCTYPE Report
+[
+<!ELEMENT Report (General ,(Doc|BPT)) >
+<!ATTLIST Report ver CDATA #REQUIRED tmZone CDATA #REQUIRED>
+
+<!ELEMENT General ( DocLocation ) >
+<!ATTLIST General productName CDATA #REQUIRED productVer CDATA #REQUIRED os CDATA #REQUIRED host CDATA #REQUIRED qcserver CDATA #IMPLIED qcproject CDATA #IMPLIED  >
+
+<!ELEMENT BPT (DName,Res,DVer?,TSet?,TInst?,NodeArgs,AdditionalInfo*,Doc*) >
+<!ATTLIST BPT rID ID #REQUIRED >
+
+<!ELEMENT Doc (DName,Res,DVer?,TSet?,TInst?,RunType?,DT?,AdditionalInfo*,Step*,DIter*,Step*,Action*,Summary?,TestMaintenanceSummary*,NodeArgs?) >
+<!ATTLIST Doc rID ID #REQUIRED type (Test|BC) "Test" productName CDATA #REQUIRED BCIter CDATA #IMPLIED >
+
+<!ELEMENT RunType ( #PCDATA )>
+<!ATTLIST RunType fmStep (False|True) "False" batch (False|True) "False" upDesc (False|True) "False" upChk (False|True) "False" upAS (False|True) "False">
+
+<!ELEMENT DName ( #PCDATA ) >
+
+<!ELEMENT Res ( #PCDATA ) >
+
+<!ELEMENT AdditionalInfo (AdditionalDataName,AdditionalDataValue ) >
+
+<!ELEMENT AdditionalDataName ( #PCDATA ) >
+
+<!ELEMENT AdditionalDataValue ( #PCDATA ) >
+
+<!ELEMENT DVer ( #PCDATA ) >
+
+<!ELEMENT TSet ( #PCDATA ) >
+
+<!ELEMENT TInst ( #PCDATA ) >
+
+<!ELEMENT DIter (Step?,Action+,Summary?,NodeArgs)>
+<!ATTLIST DIter rID ID #REQUIRED iterID CDATA #REQUIRED>
+
+<!ELEMENT DocLocation ( #PCDATA )>
+
+<!ELEMENT Action (AName,AIter*,(Step|HtmlStep|Action)*,Summary,ActionMaintenanceSummary*,NodeArgs ) >
+<!ATTLIST Action rID ID #REQUIRED>
+
+<!ELEMENT AIter ((Step|HtmlStep|Action)*,Summary?,NodeArgs) >
+<!ATTLIST AIter rID ID #REQUIRED iterID CDATA #REQUIRED>
+
+<!ELEMENT AName ( #PCDATA ) >
+
+<!ELEMENT TestMaintenanceSummary (ActionMaintenanceSummary*) >
+<!ATTLIST TestMaintenanceSummary ObjectsAdded CDATA #REQUIRED ObjectsUpdated CDATA #REQUIRED StepsUpdated CDATA #REQUIRED StepsComments CDATA #REQUIRED><!ELEMENT ActionMaintenanceSummary (ObjectChange* ) >
+<!ATTLIST ActionMaintenanceSummary Action CDATA #REQUIRED Objects CDATA #REQUIRED Updated CDATA #REQUIRED LinesTotal CDATA #REQUIRED Added CDATA #REQUIRED LinesUpdated CDATA #REQUIRED>
+
+<!ELEMENT ObjectChange  (Hierarchy, PropertyChangeList* ) >
+<!ATTLIST ObjectChange Operation CDATA #IMPLIED OriginalRepository CDATA #IMPLIED>
+
+<!ELEMENT PropertyChangeList (PropertyDef*) >
+
+<!ELEMENT PropertyDef (OriginalValue, NewValue) >
+<!ATTLIST PropertyDef PropName CDATA #REQUIRED OriginRegularExpression (True|False) "False" NewRegularExpression (True|False) "False" AddedProperty (True|False) "False" >
+
+<!ELEMENT OriginalValue ( #PCDATA )>
+
+<!ELEMENT NewValue ( #PCDATA )>
+
+<!ELEMENT Hierarchy  (ObjectName, Hierarchy*) >
+<!ATTLIST Hierarchy MicClass CDATA #REQUIRED>
+
+<!ELEMENT ObjectName  ( #PCDATA ) >
+
+<!ELEMENT Step (Obj,Details,Time,TimeTick* ,(Step|HtmlStep|Doc)*,NodeArgs) >
+<!ATTLIST Step rID ID #REQUIRED retval CDATA #IMPLIED>
+
+<!ELEMENT HtmlStep (HTML,TimeTick*,(Step|HtmlStep|Doc)*,NodeArgs) >
+<!ATTLIST HtmlStep rID ID #REQUIRED >
+
+<!ELEMENT Obj ( #PCDATA ) >
+<!ATTLIST Obj plainTxt (False|True) "True">
+
+<!ELEMENT Details ( #PCDATA ) >
+<!ATTLIST Details plainTxt (False|True) "True">
+
+<!ELEMENT Time ( #PCDATA ) >
+
+<!ELEMENT HTML ( #PCDATA ) >
+
+<!ELEMENT Disp ( #PCDATA ) >
+
+<!ELEMENT TimeTick ( #PCDATA ) >
+
+<!ELEMENT NodeArgs (Disp,TopPane?,BtmPane?)>
+<!ATTLIST NodeArgs eType CDATA #REQUIRED icon CDATA #REQUIRED nRep CDATA #REQUIRED filter (False|True) "True">
+<!ATTLIST NodeArgs status (Passed|Failed|Done|Warning|Information) "Done">
+<!ATTLIST NodeArgs iconSel CDATA #IMPLIED nType CDATA #IMPLIED MovieMarker CDATA "">
+<!ATTLIST NodeArgs Source CDATA #IMPLIED SourceLine CDATA #IMPLIED >
+
+<!ELEMENT TopPane (Path)>
+
+<!ELEMENT BtmPane ( (Path|WR)?,ASHilite?)>
+<!ATTLIST BtmPane vType CDATA "HTML">
+
+<!ELEMENT Path ( #PCDATA ) >
+
+<!ELEMENT ASHilite ( #PCDATA ) >
+
+<!ELEMENT WR ( #PCDATA ) >
+
+<!ELEMENT DT (NodeArgs) >
+<!ATTLIST DT rID ID #REQUIRED>
+
+<!ELEMENT Summary (Param*)>
+<!ATTLIST Summary sTime CDATA #IMPLIED eTime CDATA #IMPLIED passed CDATA #IMPLIED failed CDATA #IMPLIED warnings CDATA #IMPLIED retval CDATA #IMPLIED stopped (False|True) "False" >
+
+<!ELEMENT Param (ParamName,ParamVal)+ >
+<!ATTLIST Param paramInOut (In|Out) "In">
+
+<!ELEMENT ParamName ( #PCDATA ) >
+
+<!ELEMENT ParamVal ( #PCDATA ) >
+
+]
+>
+<Report ver="2.0" tmZone="Romance Standard Time">
+<General productName="QuickTest Professional" productVer="10.00" os="" host="CORABOEUF-D7D"><DocLocation><![CDATA[Q:/SmokeTest2.4/SmokeTest]]></DocLocation></General>
+<Doc rID="T1"   productName= "QuickTest Professional"  >
+<DName><![CDATA[SmokeTest]]></DName>
+<Res><![CDATA[Results]]></Res>
+<DT rID="T2">
+<NodeArgs eType="Table" icon="2" nRep="4" filter="False" >
+<Disp><![CDATA[Run-Time Data Table]]></Disp>
+<BtmPane vType="Table">
+<Path><![CDATA[Default.xls]]></Path>
+</BtmPane>
+</NodeArgs>
+</DT>
+<DIter rID="T3" iterID="1" >
+<Action rID="T4">
+<AName><![CDATA[Smoke]]></AName>
+<Action rID="T5">
+<AName><![CDATA[Prerequisites]]></AName>
+<Summary sTime="3/01/2012 - 09:09:22" eTime="3/01/2012 - 09:09:23" passed="0" failed="0" warnings="0" ></Summary>
+<NodeArgs eType="StartAction" icon="4" nRep="8" >
+<Disp><![CDATA[Prerequisites Summary]]></Disp>
+</NodeArgs>
+</Action>
+<Action rID="T6">
+<AName><![CDATA[LogonIBS6]]></AName>
+<Step rID="T7">
+<Obj ><![CDATA[=== START ACTION : LogonIBS6 ===]]></Obj>
+<Details ><![CDATA[]]></Details>
+<Time><![CDATA[3/01/2012 - 09:09:23]]></Time>
+<TimeTick>1325578163</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="11" >
+<Disp><![CDATA[=== START ACTION : LogonIBS6 ===]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T8">
+<Obj ><![CDATA[IBS6 was not yet open, so launch it...]]></Obj>
+<Details ><![CDATA[]]></Details>
+<Time><![CDATA[3/01/2012 - 09:09:29]]></Time>
+<TimeTick>1325578169</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="14" status="Passed" >
+<Disp><![CDATA[IBS6 was not yet open, so launch it...]]></Disp>
+</NodeArgs>
+</Step>
+<Action rID="T9">
+<AName><![CDATA[SelectLogonProfile]]></AName>
+<Step rID="T10">
+<Obj ><![CDATA[LogonProfile2 found on portal.]]></Obj>
+<Details ><![CDATA[]]></Details>
+<Time><![CDATA[3/01/2012 - 09:10:33]]></Time>
+<TimeTick>1325578233</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="94" status="Passed" >
+<Disp><![CDATA[LogonProfile2 found on portal.]]></Disp>
+</NodeArgs>
+</Step>
+<Summary sTime="3/01/2012 - 09:10:21" eTime="3/01/2012 - 09:10:38" passed="1" failed="0" warnings="0" ></Summary>
+<NodeArgs eType="StartAction" icon="4" nRep="33" status="Passed" >
+<Disp><![CDATA[SelectLogonProfile Summary]]></Disp>
+</NodeArgs>
+</Action>
+<Summary sTime="3/01/2012 - 09:09:23" eTime="3/01/2012 - 09:10:38" passed="1" failed="0" warnings="0" ></Summary>
+<NodeArgs eType="StartAction" icon="4" nRep="10" status="Passed" >
+<Disp><![CDATA[LogonIBS6 Summary]]></Disp>
+</NodeArgs>
+</Action>
+<Action rID="T11">
+<AName><![CDATA[Warmup]]></AName>
+<Step rID="T12">
+<Obj ><![CDATA[SEPA screen]]></Obj>
+<Details ><![CDATA[SEPA screen loaded]]></Details>
+<Time><![CDATA[3/01/2012 - 09:10:49]]></Time>
+<TimeTick>1325578249</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="121" status="Passed" >
+<Disp><![CDATA[SEPA screen]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T13">
+<Obj ><![CDATA[Fortis Global Debit screen]]></Obj>
+<Details ><![CDATA[Fortis Global Debit screen loaded]]></Details>
+<Time><![CDATA[3/01/2012 - 09:10:56]]></Time>
+<TimeTick>1325578256</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="135" status="Passed" >
+<Disp><![CDATA[Fortis Global Debit screen]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T14">
+<Obj ><![CDATA[Fortis Single screen]]></Obj>
+<Details ><![CDATA[Fortis Single screen loaded]]></Details>
+<Time><![CDATA[3/01/2012 - 09:11:05]]></Time>
+<TimeTick>1325578265</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="155" status="Passed" >
+<Disp><![CDATA[Fortis Single screen]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T15">
+<Obj ><![CDATA[Upload screen]]></Obj>
+<Details ><![CDATA[Upload screen loaded]]></Details>
+<Time><![CDATA[3/01/2012 - 09:11:15]]></Time>
+<TimeTick>1325578275</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="176" status="Passed" >
+<Disp><![CDATA[Upload screen]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T16">
+<Obj ><![CDATA[Upload start]]></Obj>
+<Details ><![CDATA[Upload started]]></Details>
+<Time><![CDATA[3/01/2012 - 09:11:22]]></Time>
+<TimeTick>1325578282</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="194" status="Passed" >
+<Disp><![CDATA[Upload start]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T17">
+<Obj ><![CDATA[Upload session]]></Obj>
+<Details ><![CDATA[Upload session not finished in less than 110 seconds (UploadNextDisabled = 1)]]></Details>
+<Time><![CDATA[3/01/2012 - 09:13:17]]></Time>
+<TimeTick>1325578397</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="195" status="Failed" >
+<Disp><![CDATA[Upload session]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T18">
+<Obj ><![CDATA[Warmup_dev2_03012012009131.png]]></Obj>
+<Details ><![CDATA[]]></Details>
+<Time><![CDATA[3/01/2012 - 09:13:18]]></Time>
+<TimeTick>1325578398</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="196" >
+<Disp><![CDATA[Warmup_dev2_03012012009131.png]]></Disp>
+</NodeArgs>
+</Step>
+<Summary sTime="3/01/2012 - 09:10:38" eTime="3/01/2012 - 09:13:28" passed="5" failed="1" warnings="0" ></Summary>
+<NodeArgs eType="StartAction" icon="4" nRep="100" status="Failed" >
+<Disp><![CDATA[Warmup Summary]]></Disp>
+</NodeArgs>
+</Action>
+<Action rID="T19">
+<AName><![CDATA[ViewExchangeRates]]></AName>
+<Step rID="T20">
+<Obj ><![CDATA[=== START ACTION : ViewExchangeRates ===]]></Obj>
+<Details ><![CDATA[]]></Details>
+<Time><![CDATA[3/01/2012 - 09:13:28]]></Time>
+<TimeTick>1325578408</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="215" >
+<Disp><![CDATA[=== START ACTION : ViewExchangeRates ===]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T21">
+<Obj ><![CDATA[View exchange rate has been sorted]]></Obj>
+<Details ><![CDATA[First line = 4,833200aedunited arab emirates dirham01/02/07 1:00]]></Details>
+<Time><![CDATA[3/01/2012 - 09:13:38]]></Time>
+<TimeTick>1325578418</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="227" status="Passed" >
+<Disp><![CDATA[View exchange rate has been sorted]]></Disp>
+</NodeArgs>
+</Step>
+<Summary sTime="3/01/2012 - 09:13:28" eTime="3/01/2012 - 09:13:38" passed="1" failed="0" warnings="0" ></Summary>
+<NodeArgs eType="StartAction" icon="4" nRep="214" status="Passed" >
+<Disp><![CDATA[ViewExchangeRates Summary]]></Disp>
+</NodeArgs>
+</Action>
+<Action rID="T22">
+<AName><![CDATA[Preferences]]></AName>
+<Step rID="T23">
+<Obj ><![CDATA[=== START ACTION : Preferences ===]]></Obj>
+<Details ><![CDATA[]]></Details>
+<Time><![CDATA[3/01/2012 - 09:13:39]]></Time>
+<TimeTick>1325578419</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="232" >
+<Disp><![CDATA[=== START ACTION : Preferences ===]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T24">
+<Obj ><![CDATA[Separator field found]]></Obj>
+<Details ><![CDATA[Tab 'General']]></Details>
+<Time><![CDATA[3/01/2012 - 09:13:45]]></Time>
+<TimeTick>1325578425</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="243" status="Passed" >
+<Disp><![CDATA[Separator field found]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T25">
+<Obj ><![CDATA[Default start-up folder is OK.]]></Obj>
+<Details ><![CDATA[Tab 'General']]></Details>
+<Time><![CDATA[3/01/2012 - 09:13:45]]></Time>
+<TimeTick>1325578425</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="247" status="Passed" >
+<Disp><![CDATA[Default start-up folder is OK.]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T26">
+<Obj ><![CDATA[Checkbox 'DownloadMerge' found]]></Obj>
+<Details ><![CDATA[Tab 'Account info']]></Details>
+<Time><![CDATA[3/01/2012 - 09:13:47]]></Time>
+<TimeTick>1325578427</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="253" status="Passed" >
+<Disp><![CDATA[Checkbox 'DownloadMerge' found]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T27">
+<Obj ><![CDATA[WebEdit 'DefaultViewOfAccountInfo_Pref' found]]></Obj>
+<Details ><![CDATA[Tab 'Account info']]></Details>
+<Time><![CDATA[3/01/2012 - 09:13:51]]></Time>
+<TimeTick>1325578431</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="263" status="Passed" >
+<Disp><![CDATA[WebEdit 'DefaultViewOfAccountInfo_Pref' found]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T28">
+<Obj ><![CDATA[PrivateShared-list found.]]></Obj>
+<Details ><![CDATA[Tab 'Transctions']]></Details>
+<Time><![CDATA[3/01/2012 - 09:13:58]]></Time>
+<TimeTick>1325578438</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="275" status="Passed" >
+<Disp><![CDATA[PrivateShared-list found.]]></Disp>
+</NodeArgs>
+</Step>
+<Summary sTime="3/01/2012 - 09:13:39" eTime="3/01/2012 - 09:13:59" passed="5" failed="0" warnings="0" ></Summary>
+<NodeArgs eType="StartAction" icon="4" nRep="231" status="Passed" >
+<Disp><![CDATA[Preferences Summary]]></Disp>
+</NodeArgs>
+</Action>
+<Action rID="T29">
+<AName><![CDATA[DeleteTransactions]]></AName>
+<Step rID="T30">
+<Obj ><![CDATA[=== START ACTION : DeleteTransactions ===]]></Obj>
+<Details ><![CDATA[]]></Details>
+<Time><![CDATA[3/01/2012 - 09:13:59]]></Time>
+<TimeTick>1325578439</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="283" >
+<Disp><![CDATA[=== START ACTION : DeleteTransactions ===]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T31">
+<Obj ><![CDATA[Go to page 11]]></Obj>
+<Details ><![CDATA[]]></Details>
+<Time><![CDATA[3/01/2012 - 09:14:01]]></Time>
+<TimeTick>1325578441</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="288" status="Passed" >
+<Disp><![CDATA[Go to page 11]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T32">
+<Obj ><![CDATA[Confirmation to delete has appeared]]></Obj>
+<Details ><![CDATA[]]></Details>
+<Time><![CDATA[3/01/2012 - 09:14:08]]></Time>
+<TimeTick>1325578448</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="300" status="Passed" >
+<Disp><![CDATA[Confirmation to delete has appeared]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T33">
+<Obj ><![CDATA[Go to page 11]]></Obj>
+<Details ><![CDATA[]]></Details>
+<Time><![CDATA[3/01/2012 - 09:14:10]]></Time>
+<TimeTick>1325578450</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="304" status="Passed" >
+<Disp><![CDATA[Go to page 11]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T34">
+<Obj ><![CDATA[Confirmation to delete has appeared]]></Obj>
+<Details ><![CDATA[]]></Details>
+<Time><![CDATA[3/01/2012 - 09:14:17]]></Time>
+<TimeTick>1325578457</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="316" status="Passed" >
+<Disp><![CDATA[Confirmation to delete has appeared]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T35">
+<Obj ><![CDATA[Go to page 11]]></Obj>
+<Details ><![CDATA[]]></Details>
+<Time><![CDATA[3/01/2012 - 09:14:19]]></Time>
+<TimeTick>1325578459</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="320" status="Passed" >
+<Disp><![CDATA[Go to page 11]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T36">
+<Obj ><![CDATA[Confirmation to delete has appeared]]></Obj>
+<Details ><![CDATA[]]></Details>
+<Time><![CDATA[3/01/2012 - 09:14:26]]></Time>
+<TimeTick>1325578466</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="332" status="Passed" >
+<Disp><![CDATA[Confirmation to delete has appeared]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T37">
+<Obj ><![CDATA[Transactions have been deleted]]></Obj>
+<Details ><![CDATA[Number of pages : now = 10 , initial = 13]]></Details>
+<Time><![CDATA[3/01/2012 - 09:14:27]]></Time>
+<TimeTick>1325578467</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="336" status="Passed" >
+<Disp><![CDATA[Transactions have been deleted]]></Disp>
+</NodeArgs>
+</Step>
+<Summary sTime="3/01/2012 - 09:13:59" eTime="3/01/2012 - 09:14:31" passed="7" failed="0" warnings="0" ></Summary>
+<NodeArgs eType="StartAction" icon="4" nRep="282" status="Passed" >
+<Disp><![CDATA[DeleteTransactions Summary]]></Disp>
+</NodeArgs>
+</Action>
+<Action rID="T38">
+<AName><![CDATA[ClearCounterparties]]></AName>
+<Summary sTime="3/01/2012 - 09:14:32" eTime="3/01/2012 - 09:14:35" passed="0" failed="0" warnings="0" ></Summary>
+<NodeArgs eType="StartAction" icon="4" nRep="341" >
+<Disp><![CDATA[ClearCounterparties Summary]]></Disp>
+</NodeArgs>
+</Action>
+<Action rID="T39">
+<AName><![CDATA[CreateCounterParty]]></AName>
+<Step rID="T40">
+<Obj ><![CDATA[=== START ACTION : CreateCounterParty ===]]></Obj>
+<Details ><![CDATA[]]></Details>
+<Time><![CDATA[3/01/2012 - 09:14:35]]></Time>
+<TimeTick>1325578475</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="353" >
+<Disp><![CDATA[=== START ACTION : CreateCounterParty ===]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T41">
+<Obj ><![CDATA[IbanNumber 1 has been added]]></Obj>
+<Details ><![CDATA[strIbamNumber = BE35 0630 2555 0037 ]]></Details>
+<Time><![CDATA[3/01/2012 - 09:15:54]]></Time>
+<TimeTick>1325578554</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="785" status="Passed" >
+<Disp><![CDATA[IbanNumber 1 has been added]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T42">
+<Obj ><![CDATA[IbanNumber 2 has been added]]></Obj>
+<Details ><![CDATA[strIbamNumber = BE68 5390 0754 7034 ]]></Details>
+<Time><![CDATA[3/01/2012 - 09:15:58]]></Time>
+<TimeTick>1325578558</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="811" status="Passed" >
+<Disp><![CDATA[IbanNumber 2 has been added]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T43">
+<Obj ><![CDATA[DirectDebitNumber has been added]]></Obj>
+<Details ><![CDATA[DirectDebitNumber = 000-0000100-03]]></Details>
+<Time><![CDATA[3/01/2012 - 09:16:10]]></Time>
+<TimeTick>1325578570</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="884" status="Passed" >
+<Disp><![CDATA[DirectDebitNumber has been added]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T44">
+<Obj ><![CDATA[IbanNumber1 has been replaced by IbanNumberModify (edit-mode)]]></Obj>
+<Details ><![CDATA[strIbamNumberMod = BE21 7765 9112 8003  ,  IbamNumber1 = BE35 0630 2555 0037 ]]></Details>
+<Time><![CDATA[3/01/2012 - 09:16:25]]></Time>
+<TimeTick>1325578585</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="977" status="Passed" >
+<Disp><![CDATA[IbanNumber1 has been replaced by IbanNumberModify (edit-mode)]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T45">
+<Obj ><![CDATA[Counterparty has been created/found]]></Obj>
+<Details ><![CDATA['0 Alias 03012012009144' found.]]></Details>
+<Time><![CDATA[3/01/2012 - 09:16:35]]></Time>
+<TimeTick>1325578595</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="987" status="Passed" >
+<Disp><![CDATA[Counterparty has been created/found]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T46">
+<Obj ><![CDATA[Modified CounterpartyName has been created/found]]></Obj>
+<Details ><![CDATA[]]></Details>
+<Time><![CDATA[3/01/2012 - 09:16:41]]></Time>
+<TimeTick>1325578601</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="1000" status="Passed" >
+<Disp><![CDATA[Modified CounterpartyName has been created/found]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T47">
+<Obj ><![CDATA[IbanNumber 1 has been added]]></Obj>
+<Details ><![CDATA[strIbamNumber = FR59 2004 1010 0405 6187 8A02 585 ]]></Details>
+<Time><![CDATA[3/01/2012 - 09:16:56]]></Time>
+<TimeTick>1325578616</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="1059" status="Passed" >
+<Disp><![CDATA[IbanNumber 1 has been added]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T48">
+<Obj ><![CDATA[Counterparty has been created/found]]></Obj>
+<Details ><![CDATA['0 Alias 03012012009164' found.]]></Details>
+<Time><![CDATA[3/01/2012 - 09:17:06]]></Time>
+<TimeTick>1325578626</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="1069" status="Passed" >
+<Disp><![CDATA[Counterparty has been created/found]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T49">
+<Obj ><![CDATA[Modified CounterpartyName has been created/found]]></Obj>
+<Details ><![CDATA[]]></Details>
+<Time><![CDATA[3/01/2012 - 09:17:11]]></Time>
+<TimeTick>1325578631</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="1082" status="Passed" >
+<Disp><![CDATA[Modified CounterpartyName has been created/found]]></Disp>
+</NodeArgs>
+</Step>
+<Summary sTime="3/01/2012 - 09:14:35" eTime="3/01/2012 - 09:17:12" passed="9" failed="0" warnings="0" ></Summary>
+<NodeArgs eType="StartAction" icon="4" nRep="352" status="Passed" >
+<Disp><![CDATA[CreateCounterParty Summary]]></Disp>
+</NodeArgs>
+</Action>
+<Action rID="T50">
+<AName><![CDATA[ManageCreditor]]></AName>
+<Step rID="T51">
+<Obj ><![CDATA[=== START ACTION : ManageCreditor ===]]></Obj>
+<Details ><![CDATA[]]></Details>
+<Time><![CDATA[3/01/2012 - 09:17:12]]></Time>
+<TimeTick>1325578632</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="1087" >
+<Disp><![CDATA[=== START ACTION : ManageCreditor ===]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T52">
+<Obj ><![CDATA[Creditor number has been deleted]]></Obj>
+<Details ><![CDATA[Creditor number with text =  has been deleted.]]></Details>
+<Time><![CDATA[3/01/2012 - 09:17:30]]></Time>
+<TimeTick>1325578650</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="1146" status="Passed" >
+<Disp><![CDATA[Creditor number has been deleted]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T53">
+<Obj ><![CDATA[Table (account) with text = CR_926_001515 has been selected]]></Obj>
+<Details ><![CDATA[]]></Details>
+<Time><![CDATA[3/01/2012 - 09:17:34]]></Time>
+<TimeTick>1325578654</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="1157" status="Passed" >
+<Disp><![CDATA[Table (account) with text = CR_926_001515 has been selected]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T54">
+<Obj ><![CDATA[Table (account) with text = 000-0000002-02 has been selected]]></Obj>
+<Details ><![CDATA[]]></Details>
+<Time><![CDATA[3/01/2012 - 09:17:36]]></Time>
+<TimeTick>1325578656</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="1162" status="Passed" >
+<Disp><![CDATA[Table (account) with text = 000-0000002-02 has been selected]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T55">
+<Obj ><![CDATA[Creditor number has been created]]></Obj>
+<Details ><![CDATA[Creditor number has as text = ]]></Details>
+<Time><![CDATA[3/01/2012 - 09:17:39]]></Time>
+<TimeTick>1325578659</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="1166" status="Passed" >
+<Disp><![CDATA[Creditor number has been created]]></Disp>
+</NodeArgs>
+</Step>
+<Summary sTime="3/01/2012 - 09:17:12" eTime="3/01/2012 - 09:17:39" passed="4" failed="0" warnings="0" ></Summary>
+<NodeArgs eType="StartAction" icon="4" nRep="1086" status="Passed" >
+<Disp><![CDATA[ManageCreditor Summary]]></Disp>
+</NodeArgs>
+</Action>
+<Action rID="T56">
+<AName><![CDATA[ReportFileProcessing]]></AName>
+<Step rID="T57">
+<Obj ><![CDATA[No run of ReportFileProcessing because of Win7]]></Obj>
+<Details ><![CDATA[]]></Details>
+<Time><![CDATA[3/01/2012 - 09:17:42]]></Time>
+<TimeTick>1325578662</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="1171" >
+<Disp><![CDATA[No run of ReportFileProcessing because of Win7]]></Disp>
+</NodeArgs>
+</Step>
+<Summary sTime="3/01/2012 - 09:17:39" eTime="3/01/2012 - 09:17:42" passed="0" failed="0" warnings="0" ></Summary>
+<NodeArgs eType="StartAction" icon="4" nRep="1170" >
+<Disp><![CDATA[ReportFileProcessing Summary]]></Disp>
+</NodeArgs>
+</Action>
+<Action rID="T58">
+<AName><![CDATA[FortisGlobalDebitPayment]]></AName>
+<Step rID="T59">
+<Obj ><![CDATA[=== START ACTION : FortisGlobalDebitPayment ===]]></Obj>
+<Details ><![CDATA[]]></Details>
+<Time><![CDATA[3/01/2012 - 09:17:42]]></Time>
+<TimeTick>1325578662</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="1174" >
+<Disp><![CDATA[=== START ACTION : FortisGlobalDebitPayment ===]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T60">
+<Obj ><![CDATA[Transaction has been found in TX-area.]]></Obj>
+<Details ><![CDATA[Payment name = 'Payment group: .*9,17' could be found.]]></Details>
+<Time><![CDATA[3/01/2012 - 09:17:58]]></Time>
+<TimeTick>1325578678</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="1218" status="Passed" >
+<Disp><![CDATA[Transaction has been found in TX-area.]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T61">
+<Obj ><![CDATA[Modified transaction has been found in TX-area.]]></Obj>
+<Details ><![CDATA[Payment name = 'Payment group: .*109,17' could be found.]]></Details>
+<Time><![CDATA[3/01/2012 - 09:18:06]]></Time>
+<TimeTick>1325578686</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="1235" status="Passed" >
+<Disp><![CDATA[Modified transaction has been found in TX-area.]]></Disp>
+</NodeArgs>
+</Step>
+<Summary sTime="3/01/2012 - 09:17:42" eTime="3/01/2012 - 09:18:06" passed="2" failed="0" warnings="0" ></Summary>
+<NodeArgs eType="StartAction" icon="4" nRep="1173" status="Passed" >
+<Disp><![CDATA[FortisGlobalDebitPayment Summary]]></Disp>
+</NodeArgs>
+</Action>
+<Action rID="T62">
+<AName><![CDATA[FortisSinglePayment]]></AName>
+<Step rID="T63">
+<Obj ><![CDATA[=== START ACTION : FortisSinglePayment ===]]></Obj>
+<Details ><![CDATA[]]></Details>
+<Time><![CDATA[3/01/2012 - 09:18:06]]></Time>
+<TimeTick>1325578686</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="1238" >
+<Disp><![CDATA[=== START ACTION : FortisSinglePayment ===]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T64">
+<Obj ><![CDATA[Transaction has been selected in TX-area and will be signed.]]></Obj>
+<Details ><![CDATA[]]></Details>
+<Time><![CDATA[3/01/2012 - 09:18:30]]></Time>
+<TimeTick>1325578710</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="1303" status="Passed" >
+<Disp><![CDATA[Transaction has been selected in TX-area and will be signed.]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T65">
+<Obj ><![CDATA['View details' clicked for : 5.918,22]]></Obj>
+<Details ><![CDATA[Click done.]]></Details>
+<Time><![CDATA[3/01/2012 - 09:18:55]]></Time>
+<TimeTick>1325578735</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="1320" status="Passed" >
+<Disp><![CDATA['View details' clicked for : 5.918,22]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T66">
+<Obj ><![CDATA['View details' appeared for : 5.918,22]]></Obj>
+<Details ><![CDATA[Button 'Audit Trail' has been found.]]></Details>
+<Time><![CDATA[3/01/2012 - 09:18:57]]></Time>
+<TimeTick>1325578737</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="1322" status="Passed" >
+<Disp><![CDATA['View details' appeared for : 5.918,22]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T67">
+<Obj ><![CDATA[    Expected status is correct.]]></Obj>
+<Details ><![CDATA[Expected status = sufficient. Actual status = Sufficiently signed]]></Details>
+<Time><![CDATA[3/01/2012 - 09:18:57]]></Time>
+<TimeTick>1325578737</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="1325" status="Passed" >
+<Disp><![CDATA[    Expected status is correct.]]></Disp>
+</NodeArgs>
+</Step>
+<Summary sTime="3/01/2012 - 09:18:06" eTime="3/01/2012 - 09:19:01" passed="4" failed="0" warnings="0" ></Summary>
+<NodeArgs eType="StartAction" icon="4" nRep="1237" status="Passed" >
+<Disp><![CDATA[FortisSinglePayment Summary]]></Disp>
+</NodeArgs>
+</Action>
+<Action rID="T68">
+<AName><![CDATA[FortisStandingOrder]]></AName>
+<Step rID="T69">
+<Obj ><![CDATA[=== START ACTION : FortisStandingOrder ===]]></Obj>
+<Details ><![CDATA[]]></Details>
+<Time><![CDATA[3/01/2012 - 09:19:01]]></Time>
+<TimeTick>1325578741</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="1356" >
+<Disp><![CDATA[=== START ACTION : FortisStandingOrder ===]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T70">
+<Obj ><![CDATA[Transaction (SO) could be selected.]]></Obj>
+<Details ><![CDATA[Payment name = 'Standing order from.*9,19' could be found.]]></Details>
+<Time><![CDATA[3/01/2012 - 09:19:23]]></Time>
+<TimeTick>1325578763</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="1420" status="Passed" >
+<Disp><![CDATA[Transaction (SO) could be selected.]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T71">
+<Obj ><![CDATA[Modified SO has been found in TX-area.]]></Obj>
+<Details ><![CDATA[Payment name = '5.919,27' could be found.]]></Details>
+<Time><![CDATA[3/01/2012 - 09:19:31]]></Time>
+<TimeTick>1325578771</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="1442" status="Passed" >
+<Disp><![CDATA[Modified SO has been found in TX-area.]]></Disp>
+</NodeArgs>
+</Step>
+<Summary sTime="3/01/2012 - 09:19:01" eTime="3/01/2012 - 09:19:32" passed="2" failed="0" warnings="0" ></Summary>
+<NodeArgs eType="StartAction" icon="4" nRep="1355" status="Passed" >
+<Disp><![CDATA[FortisStandingOrder Summary]]></Disp>
+</NodeArgs>
+</Action>
+<Action rID="T72">
+<AName><![CDATA[EncodeDomesticPayment]]></AName>
+<Step rID="T73">
+<Obj ><![CDATA[=== START ACTION : EncodeDomesticPayment ===]]></Obj>
+<Details ><![CDATA[]]></Details>
+<Time><![CDATA[3/01/2012 - 09:19:32]]></Time>
+<TimeTick>1325578772</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="1445" >
+<Disp><![CDATA[=== START ACTION : EncodeDomesticPayment ===]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T74">
+<Obj ><![CDATA[The link 'Domestic payment' has been found and has been clicked on.]]></Obj>
+<Details ><![CDATA[]]></Details>
+<Time><![CDATA[3/01/2012 - 09:19:35]]></Time>
+<TimeTick>1325578775</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="1455" status="Passed" >
+<Disp><![CDATA[The link 'Domestic payment' has been found and has been clicked on.]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T75">
+<Obj ><![CDATA[QTT was automatically filled in.]]></Obj>
+<Details ><![CDATA[]]></Details>
+<Time><![CDATA[3/01/2012 - 09:19:47]]></Time>
+<TimeTick>1325578787</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="1502" status="Passed" >
+<Disp><![CDATA[QTT was automatically filled in.]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T76">
+<Obj ><![CDATA[QTT was automatically filled in.]]></Obj>
+<Details ><![CDATA[]]></Details>
+<Time><![CDATA[3/01/2012 - 09:19:52]]></Time>
+<TimeTick>1325578792</TimeTick>
+<Step rID="T77">
+<Obj plainTxt="False" ><![CDATA[PaymentName_General]]></Obj>
+<Details plainTxt="False" ><![CDATA[Object's physical description:<br>miccommentproperty = <br>Mercury Class = WebEdit<br>Html Id = generatedName<br>DHTML Class = <br>]]></Details>
+<Time><![CDATA[3/01/2012 - 09:20:54]]></Time>
+<TimeTick>1325578854</TimeTick>
+<Step rID="T78">
+<Obj ><![CDATA[SmokeTest : Unexpected problem in 'EncodeDomesticPayment'.]]></Obj>
+<Details ><![CDATA[Object_html_id = generatedName]]></Details>
+<Time><![CDATA[3/01/2012 - 09:20:54]]></Time>
+<TimeTick>1325578854</TimeTick>
+<Step rID="T79">
+<Obj ><![CDATA[EncodeDomesticPayment_dev2_03012012009205.png]]></Obj>
+<Details ><![CDATA[]]></Details>
+<Time><![CDATA[3/01/2012 - 09:20:54]]></Time>
+<TimeTick>1325578854</TimeTick>
+<Action rID="T80">
+<AName><![CDATA[LogonIBS6]]></AName>
+<Step rID="T81">
+<Obj ><![CDATA[=== START ACTION : LogonIBS6 ===]]></Obj>
+<Details ><![CDATA[]]></Details>
+<Time><![CDATA[3/01/2012 - 09:21:06]]></Time>
+<TimeTick>1325578866</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="1693" >
+<Disp><![CDATA[=== START ACTION : LogonIBS6 ===]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T82">
+<Obj ><![CDATA[IBS6 was not yet open, so launch it...]]></Obj>
+<Details ><![CDATA[]]></Details>
+<Time><![CDATA[3/01/2012 - 09:21:12]]></Time>
+<TimeTick>1325578872</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="1696" status="Passed" >
+<Disp><![CDATA[IBS6 was not yet open, so launch it...]]></Disp>
+</NodeArgs>
+</Step>
+<Action rID="T83">
+<AName><![CDATA[SelectLogonProfile]]></AName>
+<Step rID="T84">
+<Obj ><![CDATA[LogonProfile2 found on portal.]]></Obj>
+<Details ><![CDATA[]]></Details>
+<Time><![CDATA[3/01/2012 - 09:22:15]]></Time>
+<TimeTick>1325578935</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="1779" status="Passed" >
+<Disp><![CDATA[LogonProfile2 found on portal.]]></Disp>
+</NodeArgs>
+</Step>
+<Summary sTime="3/01/2012 - 09:22:03" eTime="3/01/2012 - 09:22:17" passed="1" failed="0" warnings="0" ></Summary>
+<NodeArgs eType="StartAction" icon="4" nRep="1715" status="Passed" >
+<Disp><![CDATA[SelectLogonProfile Summary]]></Disp>
+</NodeArgs>
+</Action>
+<Summary sTime="3/01/2012 - 09:21:06" eTime="3/01/2012 - 09:22:17" passed="1" failed="0" warnings="0" ></Summary>
+<NodeArgs eType="StartAction" icon="4" nRep="1692" status="Passed" >
+<Disp><![CDATA[LogonIBS6 Summary]]></Disp>
+</NodeArgs>
+</Action>
+<NodeArgs eType="User" icon="5" nRep="1648" status="Passed" >
+<Disp><![CDATA[EncodeDomesticPayment_dev2_03012012009205.png]]></Disp>
+</NodeArgs>
+</Step>
+<NodeArgs eType="User" icon="5" nRep="1647" status="Failed" >
+<Disp><![CDATA[SmokeTest : Unexpected problem in 'EncodeDomesticPayment'.]]></Disp>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Replay" icon="6" nRep="1644" status="Failed" nType="Description" Source="EncodeDomesticPayment" SourceLine="65" >
+<Disp><![CDATA[PaymentName_General]]></Disp>
+</NodeArgs>
+</Step>
+<NodeArgs eType="User" icon="5" nRep="1541" status="Failed" >
+<Disp><![CDATA[QTT was automatically filled in.]]></Disp>
+</NodeArgs>
+</Step>
+<Summary sTime="3/01/2012 - 09:19:32" eTime="3/01/2012 - 09:22:18" passed="3" failed="1" warnings="1" ></Summary>
+<NodeArgs eType="StartAction" icon="4" nRep="1444" status="Failed" >
+<Disp><![CDATA[EncodeDomesticPayment Summary]]></Disp>
+</NodeArgs>
+</Action>
+<Action rID="T85">
+<AName><![CDATA[DirectDebit]]></AName>
+<Step rID="T86">
+<Obj ><![CDATA[=== START ACTION : DirectDebit ===]]></Obj>
+<Details ><![CDATA[]]></Details>
+<Time><![CDATA[3/01/2012 - 09:22:18]]></Time>
+<TimeTick>1325578938</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="1790" >
+<Disp><![CDATA[=== START ACTION : DirectDebit ===]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T87">
+<Obj ><![CDATA['View details' clicked for : DirectDebitGroupName 03012012009221]]></Obj>
+<Details ><![CDATA[Click done.]]></Details>
+<Time><![CDATA[3/01/2012 - 09:23:22]]></Time>
+<TimeTick>1325579002</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="1912" status="Passed" >
+<Disp><![CDATA['View details' clicked for : DirectDebitGroupName 03012012009221]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T88">
+<Obj ><![CDATA['View details' appeared for : DirectDebitGroupName 03012012009221]]></Obj>
+<Details ><![CDATA[Button 'Audit Trail' has been found.]]></Details>
+<Time><![CDATA[3/01/2012 - 09:23:24]]></Time>
+<TimeTick>1325579004</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="1914" status="Passed" >
+<Disp><![CDATA['View details' appeared for : DirectDebitGroupName 03012012009221]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T89">
+<Obj ><![CDATA[NumberOfSignaturesRequired = 3]]></Obj>
+<Details ><![CDATA[]]></Details>
+<Time><![CDATA[3/01/2012 - 09:23:25]]></Time>
+<TimeTick>1325579005</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="1919" >
+<Disp><![CDATA[NumberOfSignaturesRequired = 3]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T90">
+<Obj ><![CDATA[    Expected status is correct.]]></Obj>
+<Details ><![CDATA[Expected status = insufficient. Actual status = Insufficiently signed]]></Details>
+<Time><![CDATA[3/01/2012 - 09:23:25]]></Time>
+<TimeTick>1325579005</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="1922" status="Passed" >
+<Disp><![CDATA[    Expected status is correct.]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T91">
+<Obj ><![CDATA[Direct Debit has been added to group.]]></Obj>
+<Details ><![CDATA[]]></Details>
+<Time><![CDATA[3/01/2012 - 09:23:34]]></Time>
+<TimeTick>1325579014</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="1949" status="Passed" >
+<Disp><![CDATA[Direct Debit has been added to group.]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T92">
+<Obj ><![CDATA[Direct Debit has been modified.]]></Obj>
+<Details ><![CDATA[]]></Details>
+<Time><![CDATA[3/01/2012 - 09:23:41]]></Time>
+<TimeTick>1325579021</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="1970" status="Passed" >
+<Disp><![CDATA[Direct Debit has been modified.]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T93">
+<Obj ><![CDATA[    Expected status is correct.]]></Obj>
+<Details ><![CDATA[Expected status = not signed yet. Actual status = Not signed yet]]></Details>
+<Time><![CDATA[3/01/2012 - 09:23:42]]></Time>
+<TimeTick>1325579022</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="1975" status="Passed" >
+<Disp><![CDATA[    Expected status is correct.]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T94">
+<Obj ><![CDATA[NumberOfSignaturesRequired = 1]]></Obj>
+<Details ><![CDATA[]]></Details>
+<Time><![CDATA[3/01/2012 - 09:24:04]]></Time>
+<TimeTick>1325579044</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="1989" >
+<Disp><![CDATA[NumberOfSignaturesRequired = 1]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T95">
+<Obj ><![CDATA[    Expected status is correct.]]></Obj>
+<Details ><![CDATA[Expected status = sufficient. Actual status = Sufficiently signed]]></Details>
+<Time><![CDATA[3/01/2012 - 09:24:04]]></Time>
+<TimeTick>1325579044</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="1992" status="Passed" >
+<Disp><![CDATA[    Expected status is correct.]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T96">
+<Obj plainTxt="False" ><![CDATA[Isabel_IBS6]]></Obj>
+<Details plainTxt="False" ><![CDATA[Browser]]></Details>
+<Time><![CDATA[3/01/2012 - 09:24:10]]></Time>
+<TimeTick>1325579050</TimeTick>
+<Step rID="T97">
+<Obj plainTxt="False" ><![CDATA[IBS6]]></Obj>
+<Details plainTxt="False" ><![CDATA[Page]]></Details>
+<Time><![CDATA[3/01/2012 - 09:24:10]]></Time>
+<TimeTick>1325579050</TimeTick>
+<Step rID="T98">
+<Obj plainTxt="False" ><![CDATA[TableRowTransaction.Exist]]></Obj>
+<Details plainTxt="False" ><![CDATA["Object exists"]]></Details>
+<Time><![CDATA[3/01/2012 - 09:24:10]]></Time>
+<TimeTick>1325579050</TimeTick>
+<NodeArgs eType="Replay" icon="9" nRep="2007" >
+<Disp><![CDATA[TableRowTransaction.Exist]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T99">
+<Obj ><![CDATA[Counterparty has been saved]]></Obj>
+<Details ><![CDATA[Counterparty  'DebtorName 03012012009223' has been saved.]]></Details>
+<Time><![CDATA[3/01/2012 - 09:24:10]]></Time>
+<TimeTick>1325579050</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="2008" status="Passed" >
+<Disp><![CDATA[Counterparty has been saved]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T100">
+<Obj ><![CDATA[Direct debit transaction with a total amount of 9.222 has been found.]]></Obj>
+<Details ><![CDATA[]]></Details>
+<Time><![CDATA[3/01/2012 - 09:24:12]]></Time>
+<TimeTick>1325579052</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="2016" status="Passed" >
+<Disp><![CDATA[Direct debit transaction with a total amount of 9.222 has been found.]]></Disp>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="8" nRep="2006" status="Passed" >
+<Disp><![CDATA[IBS6]]></Disp>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="7" nRep="2005" status="Passed" >
+<Disp><![CDATA[Isabel_IBS6]]></Disp>
+</NodeArgs>
+</Step>
+<Summary sTime="3/01/2012 - 09:22:18" eTime="3/01/2012 - 09:24:12" passed="9" failed="0" warnings="0" ></Summary>
+<NodeArgs eType="StartAction" icon="4" nRep="1789" status="Passed" >
+<Disp><![CDATA[DirectDebit Summary]]></Disp>
+</NodeArgs>
+</Action>
+<Action rID="T101">
+<AName><![CDATA[DownLoadReportFile]]></AName>
+<Step rID="T102">
+<Obj ><![CDATA[=== START ACTION : DownLoadReportFile ===]]></Obj>
+<Details ><![CDATA[]]></Details>
+<Time><![CDATA[3/01/2012 - 09:24:13]]></Time>
+<TimeTick>1325579053</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="2019" >
+<Disp><![CDATA[=== START ACTION : DownLoadReportFile ===]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T103">
+<Obj ><![CDATA[Downloaded files]]></Obj>
+<Details ><![CDATA[Downloaded files are there]]></Details>
+<Time><![CDATA[3/01/2012 - 09:24:18]]></Time>
+<TimeTick>1325579058</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="2030" status="Passed" >
+<Disp><![CDATA[Downloaded files]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T104">
+<Obj ><![CDATA[Downloaded files are also appearing]]></Obj>
+<Details ><![CDATA[NumberOfTabelsBefore = 57 , NumberOfTabelsAfter = 57]]></Details>
+<Time><![CDATA[3/01/2012 - 09:24:18]]></Time>
+<TimeTick>1325579058</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="2031" status="Passed" >
+<Disp><![CDATA[Downloaded files are also appearing]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T105">
+<Obj plainTxt="False" ><![CDATA[Isabel_IBS6]]></Obj>
+<Details plainTxt="False" ><![CDATA[Browser]]></Details>
+<Time><![CDATA[3/01/2012 - 09:42:59]]></Time>
+<TimeTick>1325580179</TimeTick>
+<Step rID="T106">
+<Obj plainTxt="False" ><![CDATA[IBS6]]></Obj>
+<Details plainTxt="False" ><![CDATA[Page]]></Details>
+<Time><![CDATA[3/01/2012 - 09:42:59]]></Time>
+<TimeTick>1325580179</TimeTick>
+<Step rID="T107">
+<Obj plainTxt="False" ><![CDATA[SysTreeView32.Select]]></Obj>
+<Details plainTxt="False" ><![CDATA["My Computer;D:"]]></Details>
+<Time><![CDATA[3/01/2012 - 09:42:59]]></Time>
+<TimeTick>1325580179</TimeTick>
+<Step rID="T108">
+<Obj plainTxt="False" ><![CDATA[Isabel_IBS6]]></Obj>
+<Details plainTxt="False" ><![CDATA[Object's physical description:<br>miccommentproperty = <br>Mercury Class = Browser<br>|Title = Isabel - *<br>openurl = https://ebanking.ibs6.acc.isabel.be/IBS/portal/ControllerPortal<br>opentitle = Isabel - IBS 6.0<br>Opened By Testing Tool = 0<br>Name = Isabel 6.*<br>Has Toolbar = -1<br>Has Status Bar = -1<br>Has Menu Bar = -1<br>]]></Details>
+<Time><![CDATA[3/01/2012 - 09:42:59]]></Time>
+<TimeTick>1325580179</TimeTick>
+<Step rID="T109">
+<Obj plainTxt="False" ><![CDATA[Isabel_IBS6]]></Obj>
+<Details plainTxt="False" ><![CDATA[Browser]]></Details>
+<Time><![CDATA[3/01/2012 - 09:42:59]]></Time>
+<TimeTick>1325580179</TimeTick>
+<Step rID="T110">
+<Obj plainTxt="False" ><![CDATA[IBS6]]></Obj>
+<Details plainTxt="False" ><![CDATA[Page]]></Details>
+<Time><![CDATA[3/01/2012 - 09:42:59]]></Time>
+<TimeTick>1325580179</TimeTick>
+<Step rID="T111">
+<Obj plainTxt="False" ><![CDATA[SysTreeView32.GetTOProperty "html id"]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[3/01/2012 - 09:42:59]]></Time>
+<TimeTick>1325580179</TimeTick>
+<NodeArgs eType="Replay" icon="10" nRep="2089" status="Warning" >
+<Disp><![CDATA[SysTreeView32.GetTOProperty "html id"]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T112">
+<Obj ><![CDATA[SmokeTest : Unexpected problem in 'DownLoadReportFile'.]]></Obj>
+<Details ><![CDATA[Object_html_id = ]]></Details>
+<Time><![CDATA[3/01/2012 - 09:43:00]]></Time>
+<TimeTick>1325580180</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="2090" status="Failed" >
+<Disp><![CDATA[SmokeTest : Unexpected problem in 'DownLoadReportFile'.]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T113">
+<Obj ><![CDATA[DownLoadReportFile_dev2_03012012009425.png]]></Obj>
+<Details ><![CDATA[]]></Details>
+<Time><![CDATA[3/01/2012 - 09:43:00]]></Time>
+<TimeTick>1325580180</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="2091" >
+<Disp><![CDATA[DownLoadReportFile_dev2_03012012009425.png]]></Disp>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="8" nRep="2088" status="Failed" >
+<Disp><![CDATA[IBS6]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T114">
+<Obj plainTxt="False" ><![CDATA[Isabel_IBS6.GetROProperty "name"]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[3/01/2012 - 09:44:01]]></Time>
+<TimeTick>1325580241</TimeTick>
+<Step rID="T115">
+<Obj plainTxt="False" ><![CDATA[Isabel_IBS6]]></Obj>
+<Details plainTxt="False" ><![CDATA[Object's physical description:<br>miccommentproperty = <br>Mercury Class = Browser<br>|Title = Isabel - *<br>openurl = https://ebanking.ibs6.acc.isabel.be/IBS/portal/ControllerPortal<br>opentitle = Isabel - IBS 6.0<br>Opened By Testing Tool = 0<br>Name = Isabel 6.*<br>Has Toolbar = -1<br>Has Status Bar = -1<br>Has Menu Bar = -1<br>]]></Details>
+<Time><![CDATA[3/01/2012 - 09:44:01]]></Time>
+<TimeTick>1325580241</TimeTick>
+<NodeArgs eType="Replay" icon="6" nRep="2096" status="Warning" nType="Description" >
+<Disp><![CDATA[Isabel_IBS6]]></Disp>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Replay" icon="7" nRep="2094" status="Warning" >
+<Disp><![CDATA[Isabel_IBS6.GetROProperty "name"]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T116">
+<Obj plainTxt="False" ><![CDATA[Isabel_IBS6.GetROProperty "name"]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[3/01/2012 - 09:45:02]]></Time>
+<TimeTick>1325580302</TimeTick>
+<Step rID="T117">
+<Obj plainTxt="False" ><![CDATA[Isabel_IBS6]]></Obj>
+<Details plainTxt="False" ><![CDATA[Object's physical description:<br>miccommentproperty = <br>Mercury Class = Browser<br>|Title = Isabel - *<br>openurl = https://ebanking.ibs6.acc.isabel.be/IBS/portal/ControllerPortal<br>opentitle = Isabel - IBS 6.0<br>Opened By Testing Tool = 0<br>Name = Isabel 6.*<br>Has Toolbar = -1<br>Has Status Bar = -1<br>Has Menu Bar = -1<br>]]></Details>
+<Time><![CDATA[3/01/2012 - 09:45:02]]></Time>
+<TimeTick>1325580302</TimeTick>
+<Step rID="T118">
+<Obj plainTxt="False" ><![CDATA[Error]]></Obj>
+<Details plainTxt="False" ><![CDATA[Unspecified error
+]]></Details>
+<Time><![CDATA[3/01/2012 - 09:46:51]]></Time>
+<TimeTick>1325580411</TimeTick>
+<NodeArgs eType="Replay" icon="11" nRep="2116" status="Warning" Source="DownLoadReportFile" SourceLine="64" >
+<Disp><![CDATA[Error]]></Disp>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Replay" icon="6" nRep="2101" status="Warning" nType="Description" >
+<Disp><![CDATA[Isabel_IBS6]]></Disp>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Replay" icon="7" nRep="2099" status="Warning" >
+<Disp><![CDATA[Isabel_IBS6.GetROProperty "name"]]></Disp>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="7" nRep="2087" status="Failed" >
+<Disp><![CDATA[Isabel_IBS6]]></Disp>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Replay" icon="6" nRep="2083" status="Failed" nType="Parent description" Source="DownLoadReportFile" SourceLine="64" >
+<Disp><![CDATA[Isabel_IBS6]]></Disp>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Replay" icon="10" nRep="2081" status="Failed" Source="DownLoadReportFile" SourceLine="64" >
+<Disp><![CDATA[SysTreeView32.Select]]></Disp>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="8" nRep="2080" status="Failed" Source="DownLoadReportFile" SourceLine="64" >
+<Disp><![CDATA[IBS6]]></Disp>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="7" nRep="2079" status="Failed" Source="DownLoadReportFile" SourceLine="64" >
+<Disp><![CDATA[Isabel_IBS6]]></Disp>
+</NodeArgs>
+</Step>
+<Summary sTime="3/01/2012 - 09:24:13" eTime="3/01/2012 - 09:46:51" passed="2" failed="1" warnings="8" ></Summary>
+<NodeArgs eType="StartAction" icon="4" nRep="2018" status="Failed" >
+<Disp><![CDATA[DownLoadReportFile Summary]]></Disp>
+</NodeArgs>
+</Action>
+<Summary sTime="3/01/2012 - 09:09:22" eTime="3/01/2012 - 09:46:51" passed="0" failed="0" warnings="0" ></Summary>
+<NodeArgs eType="StartAction" icon="4" nRep="7" status="Failed" >
+<Disp><![CDATA[Smoke Summary]]></Disp>
+</NodeArgs>
+</Action>
+<NodeArgs eType="StartIteration" icon="3" nRep="6" status="Failed" >
+<Disp><![CDATA[SmokeTest Iteration 1 (Row 1)]]></Disp>
+</NodeArgs>
+</DIter>
+<Summary sTime="3/01/2012 - 09:09:19" eTime="3/01/2012 - 09:46:51" passed="57" failed="3" warnings="9" stopped="True" ><Param ><ParamName><![CDATA[Env]]></ParamName><ParamVal><![CDATA[acc]]></ParamVal>
+</Param>
+</Summary>
+<NodeArgs eType="StartTest" icon="1" nRep="3" status="Failed" >
+<Disp><![CDATA[Test SmokeTest Summary]]></Disp>
+</NodeArgs>
+</Doc>
+</Report>

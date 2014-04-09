@@ -1,0 +1,2724 @@
+﻿<?xml version="1.0"?>
+<!DOCTYPE Report
+[
+<!ELEMENT Report (General ,(Doc|BPT)) >
+<!ATTLIST Report ver CDATA #REQUIRED tmZone CDATA #REQUIRED>
+
+<!ELEMENT General ( DocLocation ) >
+<!ATTLIST General productName CDATA #REQUIRED productVer CDATA #REQUIRED os CDATA #REQUIRED host CDATA #REQUIRED qcserver CDATA #IMPLIED qcproject CDATA #IMPLIED  >
+
+<!ELEMENT BPT (DName,Res,DVer?,TSet?,TInst?,NodeArgs,AdditionalInfo*,Doc*) >
+<!ATTLIST BPT rID ID #REQUIRED >
+
+<!ELEMENT Doc (DName,Res,DVer?,TSet?,TInst?,RunType?,DT?,AdditionalInfo*,Step*,DIter*,Step*,Action*,Summary?,TestMaintenanceSummary*,NodeArgs?) >
+<!ATTLIST Doc rID ID #REQUIRED type (Test|BC) "Test" productName CDATA #REQUIRED BCIter CDATA #IMPLIED >
+
+<!ELEMENT RunType ( #PCDATA )>
+<!ATTLIST RunType fmStep (False|True) "False" batch (False|True) "False" upDesc (False|True) "False" upChk (False|True) "False" upAS (False|True) "False">
+
+<!ELEMENT DName ( #PCDATA ) >
+
+<!ELEMENT Res ( #PCDATA ) >
+
+<!ELEMENT AdditionalInfo (AdditionalDataName,AdditionalDataValue ) >
+
+<!ELEMENT AdditionalDataName ( #PCDATA ) >
+
+<!ELEMENT AdditionalDataValue ( #PCDATA ) >
+
+<!ELEMENT DVer ( #PCDATA ) >
+
+<!ELEMENT TSet ( #PCDATA ) >
+
+<!ELEMENT TInst ( #PCDATA ) >
+
+<!ELEMENT DIter (Step?,Action+,Summary?,NodeArgs)>
+<!ATTLIST DIter rID ID #REQUIRED iterID CDATA #REQUIRED>
+
+<!ELEMENT DocLocation ( #PCDATA )>
+
+<!ELEMENT Action (AName,AIter*,(Step|HtmlStep|Action)*,Summary,ActionMaintenanceSummary*,NodeArgs ) >
+<!ATTLIST Action rID ID #REQUIRED>
+
+<!ELEMENT AIter ((Step|HtmlStep|Action)*,Summary?,NodeArgs) >
+<!ATTLIST AIter rID ID #REQUIRED iterID CDATA #REQUIRED>
+
+<!ELEMENT AName ( #PCDATA ) >
+
+<!ELEMENT TestMaintenanceSummary (ActionMaintenanceSummary*) >
+<!ATTLIST TestMaintenanceSummary ObjectsAdded CDATA #REQUIRED ObjectsUpdated CDATA #REQUIRED StepsUpdated CDATA #REQUIRED StepsComments CDATA #REQUIRED><!ELEMENT ActionMaintenanceSummary (ObjectChange* ) >
+<!ATTLIST ActionMaintenanceSummary Action CDATA #REQUIRED Objects CDATA #REQUIRED Updated CDATA #REQUIRED LinesTotal CDATA #REQUIRED Added CDATA #REQUIRED LinesUpdated CDATA #REQUIRED>
+
+<!ELEMENT ObjectChange  (Hierarchy, PropertyChangeList* ) >
+<!ATTLIST ObjectChange Operation CDATA #IMPLIED OriginalRepository CDATA #IMPLIED>
+
+<!ELEMENT PropertyChangeList (PropertyDef*) >
+
+<!ELEMENT PropertyDef (OriginalValue, NewValue) >
+<!ATTLIST PropertyDef PropName CDATA #REQUIRED OriginRegularExpression (True|False) "False" NewRegularExpression (True|False) "False" AddedProperty (True|False) "False" >
+
+<!ELEMENT OriginalValue ( #PCDATA )>
+
+<!ELEMENT NewValue ( #PCDATA )>
+
+<!ELEMENT Hierarchy  (ObjectName, Hierarchy*) >
+<!ATTLIST Hierarchy MicClass CDATA #REQUIRED>
+
+<!ELEMENT ObjectName  ( #PCDATA ) >
+
+<!ELEMENT Step (Obj,Details,Time,TimeTick* ,(Step|HtmlStep|Doc)*,NodeArgs) >
+<!ATTLIST Step rID ID #REQUIRED retval CDATA #IMPLIED>
+
+<!ELEMENT HtmlStep (HTML,TimeTick*,(Step|HtmlStep|Doc)*,NodeArgs) >
+<!ATTLIST HtmlStep rID ID #REQUIRED >
+
+<!ELEMENT Obj ( #PCDATA ) >
+<!ATTLIST Obj plainTxt (False|True) "True">
+
+<!ELEMENT Details ( #PCDATA ) >
+<!ATTLIST Details plainTxt (False|True) "True">
+
+<!ELEMENT Time ( #PCDATA ) >
+
+<!ELEMENT HTML ( #PCDATA ) >
+
+<!ELEMENT Disp ( #PCDATA ) >
+
+<!ELEMENT TimeTick ( #PCDATA ) >
+
+<!ELEMENT NodeArgs (Disp,TopPane?,BtmPane?)>
+<!ATTLIST NodeArgs eType CDATA #REQUIRED icon CDATA #REQUIRED nRep CDATA #REQUIRED filter (False|True) "True">
+<!ATTLIST NodeArgs status (Passed|Failed|Done|Warning|Information) "Done">
+<!ATTLIST NodeArgs iconSel CDATA #IMPLIED nType CDATA #IMPLIED MovieMarker CDATA "">
+<!ATTLIST NodeArgs Source CDATA #IMPLIED SourceLine CDATA #IMPLIED >
+
+<!ELEMENT TopPane (Path)>
+
+<!ELEMENT BtmPane ( (Path|WR)?,ASHilite?)>
+<!ATTLIST BtmPane vType CDATA "HTML">
+
+<!ELEMENT Path ( #PCDATA ) >
+
+<!ELEMENT ASHilite ( #PCDATA ) >
+
+<!ELEMENT WR ( #PCDATA ) >
+
+<!ELEMENT DT (NodeArgs) >
+<!ATTLIST DT rID ID #REQUIRED>
+
+<!ELEMENT Summary (Param*)>
+<!ATTLIST Summary sTime CDATA #IMPLIED eTime CDATA #IMPLIED passed CDATA #IMPLIED failed CDATA #IMPLIED warnings CDATA #IMPLIED retval CDATA #IMPLIED stopped (False|True) "False" >
+
+<!ELEMENT Param (ParamName,ParamVal)+ >
+<!ATTLIST Param paramInOut (In|Out) "In">
+
+<!ELEMENT ParamName ( #PCDATA ) >
+
+<!ELEMENT ParamVal ( #PCDATA ) >
+
+]
+>
+<Report ver="2.0" tmZone="Romance Standard Time">
+<General productName="QuickTest Professional" productVer="10.00" os="Windows XP" host="EBANK-BUILDXP"><DocLocation><![CDATA[Q:\SmokeTest\SmokeTest]]></DocLocation></General>
+<Doc rID="T1"   productName= "QuickTest Professional"  >
+<DName><![CDATA[SmokeTest]]></DName>
+<Res><![CDATA[Results]]></Res>
+<DT rID="T2">
+<NodeArgs eType="Table" icon="2" nRep="4" filter="False" >
+<Disp><![CDATA[Run-Time Data Table]]></Disp>
+<BtmPane vType="Table">
+<Path><![CDATA[Default.xls]]></Path>
+</BtmPane>
+</NodeArgs>
+</DT>
+<DIter rID="T3" iterID="1" >
+<Action rID="T4">
+<AName><![CDATA[Smoke]]></AName>
+<Action rID="T5">
+<AName><![CDATA[Prerequisites]]></AName>
+<Summary sTime="22/06/2010 - 11:03:08" eTime="22/06/2010 - 11:03:16" passed="0" failed="0" warnings="0" ></Summary>
+<NodeArgs eType="StartAction" icon="4" nRep="8" >
+<Disp><![CDATA[Prerequisites Summary]]></Disp>
+</NodeArgs>
+</Action>
+<Action rID="T6">
+<AName><![CDATA[LogonIBS6]]></AName>
+<Step rID="T7">
+<Obj ><![CDATA[=== START ACTION : LogonIBS6 ===]]></Obj>
+<Details ><![CDATA[]]></Details>
+<Time><![CDATA[22/06/2010 - 11:03:16]]></Time>
+<TimeTick>1277197396</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="11" Source="Q:\SmokeTest\SmokeTestFunctions.qfl" SourceLine="822" >
+<Disp><![CDATA[=== START ACTION : LogonIBS6 ===]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T8">
+<Obj ><![CDATA[IBS6 was not yet open, so launch it...]]></Obj>
+<Details ><![CDATA[]]></Details>
+<Time><![CDATA[22/06/2010 - 11:03:22]]></Time>
+<TimeTick>1277197402</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="14" status="Passed" Source="Q:\SmokeTest\SmokeTestFunctions.qfl" SourceLine="719" >
+<Disp><![CDATA[IBS6 was not yet open, so launch it...]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T9">
+<Obj ><![CDATA[2 names were found in list of certificates]]></Obj>
+<Details ><![CDATA[]]></Details>
+<Time><![CDATA[22/06/2010 - 11:03:42]]></Time>
+<TimeTick>1277197422</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="22" status="Passed" Source="Q:\SmokeTest\SmokeTestFunctions.qfl" SourceLine="719" >
+<Disp><![CDATA[2 names were found in list of certificates]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T10">
+<Obj ><![CDATA[strData (certificate to select)=ClaudeCert]]></Obj>
+<Details ><![CDATA[]]></Details>
+<Time><![CDATA[22/06/2010 - 11:03:42]]></Time>
+<TimeTick>1277197422</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="23" status="Passed" Source="Q:\SmokeTest\SmokeTestFunctions.qfl" SourceLine="719" >
+<Disp><![CDATA[strData (certificate to select)=ClaudeCert]]></Disp>
+</NodeArgs>
+</Step>
+<Action rID="T11">
+<AName><![CDATA[SelectLogonProfile]]></AName>
+<Step rID="T12">
+<Obj ><![CDATA[LogonProfile2 found on portal.]]></Obj>
+<Details ><![CDATA[]]></Details>
+<Time><![CDATA[22/06/2010 - 11:04:10]]></Time>
+<TimeTick>1277197450</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="75" status="Passed" Source="Q:\SmokeTest\SmokeTestFunctions.qfl" SourceLine="719" >
+<Disp><![CDATA[LogonProfile2 found on portal.]]></Disp>
+</NodeArgs>
+</Step>
+<Summary sTime="22/06/2010 - 11:03:56" eTime="22/06/2010 - 11:04:18" passed="1" failed="0" warnings="0" ></Summary>
+<NodeArgs eType="StartAction" icon="4" nRep="34" status="Passed" >
+<Disp><![CDATA[SelectLogonProfile Summary]]></Disp>
+</NodeArgs>
+</Action>
+<Summary sTime="22/06/2010 - 11:03:16" eTime="22/06/2010 - 11:04:18" passed="3" failed="0" warnings="0" ></Summary>
+<NodeArgs eType="StartAction" icon="4" nRep="10" status="Passed" >
+<Disp><![CDATA[LogonIBS6 Summary]]></Disp>
+</NodeArgs>
+</Action>
+<Action rID="T13">
+<AName><![CDATA[ViewExchangeRates]]></AName>
+<Step rID="T14">
+<Obj ><![CDATA[=== START ACTION : ViewExchangeRates ===]]></Obj>
+<Details ><![CDATA[]]></Details>
+<Time><![CDATA[22/06/2010 - 11:04:18]]></Time>
+<TimeTick>1277197458</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="82" Source="Q:\SmokeTest\SmokeTestFunctions.qfl" SourceLine="822" >
+<Disp><![CDATA[=== START ACTION : ViewExchangeRates ===]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T15">
+<Obj ><![CDATA[View exchange rate has been sorted]]></Obj>
+<Details ><![CDATA[First line = 65,977200AFNAfghanistan Afghani01/02/07 2:00]]></Details>
+<Time><![CDATA[22/06/2010 - 11:04:32]]></Time>
+<TimeTick>1277197472</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="95" status="Passed" Source="Q:\SmokeTest\SmokeTestFunctions.qfl" SourceLine="719" >
+<Disp><![CDATA[View exchange rate has been sorted]]></Disp>
+</NodeArgs>
+</Step>
+<Summary sTime="22/06/2010 - 11:04:18" eTime="22/06/2010 - 11:04:33" passed="1" failed="0" warnings="0" ></Summary>
+<NodeArgs eType="StartAction" icon="4" nRep="81" status="Passed" >
+<Disp><![CDATA[ViewExchangeRates Summary]]></Disp>
+</NodeArgs>
+</Action>
+<Action rID="T16">
+<AName><![CDATA[Preferences]]></AName>
+<Step rID="T17">
+<Obj ><![CDATA[=== START ACTION : Preferences ===]]></Obj>
+<Details ><![CDATA[]]></Details>
+<Time><![CDATA[22/06/2010 - 11:04:35]]></Time>
+<TimeTick>1277197475</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="100" Source="Q:\SmokeTest\SmokeTestFunctions.qfl" SourceLine="822" >
+<Disp><![CDATA[=== START ACTION : Preferences ===]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T18">
+<Obj ><![CDATA[Separator field found]]></Obj>
+<Details ><![CDATA[Tab 'General']]></Details>
+<Time><![CDATA[22/06/2010 - 11:04:45]]></Time>
+<TimeTick>1277197485</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="111" status="Passed" Source="Q:\SmokeTest\SmokeTestFunctions.qfl" SourceLine="719" >
+<Disp><![CDATA[Separator field found]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T19">
+<Obj ><![CDATA[Default start-up folder is OK.]]></Obj>
+<Details ><![CDATA[Tab 'General']]></Details>
+<Time><![CDATA[22/06/2010 - 11:04:51]]></Time>
+<TimeTick>1277197491</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="121" status="Passed" Source="Q:\SmokeTest\SmokeTestFunctions.qfl" SourceLine="719" >
+<Disp><![CDATA[Default start-up folder is OK.]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T20">
+<Obj ><![CDATA[Checkbox 'DownloadMerge' found]]></Obj>
+<Details ><![CDATA[Tab 'Account info']]></Details>
+<Time><![CDATA[22/06/2010 - 11:04:53]]></Time>
+<TimeTick>1277197493</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="127" status="Passed" Source="Q:\SmokeTest\SmokeTestFunctions.qfl" SourceLine="719" >
+<Disp><![CDATA[Checkbox 'DownloadMerge' found]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T21">
+<Obj ><![CDATA[WebEdit 'DefaultViewOfAccountInfo_Pref' found]]></Obj>
+<Details ><![CDATA[Tab 'Account info']]></Details>
+<Time><![CDATA[22/06/2010 - 11:04:59]]></Time>
+<TimeTick>1277197499</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="137" status="Passed" Source="Q:\SmokeTest\SmokeTestFunctions.qfl" SourceLine="719" >
+<Disp><![CDATA[WebEdit 'DefaultViewOfAccountInfo_Pref' found]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T22">
+<Obj ><![CDATA[PrivateShared-list found.]]></Obj>
+<Details ><![CDATA[Tab 'Transctions']]></Details>
+<Time><![CDATA[22/06/2010 - 11:05:06]]></Time>
+<TimeTick>1277197506</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="149" status="Passed" Source="Q:\SmokeTest\SmokeTestFunctions.qfl" SourceLine="719" >
+<Disp><![CDATA[PrivateShared-list found.]]></Disp>
+</NodeArgs>
+</Step>
+<Summary sTime="22/06/2010 - 11:04:34" eTime="22/06/2010 - 11:05:07" passed="5" failed="0" warnings="0" ></Summary>
+<NodeArgs eType="StartAction" icon="4" nRep="99" status="Passed" >
+<Disp><![CDATA[Preferences Summary]]></Disp>
+</NodeArgs>
+</Action>
+<Action rID="T23">
+<AName><![CDATA[DeleteTransactions]]></AName>
+<Step rID="T24">
+<Obj ><![CDATA[=== START ACTION : DeleteTransactions ===]]></Obj>
+<Details ><![CDATA[]]></Details>
+<Time><![CDATA[22/06/2010 - 11:05:08]]></Time>
+<TimeTick>1277197508</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="156" Source="Q:\SmokeTest\SmokeTestFunctions.qfl" SourceLine="822" >
+<Disp><![CDATA[=== START ACTION : DeleteTransactions ===]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T25">
+<Obj ><![CDATA[Go to page 11]]></Obj>
+<Details ><![CDATA[]]></Details>
+<Time><![CDATA[22/06/2010 - 11:05:13]]></Time>
+<TimeTick>1277197513</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="161" status="Passed" Source="Q:\SmokeTest\SmokeTestFunctions.qfl" SourceLine="719" >
+<Disp><![CDATA[Go to page 11]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T26">
+<Obj ><![CDATA[Confirmation to delete has appeared]]></Obj>
+<Details ><![CDATA[]]></Details>
+<Time><![CDATA[22/06/2010 - 11:05:20]]></Time>
+<TimeTick>1277197520</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="174" status="Passed" Source="Q:\SmokeTest\SmokeTestFunctions.qfl" SourceLine="719" >
+<Disp><![CDATA[Confirmation to delete has appeared]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T27">
+<Obj ><![CDATA[Go to page 11]]></Obj>
+<Details ><![CDATA[]]></Details>
+<Time><![CDATA[22/06/2010 - 11:05:24]]></Time>
+<TimeTick>1277197524</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="178" status="Passed" Source="Q:\SmokeTest\SmokeTestFunctions.qfl" SourceLine="719" >
+<Disp><![CDATA[Go to page 11]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T28">
+<Obj ><![CDATA[Confirmation to delete has appeared]]></Obj>
+<Details ><![CDATA[]]></Details>
+<Time><![CDATA[22/06/2010 - 11:05:30]]></Time>
+<TimeTick>1277197530</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="191" status="Passed" Source="Q:\SmokeTest\SmokeTestFunctions.qfl" SourceLine="719" >
+<Disp><![CDATA[Confirmation to delete has appeared]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T29">
+<Obj ><![CDATA[Transactions have been deleted]]></Obj>
+<Details ><![CDATA[Number of pages : now = 10 , initial = 12]]></Details>
+<Time><![CDATA[22/06/2010 - 11:05:36]]></Time>
+<TimeTick>1277197536</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="196" status="Passed" Source="Q:\SmokeTest\SmokeTestFunctions.qfl" SourceLine="719" >
+<Disp><![CDATA[Transactions have been deleted]]></Disp>
+</NodeArgs>
+</Step>
+<Summary sTime="22/06/2010 - 11:05:07" eTime="22/06/2010 - 11:05:38" passed="5" failed="0" warnings="0" ></Summary>
+<NodeArgs eType="StartAction" icon="4" nRep="155" status="Passed" >
+<Disp><![CDATA[DeleteTransactions Summary]]></Disp>
+</NodeArgs>
+</Action>
+<Action rID="T30">
+<AName><![CDATA[CreateCounterParty]]></AName>
+<Step rID="T31">
+<Obj ><![CDATA[=== START ACTION : CreateCounterParty ===]]></Obj>
+<Details ><![CDATA[]]></Details>
+<Time><![CDATA[22/06/2010 - 11:05:38]]></Time>
+<TimeTick>1277197538</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="204" Source="Q:\SmokeTest\SmokeTestFunctions.qfl" SourceLine="822" >
+<Disp><![CDATA[=== START ACTION : CreateCounterParty ===]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T32">
+<Obj ><![CDATA[IbanNumber 1 has been added]]></Obj>
+<Details ><![CDATA[strIbamNumber = BE35 0630 2555 0037 ]]></Details>
+<Time><![CDATA[22/06/2010 - 11:06:13]]></Time>
+<TimeTick>1277197573</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="278" status="Passed" Source="Q:\SmokeTest\SmokeTestFunctions.qfl" SourceLine="719" >
+<Disp><![CDATA[IbanNumber 1 has been added]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T33">
+<Obj ><![CDATA[IbanNumber 2 has been added]]></Obj>
+<Details ><![CDATA[strIbamNumber = BE68 5390 0754 7034 ]]></Details>
+<Time><![CDATA[22/06/2010 - 11:06:33]]></Time>
+<TimeTick>1277197593</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="308" status="Passed" Source="Q:\SmokeTest\SmokeTestFunctions.qfl" SourceLine="719" >
+<Disp><![CDATA[IbanNumber 2 has been added]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T34">
+<Obj ><![CDATA[DirectDebitNumber has been added]]></Obj>
+<Details ><![CDATA[DirectDebitNumber = 000-0000100-03]]></Details>
+<Time><![CDATA[22/06/2010 - 11:06:48]]></Time>
+<TimeTick>1277197608</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="367" status="Passed" Source="Q:\SmokeTest\SmokeTestFunctions.qfl" SourceLine="719" >
+<Disp><![CDATA[DirectDebitNumber has been added]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T35">
+<Obj ><![CDATA[IbanNumber1 has been replaced by IbanNumberModify (edit-mode)]]></Obj>
+<Details ><![CDATA[strIbamNumberMod = BE21 7765 9112 8003  ,  IbamNumber1 = BE35 0630 2555 0037 ]]></Details>
+<Time><![CDATA[22/06/2010 - 11:07:21]]></Time>
+<TimeTick>1277197641</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="465" status="Passed" Source="Q:\SmokeTest\SmokeTestFunctions.qfl" SourceLine="719" >
+<Disp><![CDATA[IbanNumber1 has been replaced by IbanNumberModify (edit-mode)]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T36">
+<Obj ><![CDATA[Counterparty has been created/found]]></Obj>
+<Details ><![CDATA['0 Alias 22062010110549' found.]]></Details>
+<Time><![CDATA[22/06/2010 - 11:07:29]]></Time>
+<TimeTick>1277197649</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="475" status="Passed" Source="Q:\SmokeTest\SmokeTestFunctions.qfl" SourceLine="719" >
+<Disp><![CDATA[Counterparty has been created/found]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T37">
+<Obj ><![CDATA[Modified CounterpartyName has been created/found]]></Obj>
+<Details ><![CDATA[]]></Details>
+<Time><![CDATA[22/06/2010 - 11:07:37]]></Time>
+<TimeTick>1277197657</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="488" status="Passed" Source="Q:\SmokeTest\SmokeTestFunctions.qfl" SourceLine="719" >
+<Disp><![CDATA[Modified CounterpartyName has been created/found]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T38">
+<Obj ><![CDATA[IbanNumber 1 has been added]]></Obj>
+<Details ><![CDATA[strIbamNumber = FR59 2004 1010 0405 6187 8A02 585 ]]></Details>
+<Time><![CDATA[22/06/2010 - 11:08:16]]></Time>
+<TimeTick>1277197696</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="552" status="Passed" Source="Q:\SmokeTest\SmokeTestFunctions.qfl" SourceLine="719" >
+<Disp><![CDATA[IbanNumber 1 has been added]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T39">
+<Obj ><![CDATA[Counterparty has been created/found]]></Obj>
+<Details ><![CDATA['0 Alias 22062010110740' found.]]></Details>
+<Time><![CDATA[22/06/2010 - 11:08:23]]></Time>
+<TimeTick>1277197703</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="562" status="Passed" Source="Q:\SmokeTest\SmokeTestFunctions.qfl" SourceLine="719" >
+<Disp><![CDATA[Counterparty has been created/found]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T40">
+<Obj ><![CDATA[Modified CounterpartyName has been created/found]]></Obj>
+<Details ><![CDATA[]]></Details>
+<Time><![CDATA[22/06/2010 - 11:08:32]]></Time>
+<TimeTick>1277197712</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="575" status="Passed" Source="Q:\SmokeTest\SmokeTestFunctions.qfl" SourceLine="719" >
+<Disp><![CDATA[Modified CounterpartyName has been created/found]]></Disp>
+</NodeArgs>
+</Step>
+<Summary sTime="22/06/2010 - 11:05:38" eTime="22/06/2010 - 11:08:32" passed="9" failed="0" warnings="0" ></Summary>
+<NodeArgs eType="StartAction" icon="4" nRep="203" status="Passed" >
+<Disp><![CDATA[CreateCounterParty Summary]]></Disp>
+</NodeArgs>
+</Action>
+<Action rID="T41">
+<AName><![CDATA[ManageCreditor]]></AName>
+<Step rID="T42">
+<Obj ><![CDATA[=== START ACTION : ManageCreditor ===]]></Obj>
+<Details ><![CDATA[]]></Details>
+<Time><![CDATA[22/06/2010 - 11:08:34]]></Time>
+<TimeTick>1277197714</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="580" Source="Q:\SmokeTest\SmokeTestFunctions.qfl" SourceLine="822" >
+<Disp><![CDATA[=== START ACTION : ManageCreditor ===]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T43">
+<Obj ><![CDATA[Creditor number has been deleted]]></Obj>
+<Details ><![CDATA[Creditor number with text = .*123-456-749.* has been deleted.]]></Details>
+<Time><![CDATA[22/06/2010 - 11:08:55]]></Time>
+<TimeTick>1277197735</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="635" status="Passed" Source="Q:\SmokeTest\SmokeTestFunctions.qfl" SourceLine="719" >
+<Disp><![CDATA[Creditor number has been deleted]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T44">
+<Obj ><![CDATA[Table (account) with text = CR_926_001515 has been selected]]></Obj>
+<Details ><![CDATA[]]></Details>
+<Time><![CDATA[22/06/2010 - 11:09:09]]></Time>
+<TimeTick>1277197749</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="649" status="Passed" Source="Q:\SmokeTest\SmokeTestFunctions.qfl" SourceLine="719" >
+<Disp><![CDATA[Table (account) with text = CR_926_001515 has been selected]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T45">
+<Obj ><![CDATA[Table (account) with text = 000-0000002-02 has been selected]]></Obj>
+<Details ><![CDATA[]]></Details>
+<Time><![CDATA[22/06/2010 - 11:09:11]]></Time>
+<TimeTick>1277197751</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="654" status="Passed" Source="Q:\SmokeTest\SmokeTestFunctions.qfl" SourceLine="719" >
+<Disp><![CDATA[Table (account) with text = 000-0000002-02 has been selected]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T46">
+<Obj ><![CDATA[Creditor number has been created]]></Obj>
+<Details ><![CDATA[Creditor number has as text = .*123-456-749.*]]></Details>
+<Time><![CDATA[22/06/2010 - 11:09:14]]></Time>
+<TimeTick>1277197754</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="658" status="Passed" Source="Q:\SmokeTest\SmokeTestFunctions.qfl" SourceLine="719" >
+<Disp><![CDATA[Creditor number has been created]]></Disp>
+</NodeArgs>
+</Step>
+<Summary sTime="22/06/2010 - 11:08:32" eTime="22/06/2010 - 11:09:18" passed="4" failed="0" warnings="0" ></Summary>
+<NodeArgs eType="StartAction" icon="4" nRep="579" status="Passed" >
+<Disp><![CDATA[ManageCreditor Summary]]></Disp>
+</NodeArgs>
+</Action>
+<Action rID="T47">
+<AName><![CDATA[EncodeDomesticPayment]]></AName>
+<Step rID="T48">
+<Obj ><![CDATA[=== START ACTION : EncodeDomesticPayment ===]]></Obj>
+<Details ><![CDATA[]]></Details>
+<Time><![CDATA[22/06/2010 - 11:09:19]]></Time>
+<TimeTick>1277197759</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="665" Source="Q:\SmokeTest\SmokeTestFunctions.qfl" SourceLine="822" >
+<Disp><![CDATA[=== START ACTION : EncodeDomesticPayment ===]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T49">
+<Obj ><![CDATA[The link 'Domestic payment' has been found and has been clicked on.]]></Obj>
+<Details ><![CDATA[]]></Details>
+<Time><![CDATA[22/06/2010 - 11:09:24]]></Time>
+<TimeTick>1277197764</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="672" status="Passed" Source="Q:\SmokeTest\SmokeTestFunctions.qfl" SourceLine="719" >
+<Disp><![CDATA[The link 'Domestic payment' has been found and has been clicked on.]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T50">
+<Obj ><![CDATA[QTT was automatically filled in.]]></Obj>
+<Details ><![CDATA[]]></Details>
+<Time><![CDATA[22/06/2010 - 11:09:44]]></Time>
+<TimeTick>1277197784</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="719" status="Passed" Source="Q:\SmokeTest\SmokeTestFunctions.qfl" SourceLine="719" >
+<Disp><![CDATA[QTT was automatically filled in.]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T51">
+<Obj ><![CDATA[QTT was automatically filled in.]]></Obj>
+<Details ><![CDATA[]]></Details>
+<Time><![CDATA[22/06/2010 - 11:10:02]]></Time>
+<TimeTick>1277197802</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="758" status="Passed" Source="Q:\SmokeTest\SmokeTestFunctions.qfl" SourceLine="719" >
+<Disp><![CDATA[QTT was automatically filled in.]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T52">
+<Obj ><![CDATA[2 transactions  have been selected and will be grouped now.]]></Obj>
+<Details ><![CDATA[]]></Details>
+<Time><![CDATA[22/06/2010 - 11:10:16]]></Time>
+<TimeTick>1277197816</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="776" status="Passed" Source="Q:\SmokeTest\SmokeTestFunctions.qfl" SourceLine="719" >
+<Disp><![CDATA[2 transactions  have been selected and will be grouped now.]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T53">
+<Obj ><![CDATA['View details' appeared for : Payment group: 22062010111016]]></Obj>
+<Details ><![CDATA[Button 'Audit Trail' has been found.]]></Details>
+<Time><![CDATA[22/06/2010 - 11:10:36]]></Time>
+<TimeTick>1277197836</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="799" status="Passed" Source="Q:\SmokeTest\SmokeTestFunctions.qfl" SourceLine="138" >
+<Disp><![CDATA['View details' appeared for : Payment group: 22062010111016]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T54">
+<Obj ><![CDATA['View details' appeared for : Payment group: 22062010111016_clone]]></Obj>
+<Details ><![CDATA[Button 'Audit Trail' has been found.]]></Details>
+<Time><![CDATA[22/06/2010 - 11:10:49]]></Time>
+<TimeTick>1277197849</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="817" status="Passed" Source="Q:\SmokeTest\SmokeTestFunctions.qfl" SourceLine="138" >
+<Disp><![CDATA['View details' appeared for : Payment group: 22062010111016_clone]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T55">
+<Obj plainTxt="False" ><![CDATA[Isabel_IBS6]]></Obj>
+<Details plainTxt="False" ><![CDATA[Browser]]></Details>
+<Time><![CDATA[22/06/2010 - 11:10:58]]></Time>
+<TimeTick>1277197858</TimeTick>
+<Step rID="T56">
+<Obj plainTxt="False" ><![CDATA[IBS6]]></Obj>
+<Details plainTxt="False" ><![CDATA[Page]]></Details>
+<Time><![CDATA[22/06/2010 - 11:10:58]]></Time>
+<TimeTick>1277197858</TimeTick>
+<Step rID="T57">
+<Obj plainTxt="False" ><![CDATA[TableRowTransaction.Exist]]></Obj>
+<Details plainTxt="False" ><![CDATA["Object exists"]]></Details>
+<Time><![CDATA[22/06/2010 - 11:10:58]]></Time>
+<TimeTick>1277197858</TimeTick>
+<NodeArgs eType="Replay" icon="8" nRep="832" Source="Q:\SmokeTest\SmokeTestFunctions.qfl" SourceLine="347" >
+<Disp><![CDATA[TableRowTransaction.Exist]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T58">
+<Obj ><![CDATA[Counterparty has been saved]]></Obj>
+<Details ><![CDATA[Counterparty  '22062010110952' has been saved.]]></Details>
+<Time><![CDATA[22/06/2010 - 11:10:58]]></Time>
+<TimeTick>1277197858</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="833" status="Passed" Source="Q:\SmokeTest\SmokeTestFunctions.qfl" SourceLine="348" >
+<Disp><![CDATA[Counterparty has been saved]]></Disp>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="7" nRep="831" status="Passed" Source="Q:\SmokeTest\SmokeTestFunctions.qfl" SourceLine="347" >
+<Disp><![CDATA[IBS6]]></Disp>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="6" nRep="830" status="Passed" Source="Q:\SmokeTest\SmokeTestFunctions.qfl" SourceLine="347" >
+<Disp><![CDATA[Isabel_IBS6]]></Disp>
+</NodeArgs>
+</Step>
+<Summary sTime="22/06/2010 - 11:09:18" eTime="22/06/2010 - 11:11:01" passed="7" failed="0" warnings="0" ></Summary>
+<NodeArgs eType="StartAction" icon="4" nRep="664" status="Passed" >
+<Disp><![CDATA[EncodeDomesticPayment Summary]]></Disp>
+</NodeArgs>
+</Action>
+<Action rID="T59">
+<AName><![CDATA[DirectDebit]]></AName>
+<Step rID="T60">
+<Obj ><![CDATA[=== START ACTION : DirectDebit ===]]></Obj>
+<Details ><![CDATA[]]></Details>
+<Time><![CDATA[22/06/2010 - 11:11:02]]></Time>
+<TimeTick>1277197862</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="841" Source="Q:\SmokeTest\SmokeTestFunctions.qfl" SourceLine="822" >
+<Disp><![CDATA[=== START ACTION : DirectDebit ===]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T61">
+<Obj ><![CDATA['View details' appeared for : DirectDebitGroupName 22062010111102]]></Obj>
+<Details ><![CDATA[Button 'Audit Trail' has been found.]]></Details>
+<Time><![CDATA[22/06/2010 - 11:18:33]]></Time>
+<TimeTick>1277198313</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="960" status="Passed" Source="Q:\SmokeTest\SmokeTestFunctions.qfl" SourceLine="138" >
+<Disp><![CDATA['View details' appeared for : DirectDebitGroupName 22062010111102]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T62">
+<Obj ><![CDATA[    Expected status is correct.]]></Obj>
+<Details ><![CDATA[Expected status = insufficient. Actual status = Insufficiently signed]]></Details>
+<Time><![CDATA[22/06/2010 - 11:18:34]]></Time>
+<TimeTick>1277198314</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="963" status="Passed" Source="Q:\SmokeTest\SmokeTestFunctions.qfl" SourceLine="326" >
+<Disp><![CDATA[    Expected status is correct.]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T63">
+<Obj ><![CDATA[Direct Debit has been added to group.]]></Obj>
+<Details ><![CDATA[]]></Details>
+<Time><![CDATA[22/06/2010 - 11:20:49]]></Time>
+<TimeTick>1277198449</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="994" status="Passed" Source="Q:\SmokeTest\SmokeTestFunctions.qfl" SourceLine="719" >
+<Disp><![CDATA[Direct Debit has been added to group.]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T64">
+<Obj ><![CDATA[Direct Debit has been modified.]]></Obj>
+<Details ><![CDATA[]]></Details>
+<Time><![CDATA[22/06/2010 - 11:22:05]]></Time>
+<TimeTick>1277198525</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="1016" status="Passed" Source="Q:\SmokeTest\SmokeTestFunctions.qfl" SourceLine="719" >
+<Disp><![CDATA[Direct Debit has been modified.]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T65">
+<Obj ><![CDATA[    Expected status is correct.]]></Obj>
+<Details ><![CDATA[Expected status = not signed yet. Actual status = Not signed yet]]></Details>
+<Time><![CDATA[22/06/2010 - 11:22:08]]></Time>
+<TimeTick>1277198528</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="1021" status="Passed" Source="Q:\SmokeTest\SmokeTestFunctions.qfl" SourceLine="326" >
+<Disp><![CDATA[    Expected status is correct.]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T66">
+<Obj ><![CDATA[    Expected status is correct.]]></Obj>
+<Details ><![CDATA[Expected status = sufficiently. Actual status = Sufficiently signed]]></Details>
+<Time><![CDATA[22/06/2010 - 11:22:24]]></Time>
+<TimeTick>1277198544</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="1033" status="Passed" Source="Q:\SmokeTest\SmokeTestFunctions.qfl" SourceLine="326" >
+<Disp><![CDATA[    Expected status is correct.]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T67">
+<Obj plainTxt="False" ><![CDATA[Isabel_IBS6]]></Obj>
+<Details plainTxt="False" ><![CDATA[Browser]]></Details>
+<Time><![CDATA[22/06/2010 - 11:22:35]]></Time>
+<TimeTick>1277198555</TimeTick>
+<Step rID="T68">
+<Obj plainTxt="False" ><![CDATA[IBS6]]></Obj>
+<Details plainTxt="False" ><![CDATA[Page]]></Details>
+<Time><![CDATA[22/06/2010 - 11:22:35]]></Time>
+<TimeTick>1277198555</TimeTick>
+<Step rID="T69">
+<Obj plainTxt="False" ><![CDATA[TableRowTransaction.Exist]]></Obj>
+<Details plainTxt="False" ><![CDATA["Object exists"]]></Details>
+<Time><![CDATA[22/06/2010 - 11:22:35]]></Time>
+<TimeTick>1277198555</TimeTick>
+<NodeArgs eType="Replay" icon="8" nRep="1050" Source="Q:\SmokeTest\SmokeTestFunctions.qfl" SourceLine="347" >
+<Disp><![CDATA[TableRowTransaction.Exist]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T70">
+<Obj ><![CDATA[Counterparty has been saved]]></Obj>
+<Details ><![CDATA[Counterparty  'DebtorName 22062010111229' has been saved.]]></Details>
+<Time><![CDATA[22/06/2010 - 11:22:35]]></Time>
+<TimeTick>1277198555</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="1051" status="Passed" Source="Q:\SmokeTest\SmokeTestFunctions.qfl" SourceLine="348" >
+<Disp><![CDATA[Counterparty has been saved]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T71">
+<Obj ><![CDATA[Direct debit transaction with a total amount of 9.222 has been found.]]></Obj>
+<Details ><![CDATA[]]></Details>
+<Time><![CDATA[22/06/2010 - 11:22:40]]></Time>
+<TimeTick>1277198560</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="1062" status="Passed" Source="Q:\SmokeTest\SmokeTestFunctions.qfl" SourceLine="719" >
+<Disp><![CDATA[Direct debit transaction with a total amount of 9.222 has been found.]]></Disp>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="7" nRep="1049" status="Passed" Source="Q:\SmokeTest\SmokeTestFunctions.qfl" SourceLine="347" >
+<Disp><![CDATA[IBS6]]></Disp>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="6" nRep="1048" status="Passed" Source="Q:\SmokeTest\SmokeTestFunctions.qfl" SourceLine="347" >
+<Disp><![CDATA[Isabel_IBS6]]></Disp>
+</NodeArgs>
+</Step>
+<Summary sTime="22/06/2010 - 11:11:01" eTime="22/06/2010 - 11:22:40" passed="8" failed="0" warnings="0" ></Summary>
+<NodeArgs eType="StartAction" icon="4" nRep="840" status="Passed" >
+<Disp><![CDATA[DirectDebit Summary]]></Disp>
+</NodeArgs>
+</Action>
+<Action rID="T72">
+<AName><![CDATA[DownLoadReportFile]]></AName>
+<Step rID="T73">
+<Obj ><![CDATA[=== START ACTION : DownLoadReportFile ===]]></Obj>
+<Details ><![CDATA[]]></Details>
+<Time><![CDATA[22/06/2010 - 11:22:40]]></Time>
+<TimeTick>1277198560</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="1065" Source="Q:\SmokeTest\SmokeTestFunctions.qfl" SourceLine="822" >
+<Disp><![CDATA[=== START ACTION : DownLoadReportFile ===]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T74">
+<Obj ><![CDATA[Downloaded files are also appearing]]></Obj>
+<Details ><![CDATA[NumberOfTabelsBefore = 14 , NumberOfTabelsAfter = 40]]></Details>
+<Time><![CDATA[22/06/2010 - 11:22:52]]></Time>
+<TimeTick>1277198572</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="1074" status="Passed" Source="Q:\SmokeTest\SmokeTestFunctions.qfl" SourceLine="719" >
+<Disp><![CDATA[Downloaded files are also appearing]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T75">
+<Obj ><![CDATA[Downloaded file found on local machine]]></Obj>
+<Details ><![CDATA[Downloaded report file was present on local hard drive (C:\MT940_20100622_112253.txt).]]></Details>
+<Time><![CDATA[22/06/2010 - 11:23:33]]></Time>
+<TimeTick>1277198613</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="1096" status="Passed" Source="Q:\SmokeTest\SmokeTestFunctions.qfl" SourceLine="719" >
+<Disp><![CDATA[Downloaded file found on local machine]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T76">
+<Obj ><![CDATA[Downloaded file found on local machine]]></Obj>
+<Details ><![CDATA[Downloaded report file was present on local hard drive (C:\MT940_20100622_112337.txt).]]></Details>
+<Time><![CDATA[22/06/2010 - 11:23:48]]></Time>
+<TimeTick>1277198628</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="1117" status="Passed" Source="Q:\SmokeTest\SmokeTestFunctions.qfl" SourceLine="719" >
+<Disp><![CDATA[Downloaded file found on local machine]]></Disp>
+</NodeArgs>
+</Step>
+<Summary sTime="22/06/2010 - 11:22:40" eTime="22/06/2010 - 11:23:53" passed="3" failed="0" warnings="0" ></Summary>
+<NodeArgs eType="StartAction" icon="4" nRep="1064" status="Passed" >
+<Disp><![CDATA[DownLoadReportFile Summary]]></Disp>
+</NodeArgs>
+</Action>
+<Action rID="T77">
+<AName><![CDATA[EncodeForeignPayment]]></AName>
+<Step rID="T78">
+<Obj ><![CDATA[=== START ACTION : EncodeForeignPayment ===]]></Obj>
+<Details ><![CDATA[]]></Details>
+<Time><![CDATA[22/06/2010 - 11:23:56]]></Time>
+<TimeTick>1277198636</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="1124" Source="Q:\SmokeTest\SmokeTestFunctions.qfl" SourceLine="822" >
+<Disp><![CDATA[=== START ACTION : EncodeForeignPayment ===]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T79">
+<Obj ><![CDATA[Low costs payment, as expected from 1.8 on.]]></Obj>
+<Details ><![CDATA[]]></Details>
+<Time><![CDATA[22/06/2010 - 11:25:00]]></Time>
+<TimeTick>1277198700</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="1198" status="Passed" Source="Q:\SmokeTest\SmokeTestFunctions.qfl" SourceLine="719" >
+<Disp><![CDATA[Low costs payment, as expected from 1.8 on.]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T80">
+<Obj ><![CDATA['View details' appeared for : Foreign payment to own account 22062010112609]]></Obj>
+<Details ><![CDATA[Button 'Audit Trail' has been found.]]></Details>
+<Time><![CDATA[22/06/2010 - 11:26:42]]></Time>
+<TimeTick>1277198802</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="1318" status="Passed" Source="Q:\SmokeTest\SmokeTestFunctions.qfl" SourceLine="138" >
+<Disp><![CDATA['View details' appeared for : Foreign payment to own account 22062010112609]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T81">
+<Obj ><![CDATA[Clone of foreign payment found in TX-area.]]></Obj>
+<Details ><![CDATA[Transaction name = 22062010112645]]></Details>
+<Time><![CDATA[22/06/2010 - 11:26:54]]></Time>
+<TimeTick>1277198814</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="1335" status="Passed" Source="Q:\SmokeTest\SmokeTestFunctions.qfl" SourceLine="719" >
+<Disp><![CDATA[Clone of foreign payment found in TX-area.]]></Disp>
+</NodeArgs>
+</Step>
+<Summary sTime="22/06/2010 - 11:23:55" eTime="22/06/2010 - 11:26:57" passed="3" failed="0" warnings="0" ></Summary>
+<NodeArgs eType="StartAction" icon="4" nRep="1123" status="Passed" >
+<Disp><![CDATA[EncodeForeignPayment Summary]]></Disp>
+</NodeArgs>
+</Action>
+<Action rID="T82">
+<AName><![CDATA[EncodeSepaPayment]]></AName>
+<Step rID="T83">
+<Obj ><![CDATA[=== START ACTION : EncodeSepaPayment ===]]></Obj>
+<Details ><![CDATA[]]></Details>
+<Time><![CDATA[22/06/2010 - 11:26:57]]></Time>
+<TimeTick>1277198817</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="1343" Source="Q:\SmokeTest\SmokeTestFunctions.qfl" SourceLine="822" >
+<Disp><![CDATA[=== START ACTION : EncodeSepaPayment ===]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T84">
+<Obj ><![CDATA[SEPA 1 has been encoded.]]></Obj>
+<Details ><![CDATA[Number of loops = 1]]></Details>
+<Time><![CDATA[22/06/2010 - 11:27:37]]></Time>
+<TimeTick>1277198857</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="1386" status="Passed" Source="Q:\SmokeTest\SmokeTestFunctions.qfl" SourceLine="719" >
+<Disp><![CDATA[SEPA 1 has been encoded.]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T85">
+<Obj ><![CDATA[SEPA 2 has been encoded.]]></Obj>
+<Details ><![CDATA[Number of loops = 1]]></Details>
+<Time><![CDATA[22/06/2010 - 11:27:51]]></Time>
+<TimeTick>1277198871</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="1407" status="Passed" Source="Q:\SmokeTest\SmokeTestFunctions.qfl" SourceLine="719" >
+<Disp><![CDATA[SEPA 2 has been encoded.]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T86">
+<Obj ><![CDATA[SEPA 3 has been encoded.]]></Obj>
+<Details ><![CDATA[Number of loops = 1]]></Details>
+<Time><![CDATA[22/06/2010 - 11:28:09]]></Time>
+<TimeTick>1277198889</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="1424" status="Passed" Source="Q:\SmokeTest\SmokeTestFunctions.qfl" SourceLine="719" >
+<Disp><![CDATA[SEPA 3 has been encoded.]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T87">
+<Obj ><![CDATA[SEPA 4 has been encoded.]]></Obj>
+<Details ><![CDATA[Number of loops = 1]]></Details>
+<Time><![CDATA[22/06/2010 - 11:28:28]]></Time>
+<TimeTick>1277198908</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="1441" status="Passed" Source="Q:\SmokeTest\SmokeTestFunctions.qfl" SourceLine="719" >
+<Disp><![CDATA[SEPA 4 has been encoded.]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T88">
+<Obj ><![CDATA[SEPA 5 has been encoded.]]></Obj>
+<Details ><![CDATA[Number of loops = 1]]></Details>
+<Time><![CDATA[22/06/2010 - 11:29:09]]></Time>
+<TimeTick>1277198949</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="1469" status="Passed" Source="Q:\SmokeTest\SmokeTestFunctions.qfl" SourceLine="719" >
+<Disp><![CDATA[SEPA 5 has been encoded.]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T89">
+<Obj ><![CDATA[SEPA 6 has been encoded.]]></Obj>
+<Details ><![CDATA[Number of loops = 1]]></Details>
+<Time><![CDATA[22/06/2010 - 11:29:36]]></Time>
+<TimeTick>1277198976</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="1501" status="Passed" Source="Q:\SmokeTest\SmokeTestFunctions.qfl" SourceLine="719" >
+<Disp><![CDATA[SEPA 6 has been encoded.]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T90">
+<Obj ><![CDATA[SEPA 7 has been encoded.]]></Obj>
+<Details ><![CDATA[Number of loops = 1]]></Details>
+<Time><![CDATA[22/06/2010 - 11:29:57]]></Time>
+<TimeTick>1277198997</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="1530" status="Passed" Source="Q:\SmokeTest\SmokeTestFunctions.qfl" SourceLine="719" >
+<Disp><![CDATA[SEPA 7 has been encoded.]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T91">
+<Obj ><![CDATA['View details' appeared for : Sepa payment 22062010113011]]></Obj>
+<Details ><![CDATA[Button 'Audit Trail' has been found.]]></Details>
+<Time><![CDATA[22/06/2010 - 11:30:25]]></Time>
+<TimeTick>1277199025</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="1576" status="Passed" Source="Q:\SmokeTest\SmokeTestFunctions.qfl" SourceLine="138" >
+<Disp><![CDATA['View details' appeared for : Sepa payment 22062010113011]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T92">
+<Obj ><![CDATA[Transaction has been refused. ]]></Obj>
+<Details ><![CDATA[]]></Details>
+<Time><![CDATA[22/06/2010 - 11:30:27]]></Time>
+<TimeTick>1277199027</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="1586" status="Passed" Source="Q:\SmokeTest\SmokeTestFunctions.qfl" SourceLine="719" >
+<Disp><![CDATA[Transaction has been refused. ]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T93">
+<Obj ><![CDATA['View details' appeared for : Sepa payment 22062010113011]]></Obj>
+<Details ><![CDATA[Button 'Audit Trail' has been found.]]></Details>
+<Time><![CDATA[22/06/2010 - 11:30:34]]></Time>
+<TimeTick>1277199034</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="1596" status="Passed" Source="Q:\SmokeTest\SmokeTestFunctions.qfl" SourceLine="138" >
+<Disp><![CDATA['View details' appeared for : Sepa payment 22062010113011]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T94">
+<Obj ><![CDATA[    Expected status is correct.]]></Obj>
+<Details ><![CDATA[Expected status = Refused. Actual status = Refused]]></Details>
+<Time><![CDATA[22/06/2010 - 11:30:34]]></Time>
+<TimeTick>1277199034</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="1599" status="Passed" Source="Q:\SmokeTest\SmokeTestFunctions.qfl" SourceLine="326" >
+<Disp><![CDATA[    Expected status is correct.]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T95">
+<Obj ><![CDATA['View details' appeared for : Sepa payment 22062010113011]]></Obj>
+<Details ><![CDATA[Button 'Audit Trail' has been found.]]></Details>
+<Time><![CDATA[22/06/2010 - 11:30:56]]></Time>
+<TimeTick>1277199056</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="1622" status="Passed" Source="Q:\SmokeTest\SmokeTestFunctions.qfl" SourceLine="138" >
+<Disp><![CDATA['View details' appeared for : Sepa payment 22062010113011]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T96">
+<Obj ><![CDATA[Sepa-payment has been singed.]]></Obj>
+<Details ><![CDATA[]]></Details>
+<Time><![CDATA[22/06/2010 - 11:31:12]]></Time>
+<TimeTick>1277199072</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="1631" status="Passed" Source="Q:\SmokeTest\SmokeTestFunctions.qfl" SourceLine="719" >
+<Disp><![CDATA[Sepa-payment has been singed.]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T97">
+<Obj ><![CDATA[    Expected status is correct.]]></Obj>
+<Details ><![CDATA[Expected status = sufficient. Actual status = Sufficiently signed]]></Details>
+<Time><![CDATA[22/06/2010 - 11:31:12]]></Time>
+<TimeTick>1277199072</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="1634" status="Passed" Source="Q:\SmokeTest\SmokeTestFunctions.qfl" SourceLine="326" >
+<Disp><![CDATA[    Expected status is correct.]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T98">
+<Obj ><![CDATA['View details' appeared for : Sepa payment 22062010113011]]></Obj>
+<Details ><![CDATA[Button 'Audit Trail' has been found.]]></Details>
+<Time><![CDATA[22/06/2010 - 11:31:23]]></Time>
+<TimeTick>1277199083</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="1650" status="Passed" Source="Q:\SmokeTest\SmokeTestFunctions.qfl" SourceLine="138" >
+<Disp><![CDATA['View details' appeared for : Sepa payment 22062010113011]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T99">
+<Obj ><![CDATA[Checkbox is checked in 'modify processing options']]></Obj>
+<Details ><![CDATA[]]></Details>
+<Time><![CDATA[22/06/2010 - 11:32:26]]></Time>
+<TimeTick>1277199146</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="2042" status="Passed" Source="Q:\SmokeTest\SmokeTestFunctions.qfl" SourceLine="719" >
+<Disp><![CDATA[Checkbox is checked in 'modify processing options']]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T100">
+<Obj plainTxt="False" ><![CDATA[Isabel_IBS6]]></Obj>
+<Details plainTxt="False" ><![CDATA[Browser]]></Details>
+<Time><![CDATA[22/06/2010 - 11:32:38]]></Time>
+<TimeTick>1277199158</TimeTick>
+<Step rID="T101">
+<Obj plainTxt="False" ><![CDATA[IBS6]]></Obj>
+<Details plainTxt="False" ><![CDATA[Page]]></Details>
+<Time><![CDATA[22/06/2010 - 11:32:38]]></Time>
+<TimeTick>1277199158</TimeTick>
+<Step rID="T102">
+<Obj plainTxt="False" ><![CDATA[TableRowTransaction.Exist]]></Obj>
+<Details plainTxt="False" ><![CDATA["Object exists"]]></Details>
+<Time><![CDATA[22/06/2010 - 11:32:38]]></Time>
+<TimeTick>1277199158</TimeTick>
+<NodeArgs eType="Replay" icon="8" nRep="2060" Source="Q:\SmokeTest\SmokeTestFunctions.qfl" SourceLine="347" >
+<Disp><![CDATA[TableRowTransaction.Exist]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T103">
+<Obj ><![CDATA[Counterparty has been saved]]></Obj>
+<Details ><![CDATA[Counterparty  'Benef Sepa 22062010113000' has been saved.]]></Details>
+<Time><![CDATA[22/06/2010 - 11:32:38]]></Time>
+<TimeTick>1277199158</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="2061" status="Passed" Source="Q:\SmokeTest\SmokeTestFunctions.qfl" SourceLine="348" >
+<Disp><![CDATA[Counterparty has been saved]]></Disp>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="7" nRep="2059" status="Passed" Source="Q:\SmokeTest\SmokeTestFunctions.qfl" SourceLine="347" >
+<Disp><![CDATA[IBS6]]></Disp>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="6" nRep="2058" status="Passed" Source="Q:\SmokeTest\SmokeTestFunctions.qfl" SourceLine="347" >
+<Disp><![CDATA[Isabel_IBS6]]></Disp>
+</NodeArgs>
+</Step>
+<Summary sTime="22/06/2010 - 11:26:57" eTime="22/06/2010 - 11:32:42" passed="17" failed="0" warnings="0" ></Summary>
+<NodeArgs eType="StartAction" icon="4" nRep="1342" status="Passed" >
+<Disp><![CDATA[EncodeSepaPayment Summary]]></Disp>
+</NodeArgs>
+</Action>
+<Action rID="T104">
+<AName><![CDATA[FortisGlobalDebitPayment]]></AName>
+<Step rID="T105">
+<Obj ><![CDATA[=== START ACTION : FortisGlobalDebitPayment ===]]></Obj>
+<Details ><![CDATA[]]></Details>
+<Time><![CDATA[22/06/2010 - 11:32:42]]></Time>
+<TimeTick>1277199162</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="2070" Source="Q:\SmokeTest\SmokeTestFunctions.qfl" SourceLine="822" >
+<Disp><![CDATA[=== START ACTION : FortisGlobalDebitPayment ===]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T106">
+<Obj ><![CDATA[Transaction has been found in TX-area.]]></Obj>
+<Details ><![CDATA[Payment name = 'Payment group: .*11,33' could be found.]]></Details>
+<Time><![CDATA[22/06/2010 - 11:33:21]]></Time>
+<TimeTick>1277199201</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="2111" status="Passed" Source="Q:\SmokeTest\SmokeTestFunctions.qfl" SourceLine="719" >
+<Disp><![CDATA[Transaction has been found in TX-area.]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T107">
+<Obj ><![CDATA['View details' appeared for : Payment group: .*11,33]]></Obj>
+<Details ><![CDATA[Button 'Audit Trail' has been found.]]></Details>
+<Time><![CDATA[22/06/2010 - 11:33:27]]></Time>
+<TimeTick>1277199207</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="2120" status="Passed" Source="Q:\SmokeTest\SmokeTestFunctions.qfl" SourceLine="138" >
+<Disp><![CDATA['View details' appeared for : Payment group: .*11,33]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T108">
+<Obj ><![CDATA[Modified transaction has been found in TX-area.]]></Obj>
+<Details ><![CDATA[Payment name = 'Payment group: .*111,33' could be found.]]></Details>
+<Time><![CDATA[22/06/2010 - 11:33:50]]></Time>
+<TimeTick>1277199230</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="2136" status="Passed" Source="Q:\SmokeTest\SmokeTestFunctions.qfl" SourceLine="719" >
+<Disp><![CDATA[Modified transaction has been found in TX-area.]]></Disp>
+</NodeArgs>
+</Step>
+<Summary sTime="22/06/2010 - 11:32:42" eTime="22/06/2010 - 11:33:50" passed="3" failed="0" warnings="0" ></Summary>
+<NodeArgs eType="StartAction" icon="4" nRep="2069" status="Passed" >
+<Disp><![CDATA[FortisGlobalDebitPayment Summary]]></Disp>
+</NodeArgs>
+</Action>
+<Action rID="T109">
+<AName><![CDATA[FortisSinglePayment]]></AName>
+<Step rID="T110">
+<Obj ><![CDATA[=== START ACTION : FortisSinglePayment ===]]></Obj>
+<Details ><![CDATA[]]></Details>
+<Time><![CDATA[22/06/2010 - 11:33:51]]></Time>
+<TimeTick>1277199231</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="2139" Source="Q:\SmokeTest\SmokeTestFunctions.qfl" SourceLine="822" >
+<Disp><![CDATA[=== START ACTION : FortisSinglePayment ===]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T111">
+<Obj ><![CDATA[Transaction has been selected in TX-area and will be signed.]]></Obj>
+<Details ><![CDATA[]]></Details>
+<Time><![CDATA[22/06/2010 - 11:34:27]]></Time>
+<TimeTick>1277199267</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="2187" status="Passed" Source="Q:\SmokeTest\SmokeTestFunctions.qfl" SourceLine="719" >
+<Disp><![CDATA[Transaction has been selected in TX-area and will be signed.]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T112">
+<Obj ><![CDATA['View details' appeared for : 1.134,14]]></Obj>
+<Details ><![CDATA[Button 'Audit Trail' has been found.]]></Details>
+<Time><![CDATA[22/06/2010 - 11:34:49]]></Time>
+<TimeTick>1277199289</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="2207" status="Passed" Source="Q:\SmokeTest\SmokeTestFunctions.qfl" SourceLine="138" >
+<Disp><![CDATA['View details' appeared for : 1.134,14]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T113">
+<Obj ><![CDATA[    Expected status is correct.]]></Obj>
+<Details ><![CDATA[Expected status = sufficient. Actual status = Sufficiently signed]]></Details>
+<Time><![CDATA[22/06/2010 - 11:34:50]]></Time>
+<TimeTick>1277199290</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="2210" status="Passed" Source="Q:\SmokeTest\SmokeTestFunctions.qfl" SourceLine="326" >
+<Disp><![CDATA[    Expected status is correct.]]></Disp>
+</NodeArgs>
+</Step>
+<Summary sTime="22/06/2010 - 11:33:51" eTime="22/06/2010 - 11:34:59" passed="3" failed="0" warnings="0" ></Summary>
+<NodeArgs eType="StartAction" icon="4" nRep="2138" status="Passed" >
+<Disp><![CDATA[FortisSinglePayment Summary]]></Disp>
+</NodeArgs>
+</Action>
+<Action rID="T114">
+<AName><![CDATA[FortisStandingOrder]]></AName>
+<Step rID="T115">
+<Obj ><![CDATA[=== START ACTION : FortisStandingOrder ===]]></Obj>
+<Details ><![CDATA[]]></Details>
+<Time><![CDATA[22/06/2010 - 11:35:00]]></Time>
+<TimeTick>1277199300</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="2226" Source="Q:\SmokeTest\SmokeTestFunctions.qfl" SourceLine="822" >
+<Disp><![CDATA[=== START ACTION : FortisStandingOrder ===]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T116">
+<Obj ><![CDATA[Transaction (SO) could be selected.]]></Obj>
+<Details ><![CDATA[Payment name = 'Standing order from.*11,35' could be found.]]></Details>
+<Time><![CDATA[22/06/2010 - 11:35:51]]></Time>
+<TimeTick>1277199351</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="2284" status="Passed" Source="Q:\SmokeTest\SmokeTestFunctions.qfl" SourceLine="719" >
+<Disp><![CDATA[Transaction (SO) could be selected.]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T117">
+<Obj ><![CDATA['View details' appeared for : Standing order from.*11,35]]></Obj>
+<Details ><![CDATA[Button 'Audit Trail' has been found.]]></Details>
+<Time><![CDATA[22/06/2010 - 11:35:55]]></Time>
+<TimeTick>1277199355</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="2293" status="Passed" Source="Q:\SmokeTest\SmokeTestFunctions.qfl" SourceLine="138" >
+<Disp><![CDATA['View details' appeared for : Standing order from.*11,35]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T118">
+<Obj ><![CDATA[Modified SO has been found in TX-area.]]></Obj>
+<Details ><![CDATA[Payment name = '1.136,00' could be found.]]></Details>
+<Time><![CDATA[22/06/2010 - 11:36:33]]></Time>
+<TimeTick>1277199393</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="2312" status="Passed" Source="Q:\SmokeTest\SmokeTestFunctions.qfl" SourceLine="719" >
+<Disp><![CDATA[Modified SO has been found in TX-area.]]></Disp>
+</NodeArgs>
+</Step>
+<Summary sTime="22/06/2010 - 11:35:00" eTime="22/06/2010 - 11:36:33" passed="3" failed="0" warnings="0" ></Summary>
+<NodeArgs eType="StartAction" icon="4" nRep="2225" status="Passed" >
+<Disp><![CDATA[FortisStandingOrder Summary]]></Disp>
+</NodeArgs>
+</Action>
+<Action rID="T119">
+<AName><![CDATA[UploadCounterparty]]></AName>
+<Step rID="T120">
+<Obj ><![CDATA[=== START ACTION : UploadCounterparty ===]]></Obj>
+<Details ><![CDATA[]]></Details>
+<Time><![CDATA[22/06/2010 - 11:36:34]]></Time>
+<TimeTick>1277199394</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="2315" Source="Q:\SmokeTest\SmokeTestFunctions.qfl" SourceLine="822" >
+<Disp><![CDATA[=== START ACTION : UploadCounterparty ===]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T121">
+<Obj ><![CDATA[Counterparties have been uploaded]]></Obj>
+<Details ><![CDATA[NumberOfTables =4]]></Details>
+<Time><![CDATA[22/06/2010 - 11:37:11]]></Time>
+<TimeTick>1277199431</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="2395" status="Passed" Source="Q:\SmokeTest\SmokeTestFunctions.qfl" SourceLine="719" >
+<Disp><![CDATA[Counterparties have been uploaded]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T122">
+<Obj ><![CDATA[SMOKETEST 2 has been shared]]></Obj>
+<Details ><![CDATA[NumberOfImages =2]]></Details>
+<Time><![CDATA[22/06/2010 - 11:37:11]]></Time>
+<TimeTick>1277199431</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="2397" status="Passed" Source="Q:\SmokeTest\SmokeTestFunctions.qfl" SourceLine="719" >
+<Disp><![CDATA[SMOKETEST 2 has been shared]]></Disp>
+</NodeArgs>
+</Step>
+<Summary sTime="22/06/2010 - 11:36:34" eTime="22/06/2010 - 11:37:15" passed="2" failed="0" warnings="0" ></Summary>
+<NodeArgs eType="StartAction" icon="4" nRep="2314" status="Passed" >
+<Disp><![CDATA[UploadCounterparty Summary]]></Disp>
+</NodeArgs>
+</Action>
+<Action rID="T123">
+<AName><![CDATA[GroupOfPayments]]></AName>
+<Step rID="T124">
+<Obj ><![CDATA[=== START ACTION : GroupOfPayments ===]]></Obj>
+<Details ><![CDATA[]]></Details>
+<Time><![CDATA[22/06/2010 - 11:37:15]]></Time>
+<TimeTick>1277199435</TimeTick>
+<Step rID="T125">
+<Obj plainTxt="False" ><![CDATA[BenefAccountNew_General]]></Obj>
+<Details plainTxt="False" ><![CDATA[Object's physical description:<br>Mercury Class = WebEdit<br>Html Id = beneficiaryAccount_view2<br>DHTML Class = inpTextStyle<br>]]></Details>
+<Time><![CDATA[22/06/2010 - 11:39:55]]></Time>
+<TimeTick>1277199595</TimeTick>
+<Step rID="T126">
+<Obj ><![CDATA[SmokeTest : Unexpected problem in 'GroupOfPayments'.]]></Obj>
+<Details ><![CDATA[Object_html_id = beneficiaryAccount_view2]]></Details>
+<Time><![CDATA[22/06/2010 - 11:39:55]]></Time>
+<TimeTick>1277199595</TimeTick>
+<Step rID="T127">
+<Obj ><![CDATA[GroupOfPayments_dev2_22062010113955.png]]></Obj>
+<Details ><![CDATA[]]></Details>
+<Time><![CDATA[22/06/2010 - 11:39:55]]></Time>
+<TimeTick>1277199595</TimeTick>
+<Action rID="T128">
+<AName><![CDATA[SelectLogonProfile]]></AName>
+<Step rID="T129">
+<Obj ><![CDATA[LogonProfile2 found on portal.]]></Obj>
+<Details ><![CDATA[]]></Details>
+<Time><![CDATA[22/06/2010 - 11:40:13]]></Time>
+<TimeTick>1277199613</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="2525" status="Passed" >
+<Disp><![CDATA[LogonProfile2 found on portal.]]></Disp>
+</NodeArgs>
+</Step>
+<Summary sTime="22/06/2010 - 11:39:58" eTime="22/06/2010 - 11:40:18" passed="1" failed="0" warnings="0" ></Summary>
+<NodeArgs eType="StartAction" icon="4" nRep="2484" status="Passed" >
+<Disp><![CDATA[SelectLogonProfile Summary]]></Disp>
+</NodeArgs>
+</Action>
+<NodeArgs eType="User" icon="5" nRep="2474" status="Passed" Source="Q:\SmokeTest\SmokeTestFunctions.qfl" SourceLine="296" >
+<Disp><![CDATA[GroupOfPayments_dev2_22062010113955.png]]></Disp>
+</NodeArgs>
+</Step>
+<NodeArgs eType="User" icon="5" nRep="2473" status="Failed" Source="Q:\SmokeTest\SmokeTestFunctions.qfl" SourceLine="296" >
+<Disp><![CDATA[SmokeTest : Unexpected problem in 'GroupOfPayments'.]]></Disp>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Replay" icon="9" nRep="2470" status="Failed" nType="Description" Source="Q:\SmokeTest\SmokeTestFunctions.qfl" SourceLine="296" >
+<Disp><![CDATA[BenefAccountNew_General]]></Disp>
+</NodeArgs>
+</Step>
+<NodeArgs eType="User" icon="5" nRep="2406" status="Failed" Source="Q:\SmokeTest\SmokeTestFunctions.qfl" SourceLine="822" >
+<Disp><![CDATA[=== START ACTION : GroupOfPayments ===]]></Disp>
+</NodeArgs>
+</Step>
+<Summary sTime="22/06/2010 - 11:37:15" eTime="22/06/2010 - 11:40:19" passed="0" failed="1" warnings="1" ></Summary>
+<NodeArgs eType="StartAction" icon="4" nRep="2405" status="Failed" >
+<Disp><![CDATA[GroupOfPayments Summary]]></Disp>
+</NodeArgs>
+</Action>
+<Action rID="T130">
+<AName><![CDATA[R4R]]></AName>
+<Step rID="T131">
+<Obj ><![CDATA[=== START ACTION : R4R ===]]></Obj>
+<Details ><![CDATA[]]></Details>
+<Time><![CDATA[22/06/2010 - 11:40:19]]></Time>
+<TimeTick>1277199619</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="2534" Source="Q:\SmokeTest\SmokeTestFunctions.qfl" SourceLine="822" >
+<Disp><![CDATA[=== START ACTION : R4R ===]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T132">
+<Obj ><![CDATA[R4R task has been created]]></Obj>
+<Details ><![CDATA[TaskName '22062010114026-R4R' appears in the overview of tasks]]></Details>
+<Time><![CDATA[22/06/2010 - 11:40:34]]></Time>
+<TimeTick>1277199634</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="2560" status="Passed" Source="Q:\SmokeTest\SmokeTestFunctions.qfl" SourceLine="719" >
+<Disp><![CDATA[R4R task has been created]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T133">
+<Obj ><![CDATA[Alert appeared]]></Obj>
+<Details ><![CDATA[Alert appeared because no task has been selected]]></Details>
+<Time><![CDATA[22/06/2010 - 11:40:35]]></Time>
+<TimeTick>1277199635</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="2564" status="Passed" Source="Q:\SmokeTest\SmokeTestFunctions.qfl" SourceLine="719" >
+<Disp><![CDATA[Alert appeared]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T134">
+<Obj ><![CDATA[A task has been deleted]]></Obj>
+<Details ><![CDATA[Task with Table and index=6 has been deleted]]></Details>
+<Time><![CDATA[22/06/2010 - 11:40:36]]></Time>
+<TimeTick>1277199636</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="2576" status="Passed" Source="Q:\SmokeTest\SmokeTestFunctions.qfl" SourceLine="719" >
+<Disp><![CDATA[A task has been deleted]]></Disp>
+</NodeArgs>
+</Step>
+<Summary sTime="22/06/2010 - 11:40:19" eTime="22/06/2010 - 11:40:40" passed="3" failed="0" warnings="0" ></Summary>
+<NodeArgs eType="StartAction" icon="4" nRep="2533" status="Passed" >
+<Disp><![CDATA[R4R Summary]]></Disp>
+</NodeArgs>
+</Action>
+<Action rID="T135">
+<AName><![CDATA[Print]]></AName>
+<Step rID="T136">
+<Obj ><![CDATA[=== START ACTION : Print ===]]></Obj>
+<Details ><![CDATA[]]></Details>
+<Time><![CDATA[22/06/2010 - 11:40:41]]></Time>
+<TimeTick>1277199641</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="2583" Source="Q:\SmokeTest\SmokeTestFunctions.qfl" SourceLine="822" >
+<Disp><![CDATA[=== START ACTION : Print ===]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T137">
+<Obj ><![CDATA[Print pdf in Tab_Transactions (j=0)]]></Obj>
+<Details ><![CDATA[Edit 'Find'-field found in adobe reader.]]></Details>
+<Time><![CDATA[22/06/2010 - 11:41:03]]></Time>
+<TimeTick>1277199663</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="2602" status="Passed" Source="Q:\SmokeTest\SmokeTestFunctions.qfl" SourceLine="719" >
+<Disp><![CDATA[Print pdf in Tab_Transactions (j=0)]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T138">
+<Obj ><![CDATA[Print txt in Tab_Transactions (j=0)]]></Obj>
+<Details ><![CDATA[Content (transaction overviewv=) found.]]></Details>
+<Time><![CDATA[22/06/2010 - 11:41:14]]></Time>
+<TimeTick>1277199674</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="2613" status="Passed" Source="Q:\SmokeTest\SmokeTestFunctions.qfl" SourceLine="719" >
+<Disp><![CDATA[Print txt in Tab_Transactions (j=0)]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T139">
+<Obj ><![CDATA[Print pdf in Tab_Transactions (j=1)]]></Obj>
+<Details ><![CDATA[Edit 'Find'-field found in adobe reader.]]></Details>
+<Time><![CDATA[22/06/2010 - 11:41:28]]></Time>
+<TimeTick>1277199688</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="2624" status="Passed" Source="Q:\SmokeTest\SmokeTestFunctions.qfl" SourceLine="719" >
+<Disp><![CDATA[Print pdf in Tab_Transactions (j=1)]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T140">
+<Obj ><![CDATA[Print txt in Tab_Transactions (j=1)]]></Obj>
+<Details ><![CDATA[Content (transaction overviewv=) found.]]></Details>
+<Time><![CDATA[22/06/2010 - 11:41:39]]></Time>
+<TimeTick>1277199699</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="2635" status="Passed" Source="Q:\SmokeTest\SmokeTestFunctions.qfl" SourceLine="719" >
+<Disp><![CDATA[Print txt in Tab_Transactions (j=1)]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T141">
+<Obj ><![CDATA[Print pdf in Tab_Sent Transactions (j=0)]]></Obj>
+<Details ><![CDATA[Edit 'Find'-field found in adobe reader.]]></Details>
+<Time><![CDATA[22/06/2010 - 11:41:58]]></Time>
+<TimeTick>1277199718</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="2653" status="Passed" Source="Q:\SmokeTest\SmokeTestFunctions.qfl" SourceLine="719" >
+<Disp><![CDATA[Print pdf in Tab_Sent Transactions (j=0)]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T142">
+<Obj ><![CDATA[Print txt in Tab_Sent Transactions (j=0)]]></Obj>
+<Details ><![CDATA[Content (transaction overviewv=) found.]]></Details>
+<Time><![CDATA[22/06/2010 - 11:42:08]]></Time>
+<TimeTick>1277199728</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="2664" status="Passed" Source="Q:\SmokeTest\SmokeTestFunctions.qfl" SourceLine="719" >
+<Disp><![CDATA[Print txt in Tab_Sent Transactions (j=0)]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T143">
+<Obj ><![CDATA[Print pdf in Tab_Sent Transactions (j=1)]]></Obj>
+<Details ><![CDATA[Edit 'Find'-field found in adobe reader.]]></Details>
+<Time><![CDATA[22/06/2010 - 11:42:22]]></Time>
+<TimeTick>1277199742</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="2675" status="Passed" Source="Q:\SmokeTest\SmokeTestFunctions.qfl" SourceLine="719" >
+<Disp><![CDATA[Print pdf in Tab_Sent Transactions (j=1)]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T144">
+<Obj ><![CDATA[Print txt in Tab_Sent Transactions (j=1)]]></Obj>
+<Details ><![CDATA[Content (transaction overviewv=) found.]]></Details>
+<Time><![CDATA[22/06/2010 - 11:42:34]]></Time>
+<TimeTick>1277199754</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="2685" status="Passed" Source="Q:\SmokeTest\SmokeTestFunctions.qfl" SourceLine="719" >
+<Disp><![CDATA[Print txt in Tab_Sent Transactions (j=1)]]></Disp>
+</NodeArgs>
+</Step>
+<Summary sTime="22/06/2010 - 11:40:40" eTime="22/06/2010 - 11:42:36" passed="8" failed="0" warnings="0" ></Summary>
+<NodeArgs eType="StartAction" icon="4" nRep="2582" status="Passed" >
+<Disp><![CDATA[Print Summary]]></Disp>
+</NodeArgs>
+</Action>
+<Action rID="T145">
+<AName><![CDATA[AccountInfo]]></AName>
+<Step rID="T146">
+<Obj ><![CDATA[=== START ACTION : AccountInfo ===]]></Obj>
+<Details ><![CDATA[]]></Details>
+<Time><![CDATA[22/06/2010 - 11:42:37]]></Time>
+<TimeTick>1277199757</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="2691" Source="Q:\SmokeTest\SmokeTestFunctions.qfl" SourceLine="822" >
+<Disp><![CDATA[=== START ACTION : AccountInfo ===]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T147">
+<Obj ><![CDATA[WebEdit 'DefaultViewOfAccountInfo_Pref' found]]></Obj>
+<Details ><![CDATA[Tab 'Account info']]></Details>
+<Time><![CDATA[22/06/2010 - 11:42:51]]></Time>
+<TimeTick>1277199771</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="2709" status="Passed" Source="Q:\SmokeTest\SmokeTestFunctions.qfl" SourceLine="719" >
+<Disp><![CDATA[WebEdit 'DefaultViewOfAccountInfo_Pref' found]]></Disp>
+</NodeArgs>
+</Step>
+<Action rID="T148">
+<AName><![CDATA[SelectLogonProfile]]></AName>
+<Step rID="T149">
+<Obj ><![CDATA[LogonProfile2 found on portal.]]></Obj>
+<Details ><![CDATA[]]></Details>
+<Time><![CDATA[22/06/2010 - 11:43:08]]></Time>
+<TimeTick>1277199788</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="2755" status="Passed" Source="Q:\SmokeTest\SmokeTestFunctions.qfl" SourceLine="719" >
+<Disp><![CDATA[LogonProfile2 found on portal.]]></Disp>
+</NodeArgs>
+</Step>
+<Summary sTime="22/06/2010 - 11:42:54" eTime="22/06/2010 - 11:43:14" passed="1" failed="0" warnings="0" ></Summary>
+<NodeArgs eType="StartAction" icon="4" nRep="2716" status="Passed" >
+<Disp><![CDATA[SelectLogonProfile Summary]]></Disp>
+</NodeArgs>
+</Action>
+<Step rID="T150">
+<Obj plainTxt="False" ><![CDATA[Isabel_IBS6]]></Obj>
+<Details plainTxt="False" ><![CDATA[Browser]]></Details>
+<Time><![CDATA[22/06/2010 - 11:44:21]]></Time>
+<TimeTick>1277199861</TimeTick>
+<Step rID="T151">
+<Obj plainTxt="False" ><![CDATA[IBS6]]></Obj>
+<Details plainTxt="False" ><![CDATA[Page]]></Details>
+<Time><![CDATA[22/06/2010 - 11:44:21]]></Time>
+<TimeTick>1277199861</TimeTick>
+<Step rID="T152">
+<Obj plainTxt="False" ><![CDATA["TableRowTransaction":Function Call]]></Obj>
+<Details plainTxt="False" ><![CDATA[ChildItem]]></Details>
+<Time><![CDATA[22/06/2010 - 11:44:21]]></Time>
+<TimeTick>1277199861</TimeTick>
+<Step rID="T153">
+<Obj plainTxt="False" ><![CDATA[TableRowTransaction]]></Obj>
+<Details plainTxt="False" ><![CDATA[Object's physical description:<br>Visible = -1<br>Text = .*smoketest.*<br>rows = 1<br>miccommentproperty = <br>Mercury Class = WebTable<br>Location = 3<br>Index = 1<br>Html Tag = TABLE<br>Html Id = <br>DHTML Class = <br>]]></Details>
+<Time><![CDATA[22/06/2010 - 11:44:21]]></Time>
+<TimeTick>1277199861</TimeTick>
+<Step rID="T154">
+<Obj ><![CDATA[SmokeTest : Unexpected problem in 'AccountInfo'.]]></Obj>
+<Details ><![CDATA[Object_html_id = ]]></Details>
+<Time><![CDATA[22/06/2010 - 11:44:22]]></Time>
+<TimeTick>1277199862</TimeTick>
+<Step rID="T155">
+<Obj ><![CDATA[AccountInfo_dev2_22062010114421.png]]></Obj>
+<Details ><![CDATA[]]></Details>
+<Time><![CDATA[22/06/2010 - 11:44:22]]></Time>
+<TimeTick>1277199862</TimeTick>
+<Action rID="T156">
+<AName><![CDATA[SelectLogonProfile]]></AName>
+<Step rID="T157">
+<Obj ><![CDATA[LogonProfile2 found on portal.]]></Obj>
+<Details ><![CDATA[]]></Details>
+<Time><![CDATA[22/06/2010 - 11:44:38]]></Time>
+<TimeTick>1277199878</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="2936" status="Passed" >
+<Disp><![CDATA[LogonProfile2 found on portal.]]></Disp>
+</NodeArgs>
+</Step>
+<Summary sTime="22/06/2010 - 11:44:24" eTime="22/06/2010 - 11:44:42" passed="1" failed="0" warnings="0" ></Summary>
+<NodeArgs eType="StartAction" icon="4" nRep="2895" status="Passed" >
+<Disp><![CDATA[SelectLogonProfile Summary]]></Disp>
+</NodeArgs>
+</Action>
+<NodeArgs eType="User" icon="5" nRep="2885" status="Passed" Source="Q:\SmokeTest\SmokeTestFunctions.qfl" SourceLine="158" >
+<Disp><![CDATA[AccountInfo_dev2_22062010114421.png]]></Disp>
+</NodeArgs>
+</Step>
+<NodeArgs eType="User" icon="5" nRep="2884" status="Failed" Source="Q:\SmokeTest\SmokeTestFunctions.qfl" SourceLine="158" >
+<Disp><![CDATA[SmokeTest : Unexpected problem in 'AccountInfo'.]]></Disp>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Replay" icon="9" nRep="2881" status="Failed" nType="Description" Source="Q:\SmokeTest\SmokeTestFunctions.qfl" SourceLine="158" >
+<Disp><![CDATA[TableRowTransaction]]></Disp>
+</NodeArgs>
+</Step>
+<NodeArgs eType="General" icon="8" nRep="2879" status="Failed" >
+<Disp><![CDATA["TableRowTransaction":Function Call]]></Disp>
+<BtmPane vType="Mercury.SSHWeb">
+<Path><![CDATA[ZIP::Act22\Row0\ssf2.xml]]></Path>
+<ASHilite><![CDATA[Browser("Isabel IBS6").Page("IBS6").WebTable("TableRowTransaction")]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<Step rID="T158">
+<Obj ><![CDATA[Unable to select account with property = smoketest]]></Obj>
+<Details ><![CDATA[]]></Details>
+<Time><![CDATA[22/06/2010 - 11:44:44]]></Time>
+<TimeTick>1277199884</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="2942" status="Failed" Source="Q:\SmokeTest\SmokeTestFunctions.qfl" SourceLine="724" >
+<Disp><![CDATA[Unable to select account with property = smoketest]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T159">
+<Obj ><![CDATA[AccountInfo_dev2_22062010114444.png]]></Obj>
+<Details ><![CDATA[]]></Details>
+<Time><![CDATA[22/06/2010 - 11:44:44]]></Time>
+<TimeTick>1277199884</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="2943" Source="Q:\SmokeTest\SmokeTestFunctions.qfl" SourceLine="750" >
+<Disp><![CDATA[AccountInfo_dev2_22062010114444.png]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T160">
+<Obj plainTxt="False" ><![CDATA[SystemUtil]]></Obj>
+<Details plainTxt="False" ><![CDATA[SystemUtil]]></Details>
+<Time><![CDATA[22/06/2010 - 11:44:45]]></Time>
+<TimeTick>1277199885</TimeTick>
+<Step rID="T161">
+<Obj plainTxt="False" ><![CDATA[Run "c:\mail\mail.bat",1]]></Obj>
+<Details plainTxt="False" ><![CDATA[Run "c:\mail\mail.bat",1]]></Details>
+<Time><![CDATA[22/06/2010 - 11:44:46]]></Time>
+<TimeTick>1277199886</TimeTick>
+<NodeArgs eType="Replay" icon="10" nRep="2947" status="Passed" Source="Q:\SmokeTest\SmokeTestFunctions.qfl" SourceLine="760" >
+<Disp><![CDATA[Run "c:\mail\mail.bat",1]]></Disp>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Replay" icon="10" nRep="2946" status="Passed" Source="Q:\SmokeTest\SmokeTestFunctions.qfl" SourceLine="760" >
+<Disp><![CDATA[SystemUtil]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T162">
+<Obj ><![CDATA[WebEdit 'DefaultViewOfAccountInfo_Pref' found]]></Obj>
+<Details ><![CDATA[Tab 'Account info']]></Details>
+<Time><![CDATA[22/06/2010 - 11:44:59]]></Time>
+<TimeTick>1277199899</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="2962" status="Passed" Source="Q:\SmokeTest\SmokeTestFunctions.qfl" SourceLine="719" >
+<Disp><![CDATA[WebEdit 'DefaultViewOfAccountInfo_Pref' found]]></Disp>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="7" nRep="2878" status="Failed" Source="Q:\SmokeTest\SmokeTestFunctions.qfl" SourceLine="158" >
+<Disp><![CDATA[IBS6]]></Disp>
+<BtmPane vType="HTMLSNSH">
+<Path><![CDATA[ZIP::Act22\Row0\ssf1.xml]]></Path>
+<ASHilite><![CDATA[Browser("Isabel_IBS6").Page("IBS6")]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="6" nRep="2877" status="Failed" Source="Q:\SmokeTest\SmokeTestFunctions.qfl" SourceLine="158" >
+<Disp><![CDATA[Isabel_IBS6]]></Disp>
+</NodeArgs>
+</Step>
+<Action rID="T163">
+<AName><![CDATA[SelectLogonProfile]]></AName>
+<Step rID="T164">
+<Obj ><![CDATA[LogonProfile2 found on portal.]]></Obj>
+<Details ><![CDATA[]]></Details>
+<Time><![CDATA[22/06/2010 - 11:45:18]]></Time>
+<TimeTick>1277199918</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="3009" status="Passed" Source="Q:\SmokeTest\SmokeTestFunctions.qfl" SourceLine="719" >
+<Disp><![CDATA[LogonProfile2 found on portal.]]></Disp>
+</NodeArgs>
+</Step>
+<Summary sTime="22/06/2010 - 11:45:04" eTime="22/06/2010 - 11:45:22" passed="1" failed="0" warnings="0" ></Summary>
+<NodeArgs eType="StartAction" icon="4" nRep="2969" status="Passed" >
+<Disp><![CDATA[SelectLogonProfile Summary]]></Disp>
+</NodeArgs>
+</Action>
+<Step rID="T165">
+<Obj plainTxt="False" ><![CDATA[Isabel_IBS6]]></Obj>
+<Details plainTxt="False" ><![CDATA[Browser]]></Details>
+<Time><![CDATA[22/06/2010 - 11:46:25]]></Time>
+<TimeTick>1277199985</TimeTick>
+<Step rID="T166">
+<Obj plainTxt="False" ><![CDATA[IBS6]]></Obj>
+<Details plainTxt="False" ><![CDATA[Page]]></Details>
+<Time><![CDATA[22/06/2010 - 11:46:25]]></Time>
+<TimeTick>1277199985</TimeTick>
+<Step rID="T167">
+<Obj plainTxt="False" ><![CDATA["TableRowTransaction":Function Call]]></Obj>
+<Details plainTxt="False" ><![CDATA[ChildItem]]></Details>
+<Time><![CDATA[22/06/2010 - 11:46:25]]></Time>
+<TimeTick>1277199985</TimeTick>
+<Step rID="T168">
+<Obj plainTxt="False" ><![CDATA[TableRowTransaction]]></Obj>
+<Details plainTxt="False" ><![CDATA[Object's physical description:<br>Visible = -1<br>Text = .*smoketest.*<br>rows = 1<br>miccommentproperty = <br>Mercury Class = WebTable<br>Location = 3<br>Index = 1<br>Html Tag = TABLE<br>Html Id = <br>DHTML Class = <br>]]></Details>
+<Time><![CDATA[22/06/2010 - 11:46:25]]></Time>
+<TimeTick>1277199985</TimeTick>
+<Step rID="T169">
+<Obj ><![CDATA[SmokeTest : Unexpected problem in 'AccountInfo'.]]></Obj>
+<Details ><![CDATA[Object_html_id = ]]></Details>
+<Time><![CDATA[22/06/2010 - 11:46:25]]></Time>
+<TimeTick>1277199985</TimeTick>
+<Step rID="T170">
+<Obj ><![CDATA[AccountInfo_dev2_22062010114625.png]]></Obj>
+<Details ><![CDATA[]]></Details>
+<Time><![CDATA[22/06/2010 - 11:46:25]]></Time>
+<TimeTick>1277199985</TimeTick>
+<Action rID="T171">
+<AName><![CDATA[SelectLogonProfile]]></AName>
+<Step rID="T172">
+<Obj ><![CDATA[LogonProfile2 found on portal.]]></Obj>
+<Details ><![CDATA[]]></Details>
+<Time><![CDATA[22/06/2010 - 11:46:42]]></Time>
+<TimeTick>1277200002</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="3180" status="Passed" >
+<Disp><![CDATA[LogonProfile2 found on portal.]]></Disp>
+</NodeArgs>
+</Step>
+<Summary sTime="22/06/2010 - 11:46:27" eTime="22/06/2010 - 11:46:46" passed="1" failed="0" warnings="0" ></Summary>
+<NodeArgs eType="StartAction" icon="4" nRep="3139" status="Passed" >
+<Disp><![CDATA[SelectLogonProfile Summary]]></Disp>
+</NodeArgs>
+</Action>
+<NodeArgs eType="User" icon="5" nRep="3129" status="Passed" Source="Q:\SmokeTest\SmokeTestFunctions.qfl" SourceLine="158" >
+<Disp><![CDATA[AccountInfo_dev2_22062010114625.png]]></Disp>
+</NodeArgs>
+</Step>
+<NodeArgs eType="User" icon="5" nRep="3128" status="Failed" Source="Q:\SmokeTest\SmokeTestFunctions.qfl" SourceLine="158" >
+<Disp><![CDATA[SmokeTest : Unexpected problem in 'AccountInfo'.]]></Disp>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Replay" icon="9" nRep="3125" status="Failed" nType="Description" Source="Q:\SmokeTest\SmokeTestFunctions.qfl" SourceLine="158" >
+<Disp><![CDATA[TableRowTransaction]]></Disp>
+</NodeArgs>
+</Step>
+<NodeArgs eType="General" icon="8" nRep="3123" status="Failed" >
+<Disp><![CDATA["TableRowTransaction":Function Call]]></Disp>
+<BtmPane vType="Mercury.SSHWeb">
+<Path><![CDATA[ZIP::Act22\Row0\ssf4.xml]]></Path>
+<ASHilite><![CDATA[Browser("Isabel IBS6").Page("IBS6").WebTable("TableRowTransaction")]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="7" nRep="3122" status="Failed" Source="Q:\SmokeTest\SmokeTestFunctions.qfl" SourceLine="158" >
+<Disp><![CDATA[IBS6]]></Disp>
+<BtmPane vType="HTMLSNSH">
+<Path><![CDATA[ZIP::Act22\Row0\ssf3.xml]]></Path>
+<ASHilite><![CDATA[Browser("Isabel_IBS6").Page("IBS6")]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="6" nRep="3121" status="Failed" Source="Q:\SmokeTest\SmokeTestFunctions.qfl" SourceLine="158" >
+<Disp><![CDATA[Isabel_IBS6]]></Disp>
+</NodeArgs>
+</Step>
+<Summary sTime="22/06/2010 - 11:42:37" eTime="11:42:37 - 11:42:37" passed="3" failed="5" warnings="3" ></Summary>
+<NodeArgs eType="StartAction" icon="4" nRep="2690" status="Failed" >
+<Disp><![CDATA[AccountInfo Summary]]></Disp>
+</NodeArgs>
+</Action>
+<Summary sTime="22/06/2010 - 11:42:37" eTime="11:42:37 - 11:42:37" passed="3" failed="5" warnings="3" ></Summary>
+<NodeArgs eType="StartAction" icon="4" nRep="7" status="Failed" >
+<Disp><![CDATA[Smoke Summary]]></Disp>
+</NodeArgs>
+</Action>
+<NodeArgs eType="StartIteration" icon="3" nRep="6" status="Failed" >
+<Disp><![CDATA[SmokeTest Iteration 1 (Row 1)]]></Disp>
+</NodeArgs>
+</DIter>
+<Summary sTime="22/06/2010 - 11:42:37" eTime="11:42:37 - 11:42:37" passed="3" failed="5" warnings="3" ></Summary>
+<NodeArgs eType="StartTest" icon="1" nRep="3" status="Failed" >
+<Disp><![CDATA[Test SmokeTest Summary]]></Disp>
+</NodeArgs>
+</Doc>
+<Step rID="T173">
+<Obj plainTxt="False" ><![CDATA[ViewDetails_AccountInfo]]></Obj>
+<Details plainTxt="False" ><![CDATA[Object's physical description:<br>Text = View details<br>miccommentproperty = <br>Mercury Class = Link<br>Html Tag = A<br>Html Id = linkConsultAccountInfo<br>]]></Details>
+<Time><![CDATA[22/06/2010 - 11:47:48]]></Time>
+<TimeTick>1277200068</TimeTick>
+<Step rID="T174">
+<Obj ><![CDATA[SmokeTest : Unexpected problem in 'AccountInfo'.]]></Obj>
+<Details ><![CDATA[Object_html_id = linkConsultAccountInfo]]></Details>
+<Time><![CDATA[22/06/2010 - 11:47:48]]></Time>
+<TimeTick>1277200068</TimeTick>
+<Step rID="T175">
+<Obj ><![CDATA[AccountInfo_dev2_22062010114748.png]]></Obj>
+<Details ><![CDATA[]]></Details>
+<Time><![CDATA[22/06/2010 - 11:47:48]]></Time>
+<TimeTick>1277200068</TimeTick>
+<Action rID="T176">
+<AName><![CDATA[SelectLogonProfile]]></AName>
+<Step rID="T177">
+<Obj ><![CDATA[LogonProfile2 found on portal.]]></Obj>
+<Details ><![CDATA[]]></Details>
+<Time><![CDATA[22/06/2010 - 11:48:05]]></Time>
+<TimeTick>1277200085</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="3328" status="Passed" >
+<Disp><![CDATA[LogonProfile2 found on portal.]]></Disp>
+</NodeArgs>
+</Step>
+<Summary sTime="22/06/2010 - 11:47:51" eTime="22/06/2010 - 11:48:09" passed="1" failed="0" warnings="0" ></Summary>
+<NodeArgs eType="StartAction" icon="4" nRep="3287" status="Passed" >
+<Disp><![CDATA[SelectLogonProfile Summary]]></Disp>
+</NodeArgs>
+</Action>
+<NodeArgs eType="User" icon="5" nRep="3277" status="Passed" Source="Q:\SmokeTest\SmokeTestFunctions.qfl" SourceLine="381" >
+<Disp><![CDATA[AccountInfo_dev2_22062010114748.png]]></Disp>
+</NodeArgs>
+</Step>
+<NodeArgs eType="User" icon="5" nRep="3276" status="Failed" Source="Q:\SmokeTest\SmokeTestFunctions.qfl" SourceLine="380" >
+<Disp><![CDATA[SmokeTest : Unexpected problem in 'AccountInfo'.]]></Disp>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Replay" icon="9" nRep="3273" status="Failed" nType="Description" Source="AccountInfo" SourceLine="112" >
+<Disp><![CDATA[ViewDetails_AccountInfo]]></Disp>
+</NodeArgs>
+</Step>
+<Action rID="T178">
+<AName><![CDATA[Upload]]></AName>
+<Step rID="T179">
+<Obj ><![CDATA[=== START ACTION : Upload ===]]></Obj>
+<Details ><![CDATA[]]></Details>
+<Time><![CDATA[22/06/2010 - 11:48:11]]></Time>
+<TimeTick>1277200091</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="3337" Source="Q:\SmokeTest\SmokeTestFunctions.qfl" SourceLine="822" >
+<Disp><![CDATA[=== START ACTION : Upload ===]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T180">
+<Obj ><![CDATA['View details' appeared for : divfile.txt]]></Obj>
+<Details ><![CDATA[Button 'Audit Trail' has been found.]]></Details>
+<Time><![CDATA[22/06/2010 - 11:50:20]]></Time>
+<TimeTick>1277200220</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="3475" status="Passed" Source="Q:\SmokeTest\SmokeTestFunctions.qfl" SourceLine="138" >
+<Disp><![CDATA['View details' appeared for : divfile.txt]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T181">
+<Obj ><![CDATA[    Expected status is correct.]]></Obj>
+<Details ><![CDATA[Expected status = not signed yet. Actual status = Not signed yet]]></Details>
+<Time><![CDATA[22/06/2010 - 11:50:21]]></Time>
+<TimeTick>1277200221</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="3479" status="Passed" Source="Q:\SmokeTest\SmokeTestFunctions.qfl" SourceLine="326" >
+<Disp><![CDATA[    Expected status is correct.]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T182">
+<Obj ><![CDATA[     Verify  --> Transaction type]]></Obj>
+<Details ><![CDATA[Actual=STG Specific Format  ; Expected=STG Specific Format ]]></Details>
+<Time><![CDATA[22/06/2010 - 11:50:22]]></Time>
+<TimeTick>1277200222</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="3485" status="Passed" Source="Q:\SmokeTest\SmokeTestFunctions.qfl" SourceLine="676" >
+<Disp><![CDATA[     Verify  --> Transaction type]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T183">
+<Obj ><![CDATA[     Verify  --> File size]]></Obj>
+<Details ><![CDATA[Actual=20 bytes  ; Expected=20 bytes ]]></Details>
+<Time><![CDATA[22/06/2010 - 11:50:22]]></Time>
+<TimeTick>1277200222</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="3489" status="Passed" Source="Q:\SmokeTest\SmokeTestFunctions.qfl" SourceLine="676" >
+<Disp><![CDATA[     Verify  --> File size]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T184">
+<Obj ><![CDATA[     Verify  --> File format]]></Obj>
+<Details ><![CDATA[Actual=Free format  ; Expected=Free format ]]></Details>
+<Time><![CDATA[22/06/2010 - 11:50:23]]></Time>
+<TimeTick>1277200223</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="3494" status="Passed" Source="Q:\SmokeTest\SmokeTestFunctions.qfl" SourceLine="676" >
+<Disp><![CDATA[     Verify  --> File format]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T185">
+<Obj ><![CDATA['View details' appeared for : fortis_acc_128.rca]]></Obj>
+<Details ><![CDATA[Button 'Audit Trail' has been found.]]></Details>
+<Time><![CDATA[22/06/2010 - 11:50:31]]></Time>
+<TimeTick>1277200231</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="3505" status="Passed" Source="Q:\SmokeTest\SmokeTestFunctions.qfl" SourceLine="138" >
+<Disp><![CDATA['View details' appeared for : fortis_acc_128.rca]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T186">
+<Obj ><![CDATA[    Expected status is correct.]]></Obj>
+<Details ><![CDATA[Expected status = not signed yet. Actual status = Not signed yet]]></Details>
+<Time><![CDATA[22/06/2010 - 11:50:32]]></Time>
+<TimeTick>1277200232</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="3509" status="Passed" Source="Q:\SmokeTest\SmokeTestFunctions.qfl" SourceLine="326" >
+<Disp><![CDATA[    Expected status is correct.]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T187">
+<Obj ><![CDATA[     Verify  --> Transaction type]]></Obj>
+<Details ><![CDATA[Actual=Belgian cheque  ; Expected=Belgian cheque ]]></Details>
+<Time><![CDATA[22/06/2010 - 11:50:33]]></Time>
+<TimeTick>1277200233</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="3515" status="Passed" Source="Q:\SmokeTest\SmokeTestFunctions.qfl" SourceLine="676" >
+<Disp><![CDATA[     Verify  --> Transaction type]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T188">
+<Obj ><![CDATA[     Verify  --> File size]]></Obj>
+<Details ><![CDATA[Actual=390 bytes  ; Expected=390 bytes]]></Details>
+<Time><![CDATA[22/06/2010 - 11:50:33]]></Time>
+<TimeTick>1277200233</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="3519" status="Passed" Source="Q:\SmokeTest\SmokeTestFunctions.qfl" SourceLine="676" >
+<Disp><![CDATA[     Verify  --> File size]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T189">
+<Obj ><![CDATA[     Verify  --> File format]]></Obj>
+<Details ><![CDATA[Actual=CIRI RCA 128  ; Expected=CIRI RCA 128 ]]></Details>
+<Time><![CDATA[22/06/2010 - 11:50:34]]></Time>
+<TimeTick>1277200234</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="3524" status="Passed" Source="Q:\SmokeTest\SmokeTestFunctions.qfl" SourceLine="676" >
+<Disp><![CDATA[     Verify  --> File format]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T190">
+<Obj ><![CDATA['View details' appeared for : fortis_sepa.xml]]></Obj>
+<Details ><![CDATA[Button 'Audit Trail' has been found.]]></Details>
+<Time><![CDATA[22/06/2010 - 11:50:44]]></Time>
+<TimeTick>1277200244</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="3535" status="Passed" Source="Q:\SmokeTest\SmokeTestFunctions.qfl" SourceLine="138" >
+<Disp><![CDATA['View details' appeared for : fortis_sepa.xml]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T191">
+<Obj ><![CDATA[    Expected status is correct.]]></Obj>
+<Details ><![CDATA[Expected status = not signed yet. Actual status = Not signed yet]]></Details>
+<Time><![CDATA[22/06/2010 - 11:50:44]]></Time>
+<TimeTick>1277200244</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="3539" status="Passed" Source="Q:\SmokeTest\SmokeTestFunctions.qfl" SourceLine="326" >
+<Disp><![CDATA[    Expected status is correct.]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T192">
+<Obj ><![CDATA[     Verify  --> Transaction type]]></Obj>
+<Details ><![CDATA[Actual=SEPA payment  ; Expected=SEPA payment ]]></Details>
+<Time><![CDATA[22/06/2010 - 11:50:45]]></Time>
+<TimeTick>1277200245</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="3545" status="Passed" Source="Q:\SmokeTest\SmokeTestFunctions.qfl" SourceLine="676" >
+<Disp><![CDATA[     Verify  --> Transaction type]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T193">
+<Obj ><![CDATA[     Verify  --> File size]]></Obj>
+<Details ><![CDATA[Actual=1089 bytes  ; Expected=1089 bytes ]]></Details>
+<Time><![CDATA[22/06/2010 - 11:50:45]]></Time>
+<TimeTick>1277200245</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="3549" status="Passed" Source="Q:\SmokeTest\SmokeTestFunctions.qfl" SourceLine="676" >
+<Disp><![CDATA[     Verify  --> File size]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T194">
+<Obj ><![CDATA[     Verify  --> File format]]></Obj>
+<Details ><![CDATA[Actual=SEPA ordinary transfer  ; Expected=SEPA ordinary transfer ]]></Details>
+<Time><![CDATA[22/06/2010 - 11:50:46]]></Time>
+<TimeTick>1277200246</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="3554" status="Passed" Source="Q:\SmokeTest\SmokeTestFunctions.qfl" SourceLine="676" >
+<Disp><![CDATA[     Verify  --> File format]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T195">
+<Obj ><![CDATA[     Verify  --> Global/single debit]]></Obj>
+<Details ><![CDATA[Actual=Single debit ; Expected=Single debit]]></Details>
+<Time><![CDATA[22/06/2010 - 11:50:47]]></Time>
+<TimeTick>1277200247</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="3561" status="Passed" Source="Q:\SmokeTest\SmokeTestFunctions.qfl" SourceLine="676" >
+<Disp><![CDATA[     Verify  --> Global/single debit]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T196">
+<Obj ><![CDATA['View details' appeared for : stg 128.fbf]]></Obj>
+<Details ><![CDATA[Button 'Audit Trail' has been found.]]></Details>
+<Time><![CDATA[22/06/2010 - 11:50:54]]></Time>
+<TimeTick>1277200254</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="3572" status="Passed" Source="Q:\SmokeTest\SmokeTestFunctions.qfl" SourceLine="138" >
+<Disp><![CDATA['View details' appeared for : stg 128.fbf]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T197">
+<Obj ><![CDATA[    Expected status is correct.]]></Obj>
+<Details ><![CDATA[Expected status = not signed yet. Actual status = Not signed yet]]></Details>
+<Time><![CDATA[22/06/2010 - 11:50:56]]></Time>
+<TimeTick>1277200256</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="3576" status="Passed" Source="Q:\SmokeTest\SmokeTestFunctions.qfl" SourceLine="326" >
+<Disp><![CDATA[    Expected status is correct.]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T198">
+<Obj ><![CDATA[     Verify  --> Transaction type]]></Obj>
+<Details ><![CDATA[Actual=Belgian domestic payment  ; Expected=Belgian domestic payment ]]></Details>
+<Time><![CDATA[22/06/2010 - 11:50:57]]></Time>
+<TimeTick>1277200257</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="3582" status="Passed" Source="Q:\SmokeTest\SmokeTestFunctions.qfl" SourceLine="676" >
+<Disp><![CDATA[     Verify  --> Transaction type]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T199">
+<Obj ><![CDATA[     Verify  --> File size]]></Obj>
+<Details ><![CDATA[Actual=520 bytes  ; Expected=520 bytes ]]></Details>
+<Time><![CDATA[22/06/2010 - 11:50:57]]></Time>
+<TimeTick>1277200257</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="3586" status="Passed" Source="Q:\SmokeTest\SmokeTestFunctions.qfl" SourceLine="676" >
+<Disp><![CDATA[     Verify  --> File size]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T200">
+<Obj ><![CDATA[     Verify  --> File format]]></Obj>
+<Details ><![CDATA[Actual=00 Ordinary transfer  ; Expected=00 Ordinary transfer ]]></Details>
+<Time><![CDATA[22/06/2010 - 11:50:58]]></Time>
+<TimeTick>1277200258</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="3591" status="Passed" Source="Q:\SmokeTest\SmokeTestFunctions.qfl" SourceLine="676" >
+<Disp><![CDATA[     Verify  --> File format]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T201">
+<Obj ><![CDATA[     Verify  --> Global/single debit]]></Obj>
+<Details ><![CDATA[Actual=Single debit ; Expected=Single debit]]></Details>
+<Time><![CDATA[22/06/2010 - 11:50:59]]></Time>
+<TimeTick>1277200259</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="3598" status="Passed" Source="Q:\SmokeTest\SmokeTestFunctions.qfl" SourceLine="676" >
+<Disp><![CDATA[     Verify  --> Global/single debit]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T202">
+<Obj ><![CDATA['View details' appeared for : stg_128_20payments_nonglobal.fbf]]></Obj>
+<Details ><![CDATA[Button 'Audit Trail' has been found.]]></Details>
+<Time><![CDATA[22/06/2010 - 11:51:09]]></Time>
+<TimeTick>1277200269</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="3609" status="Passed" Source="Q:\SmokeTest\SmokeTestFunctions.qfl" SourceLine="138" >
+<Disp><![CDATA['View details' appeared for : stg_128_20payments_nonglobal.fbf]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T203">
+<Obj ><![CDATA[    Expected status is correct.]]></Obj>
+<Details ><![CDATA[Expected status = not signed yet. Actual status = Not signed yet]]></Details>
+<Time><![CDATA[22/06/2010 - 11:51:09]]></Time>
+<TimeTick>1277200269</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="3613" status="Passed" Source="Q:\SmokeTest\SmokeTestFunctions.qfl" SourceLine="326" >
+<Disp><![CDATA[    Expected status is correct.]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T204">
+<Obj ><![CDATA[     Verify  --> Transaction type]]></Obj>
+<Details ><![CDATA[Actual=Belgian domestic payment  ; Expected=Belgian domestic payment ]]></Details>
+<Time><![CDATA[22/06/2010 - 11:51:10]]></Time>
+<TimeTick>1277200270</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="3619" status="Passed" Source="Q:\SmokeTest\SmokeTestFunctions.qfl" SourceLine="676" >
+<Disp><![CDATA[     Verify  --> Transaction type]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T205">
+<Obj ><![CDATA[     Verify  --> File size]]></Obj>
+<Details ><![CDATA[Actual=10400 bytes  ; Expected=10400 bytes ]]></Details>
+<Time><![CDATA[22/06/2010 - 11:51:10]]></Time>
+<TimeTick>1277200270</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="3623" status="Passed" Source="Q:\SmokeTest\SmokeTestFunctions.qfl" SourceLine="676" >
+<Disp><![CDATA[     Verify  --> File size]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T206">
+<Obj ><![CDATA[     Verify  --> File format]]></Obj>
+<Details ><![CDATA[Actual=00 Ordinary transfer  ; Expected=00 Ordinary transfer ]]></Details>
+<Time><![CDATA[22/06/2010 - 11:51:11]]></Time>
+<TimeTick>1277200271</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="3628" status="Passed" Source="Q:\SmokeTest\SmokeTestFunctions.qfl" SourceLine="676" >
+<Disp><![CDATA[     Verify  --> File format]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T207">
+<Obj ><![CDATA[     Verify  --> Global/single debit]]></Obj>
+<Details ><![CDATA[Actual=Single debit ; Expected=Single debit]]></Details>
+<Time><![CDATA[22/06/2010 - 11:51:12]]></Time>
+<TimeTick>1277200272</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="3635" status="Passed" Source="Q:\SmokeTest\SmokeTestFunctions.qfl" SourceLine="676" >
+<Disp><![CDATA[     Verify  --> Global/single debit]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T208">
+<Obj ><![CDATA['View details' appeared for : stg_0002000.dom]]></Obj>
+<Details ><![CDATA[Button 'Audit Trail' has been found.]]></Details>
+<Time><![CDATA[22/06/2010 - 11:51:21]]></Time>
+<TimeTick>1277200281</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="3646" status="Passed" Source="Q:\SmokeTest\SmokeTestFunctions.qfl" SourceLine="138" >
+<Disp><![CDATA['View details' appeared for : stg_0002000.dom]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T209">
+<Obj ><![CDATA[    Expected status is correct.]]></Obj>
+<Details ><![CDATA[Expected status = not signed yet. Actual status = Not signed yet]]></Details>
+<Time><![CDATA[22/06/2010 - 11:51:22]]></Time>
+<TimeTick>1277200282</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="3650" status="Passed" Source="Q:\SmokeTest\SmokeTestFunctions.qfl" SourceLine="326" >
+<Disp><![CDATA[    Expected status is correct.]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T210">
+<Obj ><![CDATA[     Verify  --> Transaction type]]></Obj>
+<Details ><![CDATA[Actual=Belgian direct debit  ; Expected=Belgian direct debit ]]></Details>
+<Time><![CDATA[22/06/2010 - 11:51:22]]></Time>
+<TimeTick>1277200282</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="3656" status="Passed" Source="Q:\SmokeTest\SmokeTestFunctions.qfl" SourceLine="676" >
+<Disp><![CDATA[     Verify  --> Transaction type]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T211">
+<Obj ><![CDATA[     Verify  --> File size]]></Obj>
+<Details ><![CDATA[Actual=390 bytes  ; Expected=390 bytes ]]></Details>
+<Time><![CDATA[22/06/2010 - 11:51:23]]></Time>
+<TimeTick>1277200283</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="3660" status="Passed" Source="Q:\SmokeTest\SmokeTestFunctions.qfl" SourceLine="676" >
+<Disp><![CDATA[     Verify  --> File size]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T212">
+<Obj ><![CDATA[     Verify  --> File format]]></Obj>
+<Details ><![CDATA[Actual=CIRI DOM 128  ; Expected=CIRI DOM 128 ]]></Details>
+<Time><![CDATA[22/06/2010 - 11:51:23]]></Time>
+<TimeTick>1277200283</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="3665" status="Passed" Source="Q:\SmokeTest\SmokeTestFunctions.qfl" SourceLine="676" >
+<Disp><![CDATA[     Verify  --> File format]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T213">
+<Obj ><![CDATA['View details' appeared for : stg_0002000_to_iban_gbp.vme]]></Obj>
+<Details ><![CDATA[Button 'Audit Trail' has been found.]]></Details>
+<Time><![CDATA[22/06/2010 - 11:51:32]]></Time>
+<TimeTick>1277200292</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="3676" status="Passed" Source="Q:\SmokeTest\SmokeTestFunctions.qfl" SourceLine="138" >
+<Disp><![CDATA['View details' appeared for : stg_0002000_to_iban_gbp.vme]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T214">
+<Obj ><![CDATA[    Expected status is correct.]]></Obj>
+<Details ><![CDATA[Expected status = File is not valid. Actual status = File is not valid]]></Details>
+<Time><![CDATA[22/06/2010 - 11:51:33]]></Time>
+<TimeTick>1277200293</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="3680" status="Passed" Source="Q:\SmokeTest\SmokeTestFunctions.qfl" SourceLine="326" >
+<Disp><![CDATA[    Expected status is correct.]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T215">
+<Obj ><![CDATA[     Verify  --> Transaction type]]></Obj>
+<Details ><![CDATA[Actual=Belgian foreign payment  ; Expected=Belgian foreign payment ]]></Details>
+<Time><![CDATA[22/06/2010 - 11:51:34]]></Time>
+<TimeTick>1277200294</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="3686" status="Passed" Source="Q:\SmokeTest\SmokeTestFunctions.qfl" SourceLine="676" >
+<Disp><![CDATA[     Verify  --> Transaction type]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T216">
+<Obj ><![CDATA[     Verify  --> File size]]></Obj>
+<Details ><![CDATA[Actual=1430 bytes  ; Expected=1430 bytes ]]></Details>
+<Time><![CDATA[22/06/2010 - 11:51:35]]></Time>
+<TimeTick>1277200295</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="3690" status="Passed" Source="Q:\SmokeTest\SmokeTestFunctions.qfl" SourceLine="676" >
+<Disp><![CDATA[     Verify  --> File size]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T217">
+<Obj ><![CDATA[     Verify  --> File format]]></Obj>
+<Details ><![CDATA[Actual=CIRI_VME_3.1  ; Expected=CIRI_VME_3.1]]></Details>
+<Time><![CDATA[22/06/2010 - 11:51:35]]></Time>
+<TimeTick>1277200295</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="3695" status="Passed" Source="Q:\SmokeTest\SmokeTestFunctions.qfl" SourceLine="676" >
+<Disp><![CDATA[     Verify  --> File format]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T218">
+<Obj ><![CDATA[     Verify  --> Global/single debit]]></Obj>
+<Details ><![CDATA[Actual=Single debit ; Expected=Single debit]]></Details>
+<Time><![CDATA[22/06/2010 - 11:51:36]]></Time>
+<TimeTick>1277200296</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="3702" status="Passed" Source="Q:\SmokeTest\SmokeTestFunctions.qfl" SourceLine="676" >
+<Disp><![CDATA[     Verify  --> Global/single debit]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T219">
+<Obj ><![CDATA['View details' appeared for : stg_sepa_withdebtortag_be32000000000202.xml]]></Obj>
+<Details ><![CDATA[Button 'Audit Trail' has been found.]]></Details>
+<Time><![CDATA[22/06/2010 - 11:51:44]]></Time>
+<TimeTick>1277200304</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="3713" status="Passed" Source="Q:\SmokeTest\SmokeTestFunctions.qfl" SourceLine="138" >
+<Disp><![CDATA['View details' appeared for : stg_sepa_withdebtortag_be32000000000202.xml]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T220">
+<Obj ><![CDATA[    Expected status is correct.]]></Obj>
+<Details ><![CDATA[Expected status = not signed yet. Actual status = Not signed yet]]></Details>
+<Time><![CDATA[22/06/2010 - 11:51:45]]></Time>
+<TimeTick>1277200305</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="3717" status="Passed" Source="Q:\SmokeTest\SmokeTestFunctions.qfl" SourceLine="326" >
+<Disp><![CDATA[    Expected status is correct.]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T221">
+<Obj ><![CDATA[     Verify  --> Transaction type]]></Obj>
+<Details ><![CDATA[Actual=SEPA payment  ; Expected=SEPA payment ]]></Details>
+<Time><![CDATA[22/06/2010 - 11:51:46]]></Time>
+<TimeTick>1277200306</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="3723" status="Passed" Source="Q:\SmokeTest\SmokeTestFunctions.qfl" SourceLine="676" >
+<Disp><![CDATA[     Verify  --> Transaction type]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T222">
+<Obj ><![CDATA[     Verify  --> File size]]></Obj>
+<Details ><![CDATA[Actual=1381 bytes  ; Expected=1381 bytes ]]></Details>
+<Time><![CDATA[22/06/2010 - 11:51:47]]></Time>
+<TimeTick>1277200307</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="3727" status="Passed" Source="Q:\SmokeTest\SmokeTestFunctions.qfl" SourceLine="676" >
+<Disp><![CDATA[     Verify  --> File size]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T223">
+<Obj ><![CDATA[     Verify  --> File format]]></Obj>
+<Details ><![CDATA[Actual=SEPA ordinary transfer  ; Expected=SEPA ordinary transfer ]]></Details>
+<Time><![CDATA[22/06/2010 - 11:51:47]]></Time>
+<TimeTick>1277200307</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="3732" status="Passed" Source="Q:\SmokeTest\SmokeTestFunctions.qfl" SourceLine="676" >
+<Disp><![CDATA[     Verify  --> File format]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T224">
+<Obj ><![CDATA[     Verify  --> Global/single debit]]></Obj>
+<Details ><![CDATA[Actual=Global debit ; Expected=Global debit]]></Details>
+<Time><![CDATA[22/06/2010 - 11:51:48]]></Time>
+<TimeTick>1277200308</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="3739" status="Passed" Source="Q:\SmokeTest\SmokeTestFunctions.qfl" SourceLine="676" >
+<Disp><![CDATA[     Verify  --> Global/single debit]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T225">
+<Obj ><![CDATA['View details' appeared for : stg_sepa_dd.xml]]></Obj>
+<Details ><![CDATA[Button 'Audit Trail' has been found.]]></Details>
+<Time><![CDATA[22/06/2010 - 11:51:58]]></Time>
+<TimeTick>1277200318</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="3750" status="Passed" Source="Q:\SmokeTest\SmokeTestFunctions.qfl" SourceLine="138" >
+<Disp><![CDATA['View details' appeared for : stg_sepa_dd.xml]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T226">
+<Obj ><![CDATA[    Expected status is correct.]]></Obj>
+<Details ><![CDATA[Expected status = not signed yet. Actual status = Not signed yet]]></Details>
+<Time><![CDATA[22/06/2010 - 11:51:58]]></Time>
+<TimeTick>1277200318</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="3754" status="Passed" Source="Q:\SmokeTest\SmokeTestFunctions.qfl" SourceLine="326" >
+<Disp><![CDATA[    Expected status is correct.]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T227">
+<Obj ><![CDATA[     Verify  --> Transaction type]]></Obj>
+<Details ><![CDATA[Actual=SEPA direct debit  ; Expected=SEPA direct debit ]]></Details>
+<Time><![CDATA[22/06/2010 - 11:51:59]]></Time>
+<TimeTick>1277200319</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="3760" status="Passed" Source="Q:\SmokeTest\SmokeTestFunctions.qfl" SourceLine="676" >
+<Disp><![CDATA[     Verify  --> Transaction type]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T228">
+<Obj ><![CDATA[     Verify  --> File size]]></Obj>
+<Details ><![CDATA[Actual=3349 bytes  ; Expected=3349 bytes ]]></Details>
+<Time><![CDATA[22/06/2010 - 11:51:59]]></Time>
+<TimeTick>1277200319</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="3764" status="Passed" Source="Q:\SmokeTest\SmokeTestFunctions.qfl" SourceLine="676" >
+<Disp><![CDATA[     Verify  --> File size]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T229">
+<Obj ><![CDATA[     Verify  --> File format]]></Obj>
+<Details ><![CDATA[Actual=XML for direct debit  ; Expected=XML for direct debit ]]></Details>
+<Time><![CDATA[22/06/2010 - 11:52:00]]></Time>
+<TimeTick>1277200320</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="3769" status="Passed" Source="Q:\SmokeTest\SmokeTestFunctions.qfl" SourceLine="676" >
+<Disp><![CDATA[     Verify  --> File format]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T230">
+<Obj ><![CDATA[     Verify  --> Global/single debit]]></Obj>
+<Details ><![CDATA[Actual=Global debit ; Expected=Global debit]]></Details>
+<Time><![CDATA[22/06/2010 - 11:52:01]]></Time>
+<TimeTick>1277200321</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="3776" status="Passed" Source="Q:\SmokeTest\SmokeTestFunctions.qfl" SourceLine="676" >
+<Disp><![CDATA[     Verify  --> Global/single debit]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T231">
+<Obj ><![CDATA['View details' appeared for : stg_instdamt10euro_dbtrccyblank.xml]]></Obj>
+<Details ><![CDATA[Button 'Audit Trail' has been found.]]></Details>
+<Time><![CDATA[22/06/2010 - 11:52:09]]></Time>
+<TimeTick>1277200329</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="3787" status="Passed" Source="Q:\SmokeTest\SmokeTestFunctions.qfl" SourceLine="138" >
+<Disp><![CDATA['View details' appeared for : stg_instdamt10euro_dbtrccyblank.xml]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T232">
+<Obj ><![CDATA[    Expected status is correct.]]></Obj>
+<Details ><![CDATA[Expected status = not signed yet. Actual status = Not signed yet]]></Details>
+<Time><![CDATA[22/06/2010 - 11:52:10]]></Time>
+<TimeTick>1277200330</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="3791" status="Passed" Source="Q:\SmokeTest\SmokeTestFunctions.qfl" SourceLine="326" >
+<Disp><![CDATA[    Expected status is correct.]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T233">
+<Obj ><![CDATA[     Verify  --> Transaction type]]></Obj>
+<Details ><![CDATA[Actual=SEPA payment  ; Expected=SEPA payment ]]></Details>
+<Time><![CDATA[22/06/2010 - 11:52:11]]></Time>
+<TimeTick>1277200331</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="3797" status="Passed" Source="Q:\SmokeTest\SmokeTestFunctions.qfl" SourceLine="676" >
+<Disp><![CDATA[     Verify  --> Transaction type]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T234">
+<Obj ><![CDATA[     Verify  --> File size]]></Obj>
+<Details ><![CDATA[Actual=1430 bytes  ; Expected=1430 bytes ]]></Details>
+<Time><![CDATA[22/06/2010 - 11:52:11]]></Time>
+<TimeTick>1277200331</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="3801" status="Passed" Source="Q:\SmokeTest\SmokeTestFunctions.qfl" SourceLine="676" >
+<Disp><![CDATA[     Verify  --> File size]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T235">
+<Obj ><![CDATA[     Verify  --> File format]]></Obj>
+<Details ><![CDATA[Actual=SEPA ordinary transfer  ; Expected=SEPA ordinary transfer ]]></Details>
+<Time><![CDATA[22/06/2010 - 11:52:12]]></Time>
+<TimeTick>1277200332</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="3806" status="Passed" Source="Q:\SmokeTest\SmokeTestFunctions.qfl" SourceLine="676" >
+<Disp><![CDATA[     Verify  --> File format]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T236">
+<Obj ><![CDATA[     Verify  --> Global/single debit]]></Obj>
+<Details ><![CDATA[Actual=Global debit ; Expected=Global debit]]></Details>
+<Time><![CDATA[22/06/2010 - 11:52:13]]></Time>
+<TimeTick>1277200333</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="3813" status="Passed" Source="Q:\SmokeTest\SmokeTestFunctions.qfl" SourceLine="676" >
+<Disp><![CDATA[     Verify  --> Global/single debit]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T237">
+<Obj ><![CDATA['View details' appeared for : stg_instdamt10euro_dbtrccyeur.xml]]></Obj>
+<Details ><![CDATA[Button 'Audit Trail' has been found.]]></Details>
+<Time><![CDATA[22/06/2010 - 11:52:21]]></Time>
+<TimeTick>1277200341</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="3824" status="Passed" Source="Q:\SmokeTest\SmokeTestFunctions.qfl" SourceLine="138" >
+<Disp><![CDATA['View details' appeared for : stg_instdamt10euro_dbtrccyeur.xml]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T238">
+<Obj ><![CDATA[    Expected status is correct.]]></Obj>
+<Details ><![CDATA[Expected status = not signed yet. Actual status = Not signed yet]]></Details>
+<Time><![CDATA[22/06/2010 - 11:52:22]]></Time>
+<TimeTick>1277200342</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="3828" status="Passed" Source="Q:\SmokeTest\SmokeTestFunctions.qfl" SourceLine="326" >
+<Disp><![CDATA[    Expected status is correct.]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T239">
+<Obj ><![CDATA[     Verify  --> Transaction type]]></Obj>
+<Details ><![CDATA[Actual=SEPA payment  ; Expected=SEPA payment ]]></Details>
+<Time><![CDATA[22/06/2010 - 11:52:23]]></Time>
+<TimeTick>1277200343</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="3834" status="Passed" Source="Q:\SmokeTest\SmokeTestFunctions.qfl" SourceLine="676" >
+<Disp><![CDATA[     Verify  --> Transaction type]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T240">
+<Obj ><![CDATA[     Verify  --> File size]]></Obj>
+<Details ><![CDATA[Actual=1452 bytes  ; Expected=1452 bytes]]></Details>
+<Time><![CDATA[22/06/2010 - 11:52:24]]></Time>
+<TimeTick>1277200344</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="3838" status="Passed" Source="Q:\SmokeTest\SmokeTestFunctions.qfl" SourceLine="676" >
+<Disp><![CDATA[     Verify  --> File size]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T241">
+<Obj ><![CDATA[     Verify  --> File format]]></Obj>
+<Details ><![CDATA[Actual=SEPA ordinary transfer  ; Expected=SEPA ordinary transfer ]]></Details>
+<Time><![CDATA[22/06/2010 - 11:52:24]]></Time>
+<TimeTick>1277200344</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="3843" status="Passed" Source="Q:\SmokeTest\SmokeTestFunctions.qfl" SourceLine="676" >
+<Disp><![CDATA[     Verify  --> File format]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T242">
+<Obj ><![CDATA[     Verify  --> Global/single debit]]></Obj>
+<Details ><![CDATA[Actual=Global debit ; Expected=Global debit]]></Details>
+<Time><![CDATA[22/06/2010 - 11:52:25]]></Time>
+<TimeTick>1277200345</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="3850" status="Passed" Source="Q:\SmokeTest\SmokeTestFunctions.qfl" SourceLine="676" >
+<Disp><![CDATA[     Verify  --> Global/single debit]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T243">
+<Obj ><![CDATA['View details' appeared for : stg_instdamt10euro_dbtrccygbp.xml]]></Obj>
+<Details ><![CDATA[Button 'Audit Trail' has been found.]]></Details>
+<Time><![CDATA[22/06/2010 - 11:52:34]]></Time>
+<TimeTick>1277200354</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="3861" status="Passed" Source="Q:\SmokeTest\SmokeTestFunctions.qfl" SourceLine="138" >
+<Disp><![CDATA['View details' appeared for : stg_instdamt10euro_dbtrccygbp.xml]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T244">
+<Obj ><![CDATA[    Expected status is correct.]]></Obj>
+<Details ><![CDATA[Expected status = File is not valid. Actual status = File is not valid]]></Details>
+<Time><![CDATA[22/06/2010 - 11:52:34]]></Time>
+<TimeTick>1277200354</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="3865" status="Passed" Source="Q:\SmokeTest\SmokeTestFunctions.qfl" SourceLine="326" >
+<Disp><![CDATA[    Expected status is correct.]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T245">
+<Obj ><![CDATA[     Verify  --> Transaction type]]></Obj>
+<Details ><![CDATA[Actual=Non-SEPA payment  ; Expected=Non-SEPA payment ]]></Details>
+<Time><![CDATA[22/06/2010 - 11:52:35]]></Time>
+<TimeTick>1277200355</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="3871" status="Passed" Source="Q:\SmokeTest\SmokeTestFunctions.qfl" SourceLine="676" >
+<Disp><![CDATA[     Verify  --> Transaction type]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T246">
+<Obj ><![CDATA[     Verify  --> File size]]></Obj>
+<Details ><![CDATA[Actual=1449 bytes  ; Expected=1449 bytes]]></Details>
+<Time><![CDATA[22/06/2010 - 11:52:36]]></Time>
+<TimeTick>1277200356</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="3875" status="Passed" Source="Q:\SmokeTest\SmokeTestFunctions.qfl" SourceLine="676" >
+<Disp><![CDATA[     Verify  --> File size]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T247">
+<Obj ><![CDATA[     Verify  --> File format]]></Obj>
+<Details ><![CDATA[Actual=NON SEPA ordinary transfer  ; Expected=NON SEPA ordinary transfer ]]></Details>
+<Time><![CDATA[22/06/2010 - 11:52:37]]></Time>
+<TimeTick>1277200357</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="3880" status="Passed" Source="Q:\SmokeTest\SmokeTestFunctions.qfl" SourceLine="676" >
+<Disp><![CDATA[     Verify  --> File format]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T248">
+<Obj ><![CDATA[     Verify  --> Global/single debit]]></Obj>
+<Details ><![CDATA[Actual=Global debit ; Expected=Global debit]]></Details>
+<Time><![CDATA[22/06/2010 - 11:52:37]]></Time>
+<TimeTick>1277200357</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="3887" status="Passed" Source="Q:\SmokeTest\SmokeTestFunctions.qfl" SourceLine="676" >
+<Disp><![CDATA[     Verify  --> Global/single debit]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T249">
+<Obj ><![CDATA['View details' appeared for : fortis_mt101.txt]]></Obj>
+<Details ><![CDATA[Button 'Audit Trail' has been found.]]></Details>
+<Time><![CDATA[22/06/2010 - 11:52:46]]></Time>
+<TimeTick>1277200366</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="3898" status="Passed" Source="Q:\SmokeTest\SmokeTestFunctions.qfl" SourceLine="138" >
+<Disp><![CDATA['View details' appeared for : fortis_mt101.txt]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T250">
+<Obj ><![CDATA[    Expected status is correct.]]></Obj>
+<Details ><![CDATA[Expected status = User interaction is required. Actual status = User interaction is required to accept / refuse extra conditions]]></Details>
+<Time><![CDATA[22/06/2010 - 11:52:47]]></Time>
+<TimeTick>1277200367</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="3902" status="Passed" Source="Q:\SmokeTest\SmokeTestFunctions.qfl" SourceLine="326" >
+<Disp><![CDATA[    Expected status is correct.]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T251">
+<Obj ><![CDATA[     Verify  --> Transaction type]]></Obj>
+<Details ><![CDATA[Actual=Belgian domestic payment  ; Expected=Belgian domestic payment ]]></Details>
+<Time><![CDATA[22/06/2010 - 11:52:48]]></Time>
+<TimeTick>1277200368</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="3908" status="Passed" Source="Q:\SmokeTest\SmokeTestFunctions.qfl" SourceLine="676" >
+<Disp><![CDATA[     Verify  --> Transaction type]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T252">
+<Obj ><![CDATA[     Verify  --> File size]]></Obj>
+<Details ><![CDATA[Actual=178 bytes  ; Expected=178 bytes ]]></Details>
+<Time><![CDATA[22/06/2010 - 11:52:48]]></Time>
+<TimeTick>1277200368</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="3912" status="Passed" Source="Q:\SmokeTest\SmokeTestFunctions.qfl" SourceLine="676" >
+<Disp><![CDATA[     Verify  --> File size]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T253">
+<Obj ><![CDATA[     Verify  --> File format]]></Obj>
+<Details ><![CDATA[Actual=00 Ordinary transfer  ; Expected=00 Ordinary transfer]]></Details>
+<Time><![CDATA[22/06/2010 - 11:52:49]]></Time>
+<TimeTick>1277200369</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="3917" status="Passed" Source="Q:\SmokeTest\SmokeTestFunctions.qfl" SourceLine="676" >
+<Disp><![CDATA[     Verify  --> File format]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T254">
+<Obj ><![CDATA[     Verify  --> Global/single debit]]></Obj>
+<Details ><![CDATA[Actual=Single debit ; Expected=Single debit]]></Details>
+<Time><![CDATA[22/06/2010 - 11:52:50]]></Time>
+<TimeTick>1277200370</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="3924" status="Passed" Source="Q:\SmokeTest\SmokeTestFunctions.qfl" SourceLine="676" >
+<Disp><![CDATA[     Verify  --> Global/single debit]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T255">
+<Obj ><![CDATA['View details' appeared for : fortis_mt101_butsepadetected.txt]]></Obj>
+<Details ><![CDATA[Button 'Audit Trail' has been found.]]></Details>
+<Time><![CDATA[22/06/2010 - 11:52:57]]></Time>
+<TimeTick>1277200377</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="3935" status="Passed" Source="Q:\SmokeTest\SmokeTestFunctions.qfl" SourceLine="138" >
+<Disp><![CDATA['View details' appeared for : fortis_mt101_butsepadetected.txt]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T256">
+<Obj ><![CDATA[    Expected status is correct.]]></Obj>
+<Details ><![CDATA[Expected status = User interaction is required. Actual status = User interaction is required to accept / refuse extra conditions]]></Details>
+<Time><![CDATA[22/06/2010 - 11:52:58]]></Time>
+<TimeTick>1277200378</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="3939" status="Passed" Source="Q:\SmokeTest\SmokeTestFunctions.qfl" SourceLine="326" >
+<Disp><![CDATA[    Expected status is correct.]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T257">
+<Obj ><![CDATA[     Verify  --> Transaction type]]></Obj>
+<Details ><![CDATA[Actual=SEPA payment  ; Expected=SEPA payment ]]></Details>
+<Time><![CDATA[22/06/2010 - 11:52:59]]></Time>
+<TimeTick>1277200379</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="3945" status="Passed" Source="Q:\SmokeTest\SmokeTestFunctions.qfl" SourceLine="676" >
+<Disp><![CDATA[     Verify  --> Transaction type]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T258">
+<Obj ><![CDATA[     Verify  --> File size]]></Obj>
+<Details ><![CDATA[Actual=211 bytes  ; Expected=211 bytes ]]></Details>
+<Time><![CDATA[22/06/2010 - 11:53:00]]></Time>
+<TimeTick>1277200380</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="3949" status="Passed" Source="Q:\SmokeTest\SmokeTestFunctions.qfl" SourceLine="676" >
+<Disp><![CDATA[     Verify  --> File size]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T259">
+<Obj ><![CDATA[     Verify  --> File format]]></Obj>
+<Details ><![CDATA[Actual=SEPA ordinary transfer  ; Expected=SEPA ordinary transfer ]]></Details>
+<Time><![CDATA[22/06/2010 - 11:53:00]]></Time>
+<TimeTick>1277200380</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="3954" status="Passed" Source="Q:\SmokeTest\SmokeTestFunctions.qfl" SourceLine="676" >
+<Disp><![CDATA[     Verify  --> File format]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T260">
+<Obj ><![CDATA[     Verify  --> Global/single debit]]></Obj>
+<Details ><![CDATA[Actual=Single debit ; Expected=Single debit]]></Details>
+<Time><![CDATA[22/06/2010 - 11:53:01]]></Time>
+<TimeTick>1277200381</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="3961" status="Passed" Source="Q:\SmokeTest\SmokeTestFunctions.qfl" SourceLine="676" >
+<Disp><![CDATA[     Verify  --> Global/single debit]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T261">
+<Obj ><![CDATA['View details' appeared for : stg_splitknownunknowninrange128v3.vme_1]]></Obj>
+<Details ><![CDATA[Button 'Audit Trail' has been found.]]></Details>
+<Time><![CDATA[22/06/2010 - 11:53:10]]></Time>
+<TimeTick>1277200390</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="3972" status="Passed" Source="Q:\SmokeTest\SmokeTestFunctions.qfl" SourceLine="138" >
+<Disp><![CDATA['View details' appeared for : stg_splitknownunknowninrange128v3.vme_1]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T262">
+<Obj ><![CDATA[    Expected status is correct.]]></Obj>
+<Details ><![CDATA[Expected status = not signed yet. Actual status = Not signed yet]]></Details>
+<Time><![CDATA[22/06/2010 - 11:53:11]]></Time>
+<TimeTick>1277200391</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="3976" status="Passed" Source="Q:\SmokeTest\SmokeTestFunctions.qfl" SourceLine="326" >
+<Disp><![CDATA[    Expected status is correct.]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T263">
+<Obj ><![CDATA[     Verify  --> Transaction type]]></Obj>
+<Details ><![CDATA[Actual=Belgian foreign payment  ; Expected=Belgian foreign payment ]]></Details>
+<Time><![CDATA[22/06/2010 - 11:53:12]]></Time>
+<TimeTick>1277200392</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="3982" status="Passed" Source="Q:\SmokeTest\SmokeTestFunctions.qfl" SourceLine="676" >
+<Disp><![CDATA[     Verify  --> Transaction type]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T264">
+<Obj ><![CDATA[     Verify  --> File size]]></Obj>
+<Details ><![CDATA[Actual=1170 bytes  ; Expected=1170 bytes ]]></Details>
+<Time><![CDATA[22/06/2010 - 11:53:13]]></Time>
+<TimeTick>1277200393</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="3986" status="Passed" Source="Q:\SmokeTest\SmokeTestFunctions.qfl" SourceLine="676" >
+<Disp><![CDATA[     Verify  --> File size]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T265">
+<Obj ><![CDATA[     Verify  --> File format]]></Obj>
+<Details ><![CDATA[Actual=CIRI_VME_3.0_128  ; Expected=CIRI_VME_3.0_128 ]]></Details>
+<Time><![CDATA[22/06/2010 - 11:53:14]]></Time>
+<TimeTick>1277200394</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="3991" status="Passed" Source="Q:\SmokeTest\SmokeTestFunctions.qfl" SourceLine="676" >
+<Disp><![CDATA[     Verify  --> File format]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T266">
+<Obj ><![CDATA[     Verify  --> Global/single debit]]></Obj>
+<Details ><![CDATA[Actual=Single debit ; Expected=Single debit]]></Details>
+<Time><![CDATA[22/06/2010 - 11:53:14]]></Time>
+<TimeTick>1277200394</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="3998" status="Passed" Source="Q:\SmokeTest\SmokeTestFunctions.qfl" SourceLine="676" >
+<Disp><![CDATA[     Verify  --> Global/single debit]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T267">
+<Obj ><![CDATA['View details' appeared for : stg_splitknownunknowninrange128v3.vme_2]]></Obj>
+<Details ><![CDATA[Button 'Audit Trail' has been found.]]></Details>
+<Time><![CDATA[22/06/2010 - 11:53:22]]></Time>
+<TimeTick>1277200402</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="4009" status="Passed" Source="Q:\SmokeTest\SmokeTestFunctions.qfl" SourceLine="138" >
+<Disp><![CDATA['View details' appeared for : stg_splitknownunknowninrange128v3.vme_2]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T268">
+<Obj ><![CDATA[    Expected status is correct.]]></Obj>
+<Details ><![CDATA[Expected status = not signed yet. Actual status = Not signed yet]]></Details>
+<Time><![CDATA[22/06/2010 - 11:53:23]]></Time>
+<TimeTick>1277200403</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="4013" status="Passed" Source="Q:\SmokeTest\SmokeTestFunctions.qfl" SourceLine="326" >
+<Disp><![CDATA[    Expected status is correct.]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T269">
+<Obj ><![CDATA[     Verify  --> Transaction type]]></Obj>
+<Details ><![CDATA[Actual=Belgian foreign payment  ; Expected=Belgian foreign payment ]]></Details>
+<Time><![CDATA[22/06/2010 - 11:53:24]]></Time>
+<TimeTick>1277200404</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="4019" status="Passed" Source="Q:\SmokeTest\SmokeTestFunctions.qfl" SourceLine="676" >
+<Disp><![CDATA[     Verify  --> Transaction type]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T270">
+<Obj ><![CDATA[     Verify  --> File size]]></Obj>
+<Details ><![CDATA[Actual=1170 bytes  ; Expected=1170 bytes ]]></Details>
+<Time><![CDATA[22/06/2010 - 11:53:25]]></Time>
+<TimeTick>1277200405</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="4023" status="Passed" Source="Q:\SmokeTest\SmokeTestFunctions.qfl" SourceLine="676" >
+<Disp><![CDATA[     Verify  --> File size]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T271">
+<Obj ><![CDATA[     Verify  --> File format]]></Obj>
+<Details ><![CDATA[Actual=CIRI_VME_3.0_128  ; Expected=CIRI_VME_3.0_128 ]]></Details>
+<Time><![CDATA[22/06/2010 - 11:53:25]]></Time>
+<TimeTick>1277200405</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="4028" status="Passed" Source="Q:\SmokeTest\SmokeTestFunctions.qfl" SourceLine="676" >
+<Disp><![CDATA[     Verify  --> File format]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T272">
+<Obj ><![CDATA[     Verify  --> Global/single debit]]></Obj>
+<Details ><![CDATA[Actual=Single debit ; Expected=Single debit]]></Details>
+<Time><![CDATA[22/06/2010 - 11:53:26]]></Time>
+<TimeTick>1277200406</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="4035" status="Passed" Source="Q:\SmokeTest\SmokeTestFunctions.qfl" SourceLine="676" >
+<Disp><![CDATA[     Verify  --> Global/single debit]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T273">
+<Obj ><![CDATA['View details' appeared for : stg_4signle_payments_2unkown_inrange_2known.xml_1]]></Obj>
+<Details ><![CDATA[Button 'Audit Trail' has been found.]]></Details>
+<Time><![CDATA[22/06/2010 - 11:53:34]]></Time>
+<TimeTick>1277200414</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="4046" status="Passed" Source="Q:\SmokeTest\SmokeTestFunctions.qfl" SourceLine="138" >
+<Disp><![CDATA['View details' appeared for : stg_4signle_payments_2unkown_inrange_2known.xml_1]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T274">
+<Obj ><![CDATA[    Expected status is correct.]]></Obj>
+<Details ><![CDATA[Expected status = Not signed yet. Actual status = Not signed yet]]></Details>
+<Time><![CDATA[22/06/2010 - 11:53:36]]></Time>
+<TimeTick>1277200416</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="4050" status="Passed" Source="Q:\SmokeTest\SmokeTestFunctions.qfl" SourceLine="326" >
+<Disp><![CDATA[    Expected status is correct.]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T275">
+<Obj ><![CDATA[     Verify  --> Transaction type]]></Obj>
+<Details ><![CDATA[Actual=SEPA payment  ; Expected=SEPA payment ]]></Details>
+<Time><![CDATA[22/06/2010 - 11:53:36]]></Time>
+<TimeTick>1277200416</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="4056" status="Passed" Source="Q:\SmokeTest\SmokeTestFunctions.qfl" SourceLine="676" >
+<Disp><![CDATA[     Verify  --> Transaction type]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T276">
+<Obj ><![CDATA[     Verify  --> File size]]></Obj>
+<Details ><![CDATA[Actual=4596 bytes  ; Expected=4596 bytes ]]></Details>
+<Time><![CDATA[22/06/2010 - 11:53:37]]></Time>
+<TimeTick>1277200417</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="4060" status="Passed" Source="Q:\SmokeTest\SmokeTestFunctions.qfl" SourceLine="676" >
+<Disp><![CDATA[     Verify  --> File size]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T277">
+<Obj ><![CDATA[     Verify  --> File format]]></Obj>
+<Details ><![CDATA[Actual=SEPA government department payment  ; Expected=SEPA government department payment ]]></Details>
+<Time><![CDATA[22/06/2010 - 11:53:38]]></Time>
+<TimeTick>1277200418</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="4065" status="Passed" Source="Q:\SmokeTest\SmokeTestFunctions.qfl" SourceLine="676" >
+<Disp><![CDATA[     Verify  --> File format]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T278">
+<Obj ><![CDATA[     Verify  --> Global/single debit]]></Obj>
+<Details ><![CDATA[Actual=Global debit ; Expected=Global debit]]></Details>
+<Time><![CDATA[22/06/2010 - 11:53:39]]></Time>
+<TimeTick>1277200419</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="4072" status="Passed" Source="Q:\SmokeTest\SmokeTestFunctions.qfl" SourceLine="676" >
+<Disp><![CDATA[     Verify  --> Global/single debit]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T279">
+<Obj ><![CDATA['View details' appeared for : stg_4signle_payments_2unkown_inrange_2known.xml_2]]></Obj>
+<Details ><![CDATA[Button 'Audit Trail' has been found.]]></Details>
+<Time><![CDATA[22/06/2010 - 11:53:47]]></Time>
+<TimeTick>1277200427</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="4083" status="Passed" Source="Q:\SmokeTest\SmokeTestFunctions.qfl" SourceLine="138" >
+<Disp><![CDATA['View details' appeared for : stg_4signle_payments_2unkown_inrange_2known.xml_2]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T280">
+<Obj ><![CDATA[    Expected status is correct.]]></Obj>
+<Details ><![CDATA[Expected status = Not signed yet. Actual status = Not signed yet]]></Details>
+<Time><![CDATA[22/06/2010 - 11:53:48]]></Time>
+<TimeTick>1277200428</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="4087" status="Passed" Source="Q:\SmokeTest\SmokeTestFunctions.qfl" SourceLine="326" >
+<Disp><![CDATA[    Expected status is correct.]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T281">
+<Obj ><![CDATA[     Verify  --> Transaction type]]></Obj>
+<Details ><![CDATA[Actual=SEPA payment  ; Expected=SEPA payment ]]></Details>
+<Time><![CDATA[22/06/2010 - 11:53:49]]></Time>
+<TimeTick>1277200429</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="4093" status="Passed" Source="Q:\SmokeTest\SmokeTestFunctions.qfl" SourceLine="676" >
+<Disp><![CDATA[     Verify  --> Transaction type]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T282">
+<Obj ><![CDATA[     Verify  --> File size]]></Obj>
+<Details ><![CDATA[Actual=4596 bytes  ; Expected=4596 bytes ]]></Details>
+<Time><![CDATA[22/06/2010 - 11:53:50]]></Time>
+<TimeTick>1277200430</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="4097" status="Passed" Source="Q:\SmokeTest\SmokeTestFunctions.qfl" SourceLine="676" >
+<Disp><![CDATA[     Verify  --> File size]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T283">
+<Obj ><![CDATA[     Verify  --> File format]]></Obj>
+<Details ><![CDATA[Actual=SEPA government department payment  ; Expected=SEPA government department payment ]]></Details>
+<Time><![CDATA[22/06/2010 - 11:53:50]]></Time>
+<TimeTick>1277200430</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="4102" status="Passed" Source="Q:\SmokeTest\SmokeTestFunctions.qfl" SourceLine="676" >
+<Disp><![CDATA[     Verify  --> File format]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T284">
+<Obj ><![CDATA[     Verify  --> Global/single debit]]></Obj>
+<Details ><![CDATA[Actual=Global debit ; Expected=Global debit]]></Details>
+<Time><![CDATA[22/06/2010 - 11:53:51]]></Time>
+<TimeTick>1277200431</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="4109" status="Passed" Source="Q:\SmokeTest\SmokeTestFunctions.qfl" SourceLine="676" >
+<Disp><![CDATA[     Verify  --> Global/single debit]]></Disp>
+</NodeArgs>
+</Step>
+<Summary sTime="22/06/2010 - 11:48:10" eTime="22/06/2010 - 11:53:53" passed="105" failed="0" warnings="0" ></Summary>
+<NodeArgs eType="StartAction" icon="4" nRep="3336" status="Passed" >
+<Disp><![CDATA[Upload Summary]]></Disp>
+</NodeArgs>
+</Action>
+<Action rID="T285">
+<AName><![CDATA[SwitchSigner]]></AName>
+<Step rID="T286">
+<Obj ><![CDATA[=== START ACTION : SwitchSigner ===]]></Obj>
+<Details ><![CDATA[]]></Details>
+<Time><![CDATA[22/06/2010 - 11:53:54]]></Time>
+<TimeTick>1277200434</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="4114" Source="Q:\SmokeTest\SmokeTestFunctions.qfl" SourceLine="822" >
+<Disp><![CDATA[=== START ACTION : SwitchSigner ===]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T287">
+<Obj ><![CDATA['View details' appeared for : stg_sepa_withdebtortag_be32000000000202.xml]]></Obj>
+<Details ><![CDATA[Button 'Audit Trail' has been found.]]></Details>
+<Time><![CDATA[22/06/2010 - 11:54:00]]></Time>
+<TimeTick>1277200440</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="4123" status="Passed" Source="Q:\SmokeTest\SmokeTestFunctions.qfl" SourceLine="138" >
+<Disp><![CDATA['View details' appeared for : stg_sepa_withdebtortag_be32000000000202.xml]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T288">
+<Obj ><![CDATA['View details' appeared for : stg_sepa_withdebtortag_be32000000000202.xml]]></Obj>
+<Details ><![CDATA[Button 'Audit Trail' has been found.]]></Details>
+<Time><![CDATA[22/06/2010 - 11:54:51]]></Time>
+<TimeTick>1277200491</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="4172" status="Passed" Source="Q:\SmokeTest\SmokeTestFunctions.qfl" SourceLine="138" >
+<Disp><![CDATA['View details' appeared for : stg_sepa_withdebtortag_be32000000000202.xml]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T289">
+<Obj ><![CDATA[    Expected status is correct.]]></Obj>
+<Details ><![CDATA[Expected status = sign is pending. Actual status = Sign is pending]]></Details>
+<Time><![CDATA[22/06/2010 - 11:54:52]]></Time>
+<TimeTick>1277200492</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="4175" status="Passed" Source="Q:\SmokeTest\SmokeTestFunctions.qfl" SourceLine="326" >
+<Disp><![CDATA[    Expected status is correct.]]></Disp>
+</NodeArgs>
+</Step>
+<Summary sTime="22/06/2010 - 11:53:54" eTime="22/06/2010 - 11:54:55" passed="3" failed="0" warnings="0" ></Summary>
+<NodeArgs eType="StartAction" icon="4" nRep="4113" status="Passed" >
+<Disp><![CDATA[SwitchSigner Summary]]></Disp>
+</NodeArgs>
+</Action>
+<Action rID="T290">
+<AName><![CDATA[CIS]]></AName>
+<Step rID="T291">
+<Obj ><![CDATA[=== START ACTION : CIS ===]]></Obj>
+<Details ><![CDATA[]]></Details>
+<Time><![CDATA[22/06/2010 - 11:54:56]]></Time>
+<TimeTick>1277200496</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="4183" Source="Q:\SmokeTest\SmokeTestFunctions.qfl" SourceLine="822" >
+<Disp><![CDATA[=== START ACTION : CIS ===]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T292">
+<Obj ><![CDATA[StatusMessage = OK]]></Obj>
+<Details ><![CDATA[strStatusMessage = OK]]></Details>
+<Time><![CDATA[22/06/2010 - 11:55:19]]></Time>
+<TimeTick>1277200519</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="4210" status="Passed" Source="Q:\SmokeTest\SmokeTestFunctions.qfl" SourceLine="719" >
+<Disp><![CDATA[StatusMessage = OK]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T293">
+<Obj ><![CDATA[StatusCode = OK]]></Obj>
+<Details ><![CDATA[strStatusCode = OK]]></Details>
+<Time><![CDATA[22/06/2010 - 11:55:19]]></Time>
+<TimeTick>1277200519</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="4211" status="Passed" Source="Q:\SmokeTest\SmokeTestFunctions.qfl" SourceLine="719" >
+<Disp><![CDATA[StatusCode = OK]]></Disp>
+</NodeArgs>
+</Step>
+<Summary sTime="22/06/2010 - 11:54:55" eTime="22/06/2010 - 11:55:23" passed="2" failed="0" warnings="0" ></Summary>
+<NodeArgs eType="StartAction" icon="4" nRep="4182" status="Passed" >
+<Disp><![CDATA[CIS Summary]]></Disp>
+</NodeArgs>
+</Action>
+<Action rID="T294">
+<AName><![CDATA[ReportLogFile]]></AName>
+<Step rID="T295">
+<Obj ><![CDATA[=== END OF QTP-TEST ===]]></Obj>
+<Details ><![CDATA[]]></Details>
+<Time><![CDATA[22/06/2010 - 11:55:23]]></Time>
+<TimeTick>1277200523</TimeTick>
+<NodeArgs eType="User" icon="5" nRep="4216" Source="Q:\SmokeTest\SmokeTestFunctions.qfl" SourceLine="830" >
+<Disp><![CDATA[=== END OF QTP-TEST ===]]></Disp>
+</NodeArgs>
+</Step>
+<Summary sTime="22/06/2010 - 11:55:23" eTime="22/06/2010 - 11:55:23" passed="0" failed="0" warnings="0" ></Summary>
+<NodeArgs eType="StartAction" icon="4" nRep="4215" >
+<Disp><![CDATA[ReportLogFile Summary]]></Disp>
+</NodeArgs>
+</Action>
+</Report>

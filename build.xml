@@ -1,0 +1,129 @@
+<project name="Release">
+
+	<!--
+		Release protocol
+		- preparation of the POM version and the SCM information
+		- creation of the tag
+		- packaging
+		- (optional) preparation of the next iteration
+	-->
+
+	<macrodef name="maven">
+		<attribute name="goals" />
+		<sequential>
+			<exec executable="${mvn}" dir="${basedir}" failonerror="true">
+				<arg line="-B" />
+				<arg line="@{goals}" />
+			</exec>
+		</sequential>
+	</macrodef>
+
+	<macrodef name="update-versions">
+		<attribute name="version" />
+		<sequential>
+			<!-- Loads the POM -->
+			<xmlproperty prefix="pom" keeproot="false" file="pom.xml" />
+			<!-- Updates versions -->
+			<echo message="Updating POM version(s) from ${pom.version} to @{version}" />
+			<replaceregexp
+				match="&lt;version&gt;${pom.version}&lt;/version&gt;"
+				replace="&lt;version&gt;@{version}&lt;/version&gt;"
+				byline="true">
+				<fileset dir="${basedir}" includes="**/pom.xml" />
+			</replaceregexp>
+		</sequential>
+	</macrodef>
+
+	<target name="init">
+	</target>
+
+	<target name="init-release" depends="init">
+		<!-- Checks required properties -->
+		<fail message="'mvn' property must be set to the Maven executable" unless="mvn" />
+		<fail message="'release.version' property must be set" unless="release.version" />
+	</target>
+
+	<target name="init-next" depends="init">
+		<!-- Checks required properties -->
+		<fail message="'release.next' property must be set" unless="release.next" />
+	</target>
+
+	<target name="init-all" depends="init-next,init-release">
+	</target>
+
+	<target name="release-prepare" depends="init" unless="skip.prepare">
+		<!-- Updates versions -->
+		<update-versions version="${release.version}" />
+		<!-- Updates SCM information -->
+		<replaceregexp
+			file="pom.xml"
+			match="/trunk"
+			replace="/tags/${release.version}"
+			byline="true" />
+	</target>
+
+	<target name="release-commit" depends="init" unless="skip.commit">
+		<!-- Loads the POM as properties -->
+		<xmlproperty file="pom.xml" />
+		<!-- Gets the SCM information -->
+		<echo message="${project.scm.connection}" file="tmp.scm" />
+		<replace file="tmp.scm" token="scm:svn:" value="" />
+		<loadfile srcfile="tmp.scm" property="release.url" />
+		<!-- Commits to Subversion -->
+		<echo message="Committing to ${release.url}" />
+		<exec executable="svn" failonerror="true">
+			<arg value="copy" />
+			<arg value="${basedir}" />
+			<arg value="${release.url}" />
+			<arg value="--parents" />
+			<arg value="--message" />
+			<arg value="Release ${release.version}" />
+		</exec>
+	</target>
+
+	<target name="release-package" depends="init" unless="skip.package">
+		<maven goals="clean package" />
+	</target>
+
+	<target name="release-tasks" depends="release-package" unless="skip.tasks">
+	</target>
+
+	<target name="release-next" depends="init-next" unless="skip.next">
+		<!-- Updates versions -->
+		<update-versions version="${release.next}-SNAPSHOT" />
+		<!-- Uses a default tag information if not available - this will disable the replacement because no match will be found -->
+		<property name="release.version" value="" />
+		<!-- Updates SCM information -->
+		<replaceregexp
+			file="pom.xml"
+			match="/tags/${release.version}"
+			replace="/trunk"
+			byline="true" />
+		<!-- Commits -->
+		<echo message="Committing next version to the trunk" />
+		<exec executable="svn" failonerror="true">
+			<arg value="commit" />
+			<arg value="${basedir}" />
+			<arg value="--message" />
+			<arg value="Start of development for ${release.next}" />
+		</exec>
+	</target>
+
+	<!-- Reverts all changes -->
+	<target name="release-revert">
+		<exec executable="svn" failonerror="false">
+			<arg value="revert" />
+			<arg value="${basedir}" />
+			<arg value="-R" />
+		</exec>
+	</target>
+
+	<!-- Releases only -->
+	<target name="release-only" depends="init-all,release-prepare,release-tasks,release-commit,release-revert">
+	</target>
+
+	<!-- Release and prepare the next development iteration -->
+	<target name="release" depends="release-only,release-next">
+	</target>
+
+</project>
