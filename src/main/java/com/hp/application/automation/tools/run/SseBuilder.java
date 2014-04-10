@@ -1,17 +1,7 @@
 package com.hp.application.automation.tools.run;
 
-import hudson.Extension;
-import hudson.FilePath;
-import hudson.Launcher;
-import hudson.model.BuildListener;
-import hudson.model.Result;
-import hudson.model.AbstractBuild;
-import hudson.model.AbstractProject;
-import hudson.model.Hudson;
-import hudson.tasks.BuildStepDescriptor;
-import hudson.tasks.Builder;
-import hudson.util.FormValidation;
-
+import javax.xml.bind.JAXBContext;
+import javax.xml.bind.Marshaller;
 import java.io.IOException;
 import java.io.PrintStream;
 import java.io.StringWriter;
@@ -19,13 +9,6 @@ import java.text.Format;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
-
-import javax.xml.bind.JAXBContext;
-import javax.xml.bind.Marshaller;
-
-import org.apache.commons.lang.StringUtils;
-import org.kohsuke.stapler.DataBoundConstructor;
-import org.kohsuke.stapler.QueryParameter;
 
 import com.hp.application.automation.tools.model.AlmServerSettingsModel;
 import com.hp.application.automation.tools.model.CdaDetails;
@@ -37,6 +20,20 @@ import com.hp.application.automation.tools.sse.result.model.junit.Testcase;
 import com.hp.application.automation.tools.sse.result.model.junit.Testsuite;
 import com.hp.application.automation.tools.sse.result.model.junit.Testsuites;
 import com.hp.application.automation.tools.sse.sdk.Logger;
+import hudson.Extension;
+import hudson.FilePath;
+import hudson.Launcher;
+import hudson.model.AbstractBuild;
+import hudson.model.AbstractProject;
+import hudson.model.BuildListener;
+import hudson.model.Hudson;
+import hudson.model.Result;
+import hudson.tasks.BuildStepDescriptor;
+import hudson.tasks.Builder;
+import hudson.util.FormValidation;
+import org.apache.commons.lang.StringUtils;
+import org.kohsuke.stapler.DataBoundConstructor;
+import org.kohsuke.stapler.QueryParameter;
 
 /***
  * This Jenkins plugin contains an unofficial implementation of some of the elements of the HP ALM
@@ -214,7 +211,7 @@ public class SseBuilder extends Builder {
         
         return performer.start(_sseModel, new Logger() {
             
-            @Override
+
             public void log(String message) {
                 
                 logger.println(message);

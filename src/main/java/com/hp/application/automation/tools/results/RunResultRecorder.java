@@ -128,8 +128,8 @@ public class RunResultRecorder extends Recorder implements Serializable, MatrixA
             TestResult result = build.getWorkspace().act(new FileCallable<TestResult>() {
             int i = 0;
                 private static final long serialVersionUID = 1L;
-                
-                @Override
+
+
                 public TestResult invoke(File ws, VirtualChannel channel) throws IOException {
                     final long nowSlave = System.currentTimeMillis();
                     List<String> files = new ArrayList<String>();
@@ -364,7 +364,7 @@ public class RunResultRecorder extends Recorder implements Serializable, MatrixA
         return new TestResultProjectAction(project);
     }
     
-    @Override
+
     public MatrixAggregator createAggregator(
             MatrixBuild build,
             Launcher launcher,
@@ -373,7 +373,7 @@ public class RunResultRecorder extends Recorder implements Serializable, MatrixA
         return new TestResultAggregator(build, launcher, listener);
     }
     
-    @Override
+
     public BuildStepMonitor getRequiredMonitorService() {
         
         return BuildStepMonitor.BUILD;
