@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" readonly="true" id="144ffc9e-eb61-4a59-8f64-6d4a229c3dc7" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/text2.txt" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="hp-application-automation-tools-plugin.iws" />
@@ -1016,17 +1017,21 @@
       <workItem from="1396513694077" duration="8000" />
       <workItem from="1396513702832" duration="51853000" />
       <workItem from="1396956989723" duration="958000" />
-      <workItem from="1397042728289" duration="11891000" />
+      <workItem from="1397042728289" duration="11977000" />
     </task>
     <task id="LOCAL-00001" summary="deleting log line&#10;">
       <created>1397130635386</created>
       <updated>1397130635386</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="deleting log line&#10;">
+      <created>1397130834065</created>
+      <updated>1397130834065</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="68377000" />
+    <option name="totallyTimeSpent" value="68463000" />
   </component>
   <component name="TodoView" selected-index="0">
     <todo-panel id="selected-file">
