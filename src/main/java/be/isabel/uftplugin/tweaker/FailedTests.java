@@ -56,24 +56,33 @@ public class FailedTests {
     }
 
     public static boolean isPreviousBuildSuccess(AbstractBuild<?, ?> build) {
-        if (build.getPreviousBuild().getResult().equals(Result.SUCCESS)){
+        if (build.getPreviousBuild() == null){
+            return false;
+        }
+        else if (build.getPreviousBuild().getResult().equals(Result.SUCCESS)){
             return true;
         }
         else return false;
     }
 
     public static boolean isPreviousBuildFailed(AbstractBuild<?, ?> build) {
-        if (build.getPreviousBuild().getResult().equals(Result.FAILURE)){
+        if (build.getPreviousBuild() == null){
+            return false;
+        }
+        else if (build.getPreviousBuild().getResult().equals(Result.FAILURE)){
             return true;
         }
         else return false;
     }
 
     public static boolean isPreviousBuildAborted(AbstractBuild<?,?> build) {
-        if (build.getPreviousBuild().getResult().equals(Result.ABORTED)){
+        if (build.getPreviousBuild() == null){
+            return false;
+        }
+        else if (build.getPreviousBuild().getResult().equals(Result.ABORTED)){
             return true;
         }
-        if (build.getPreviousBuild().getResult().equals(Result.NOT_BUILT)){
+        else if (build.getPreviousBuild().getResult().equals(Result.NOT_BUILT)){
             return true;
         }
         else return false;
